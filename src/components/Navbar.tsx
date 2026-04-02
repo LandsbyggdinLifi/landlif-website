@@ -22,7 +22,7 @@ export default function Navbar() {
               className="text-xl font-bold tracking-tight"
               style={{ color: "#394c75" }}
             >
-              Landlíf
+              Landsbyggðin lifi
             </span>
           </Link>
 

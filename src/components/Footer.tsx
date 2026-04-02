@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-lg font-bold mb-3">Landlíf</h3>
+            <h3 className="text-lg font-bold mb-3">Landsbyggðin lifi</h3>
             <p className="text-sm text-blue-100 leading-relaxed">
               Samtök um uppbyggingu og styrkingu dreifbýlis á Íslandi.
             </p>
@@ -64,7 +64,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-blue-700 mt-10 pt-6 text-xs text-blue-300 text-center">
-          © {new Date().getFullYear()} Landlíf. Öll réttindi áskilin.
+          © {new Date().getFullYear()} Landsbyggðin lifi. Öll réttindi áskilin.
         </div>
       </div>
     </footer>
