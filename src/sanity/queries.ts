@@ -58,3 +58,12 @@ export const pageBySlugQuery = groq`
     body
   }
 `;
+
+export const aboutPageQuery = groq`
+  *[_type == "page" && _id == "page-um-okkur"][0] {
+    _id,
+    title,
+    heroImage,
+    body
+  }
+`;

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { client } from "@/sanity/client";
-import { pageBySlugQuery } from "@/sanity/queries";
+import { aboutPageQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   const page = await client
-    .fetch(pageBySlugQuery, { slug: "um-okkur" })
+    .fetch(aboutPageQuery)
     .catch(() => null);
 
   return (
