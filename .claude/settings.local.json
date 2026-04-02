@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.landlif.is)",
+      "Bash(cmd.exe /c \"node --version 2>&1 && npm --version 2>&1 && where node 2>&1\")",
+      "Bash(cmd.exe /c \"node -v\")",
+      "Bash(cmd.exe /c \"npm -v\")",
+      "Bash(cmd.exe /c \"node -v 2>&1 || echo NOT_INSTALLED\")",
+      "Bash(cmd.exe /c \"npm -v 2>&1 || echo NOT_INSTALLED\")",
+      "Bash(cmd.exe /c \"where node\")",
+      "Bash(echo \"exit: $?\")",
+      "Bash(export PATH=\"$PATH:/c/Program Files/nodejs\")",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

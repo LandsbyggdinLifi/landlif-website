@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+:root {
+  --teal: #16a085;
+  --navy: #394c75;
+  --gray-light: #eff2f4;
+  --orange: #f45c00;
+}
+
+@theme inline {
+  --color-teal: var(--teal);
+  --color-navy: var(--navy);
+  --color-gray-light: var(--gray-light);
+  --color-orange: var(--orange);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  font-family: "Lato", Arial, sans-serif;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
