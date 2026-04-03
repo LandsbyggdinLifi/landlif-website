@@ -67,3 +67,12 @@ export const aboutPageQuery = groq`
     body
   }
 `;
+
+export const samtokinPageQuery = groq`
+  *[_type == "page" && _id == $id][0] {
+    _id,
+    title,
+    heroImage,
+    body
+  }
+`;
