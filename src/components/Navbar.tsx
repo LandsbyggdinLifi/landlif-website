@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const samtokinLinks = [
   { href: "/samtokin/markmid", label: "Markmið" },
@@ -24,13 +25,16 @@ function DropdownMenu({
   label,
   links,
   id,
+  active,
 }: {
   label: string;
   links: { href: string; label: string }[];
   id: string;
+  active: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -43,7 +47,9 @@ function DropdownMenu({
   return (
     <div className="relative" ref={ref} id={id}>
       <button
-        className="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-teal transition-colors"
+        className={`flex items-center gap-1 text-sm font-medium transition-colors ${
+          active ? "text-teal" : "text-gray-600 hover:text-teal"
+        }`}
         onClick={() => setOpen(!open)}
       >
         {label}
@@ -60,7 +66,11 @@ function DropdownMenu({
             <Link
               key={l.href}
               href={l.href}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-teal transition-colors"
+              className={`block px-4 py-2 text-sm transition-colors ${
+                pathname === l.href
+                  ? "text-teal font-semibold bg-gray-50"
+                  : "text-gray-700 hover:bg-gray-50 hover:text-teal"
+              }`}
               onClick={() => setOpen(false)}
             >
               {l.label}
@@ -76,16 +86,22 @@ function MobileAccordion({
   label,
   links,
   onClose,
+  active,
 }: {
   label: string;
   links: { href: string; label: string }[];
   onClose: () => void;
+  active: boolean;
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(active);
+  const pathname = usePathname();
+
   return (
     <div>
       <button
-        className="flex items-center justify-between w-full py-2 text-sm font-medium text-gray-700 hover:text-teal"
+        className={`flex items-center justify-between w-full py-2 text-sm font-medium ${
+          active ? "text-teal" : "text-gray-700 hover:text-teal"
+        }`}
         onClick={() => setOpen(!open)}
       >
         {label}
@@ -102,7 +118,11 @@ function MobileAccordion({
             <Link
               key={l.href}
               href={l.href}
-              className="block py-2 text-sm text-gray-600 hover:text-teal"
+              className={`block py-2 text-sm ${
+                pathname === l.href
+                  ? "text-teal font-semibold"
+                  : "text-gray-600 hover:text-teal"
+              }`}
               onClick={onClose}
             >
               {l.label}
@@ -116,6 +136,10 @@ function MobileAccordion({
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const inSamtokin = pathname.startsWith("/samtokin");
+  const inStarfid = pathname.startsWith("/starfid");
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -134,15 +158,30 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-sm font-medium text-gray-600 hover:text-teal transition-colors">
+            <Link
+              href="/"
+              className={`text-sm font-medium transition-colors ${
+                pathname === "/" ? "text-teal" : "text-gray-600 hover:text-teal"
+              }`}
+            >
               Forsíða
             </Link>
-            <DropdownMenu label="Samtökin" links={samtokinLinks} id="dropdown-samtokin" />
-            <DropdownMenu label="Starfið" links={starfidLinks} id="dropdown-starfid" />
-            <Link href="/frettir" className="text-sm font-medium text-gray-600 hover:text-teal transition-colors">
+            <DropdownMenu label="Samtökin" links={samtokinLinks} id="dropdown-samtokin" active={inSamtokin} />
+            <DropdownMenu label="Starfið" links={starfidLinks} id="dropdown-starfid" active={inStarfid} />
+            <Link
+              href="/frettir"
+              className={`text-sm font-medium transition-colors ${
+                pathname.startsWith("/frettir") ? "text-teal" : "text-gray-600 hover:text-teal"
+              }`}
+            >
               Fréttir
             </Link>
-            <Link href="/hafa-samband" className="text-sm font-medium text-gray-600 hover:text-teal transition-colors">
+            <Link
+              href="/hafa-samband"
+              className={`text-sm font-medium transition-colors ${
+                pathname === "/hafa-samband" ? "text-teal" : "text-gray-600 hover:text-teal"
+              }`}
+            >
               Hafa samband
             </Link>
           </nav>
@@ -163,18 +202,27 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-gray-100 bg-white px-4 py-3 space-y-1">
-          <Link href="/" className="block py-2 text-sm font-medium text-gray-700 hover:text-teal"
-            onClick={() => setMenuOpen(false)}>
+          <Link
+            href="/"
+            className={`block py-2 text-sm font-medium ${pathname === "/" ? "text-teal" : "text-gray-700 hover:text-teal"}`}
+            onClick={() => setMenuOpen(false)}
+          >
             Forsíða
           </Link>
-          <MobileAccordion label="Samtökin" links={samtokinLinks} onClose={() => setMenuOpen(false)} />
-          <MobileAccordion label="Starfið" links={starfidLinks} onClose={() => setMenuOpen(false)} />
-          <Link href="/frettir" className="block py-2 text-sm font-medium text-gray-700 hover:text-teal"
-            onClick={() => setMenuOpen(false)}>
+          <MobileAccordion label="Samtökin" links={samtokinLinks} onClose={() => setMenuOpen(false)} active={inSamtokin} />
+          <MobileAccordion label="Starfið" links={starfidLinks} onClose={() => setMenuOpen(false)} active={inStarfid} />
+          <Link
+            href="/frettir"
+            className={`block py-2 text-sm font-medium ${pathname.startsWith("/frettir") ? "text-teal" : "text-gray-700 hover:text-teal"}`}
+            onClick={() => setMenuOpen(false)}
+          >
             Fréttir
           </Link>
-          <Link href="/hafa-samband" className="block py-2 text-sm font-medium text-gray-700 hover:text-teal"
-            onClick={() => setMenuOpen(false)}>
+          <Link
+            href="/hafa-samband"
+            className={`block py-2 text-sm font-medium ${pathname === "/hafa-samband" ? "text-teal" : "text-gray-700 hover:text-teal"}`}
+            onClick={() => setMenuOpen(false)}
+          >
             Hafa samband
           </Link>
         </div>
