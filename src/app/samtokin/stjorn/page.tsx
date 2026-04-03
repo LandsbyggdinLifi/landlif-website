@@ -41,7 +41,7 @@ export default async function StjornPage() {
             Aðal- og varastjórnarmenn eru valdir á aðalfundi samtakanna.
           </p>
 
-          <h2 className="text-xl font-bold mb-4" style={{ color: "#394c75" }}>
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>
             Aðalstjórn
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -51,7 +51,7 @@ export default async function StjornPage() {
                 className="p-4 rounded-lg border border-gray-100 bg-gray-50"
               >
                 <p className="font-semibold text-gray-800">{m.name}</p>
-                <p className="text-sm text-[#16a085]">{m.role}</p>
+                <p className="text-sm text-teal">{m.role}</p>
                 {m.location && (
                   <p className="text-sm text-gray-400">{m.location}</p>
                 )}
@@ -59,7 +59,7 @@ export default async function StjornPage() {
             ))}
           </div>
 
-          <h2 className="text-xl font-bold mb-4" style={{ color: "#394c75" }}>
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>
             Varastjórn
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

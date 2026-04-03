@@ -22,7 +22,7 @@ export default async function AboutPage() {
       {/* Hero */}
       <section
         className="relative flex items-end"
-        style={{ minHeight: "280px", backgroundColor: "#394c75" }}
+        style={{ minHeight: "280px", backgroundColor: "var(--navy)" }}
       >
         {page?.heroImage?.asset && (
           <>
@@ -66,7 +66,7 @@ export default async function AboutPage() {
               </p>
               <h2
                 className="text-2xl font-bold mt-10 mb-4"
-                style={{ color: "#394c75" }}
+                style={{ color: "var(--navy)" }}
               >
                 Saga samtakanna
               </h2>
@@ -78,7 +78,7 @@ export default async function AboutPage() {
               </p>
               <h2
                 className="text-2xl font-bold mt-10 mb-4"
-                style={{ color: "#394c75" }}
+                style={{ color: "var(--navy)" }}
               >
                 Starfsemi
               </h2>

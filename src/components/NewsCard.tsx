@@ -38,7 +38,7 @@ export default function NewsCard({ post }: NewsCardProps) {
         </div>
       )}
       {!post.mainImage?.asset && (
-        <div className="relative h-48 w-full overflow-hidden bg-[#eff2f4] flex items-center justify-center">
+        <div className="relative h-48 w-full overflow-hidden bg-gray-light flex items-center justify-center">
           <Image
             src="/logo.png"
             alt="Landsbyggðin lifi"
@@ -53,8 +53,8 @@ export default function NewsCard({ post }: NewsCardProps) {
           <p className="text-xs text-gray-400 mb-1">{date}</p>
         )}
         <h3
-          className="font-semibold text-lg leading-snug mb-2 group-hover:text-[#16a085] transition-colors"
-          style={{ color: "#394c75" }}
+          className="font-semibold text-lg leading-snug mb-2 group-hover:text-teal transition-colors"
+          style={{ color: "var(--navy)" }}
         >
           {post.title}
         </h3>
@@ -65,7 +65,7 @@ export default function NewsCard({ post }: NewsCardProps) {
         )}
         <span
           className="mt-4 text-sm font-medium inline-flex items-center gap-1"
-          style={{ color: "#16a085" }}
+          style={{ color: "var(--teal)" }}
         >
           Lesa meira →
         </span>

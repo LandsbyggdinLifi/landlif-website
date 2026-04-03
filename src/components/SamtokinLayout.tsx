@@ -21,7 +21,7 @@ export default function SamtokinLayout({ title, heroImage, children }: Props) {
       {/* Hero */}
       <section
         className="relative flex items-end"
-        style={{ minHeight: "220px", backgroundColor: "#394c75" }}
+        style={{ minHeight: "220px", backgroundColor: "var(--navy)" }}
       >
         {heroImage?.asset && (
           <>
@@ -45,7 +45,7 @@ export default function SamtokinLayout({ title, heroImage, children }: Props) {
       </section>
 
       {/* Sub-nav */}
-      <div style={{ backgroundColor: "#eff2f4" }} className="border-b border-gray-200">
+      <div style={{ backgroundColor: "var(--gray-light)" }} className="border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-6">
           <nav className="flex gap-6 overflow-x-auto">
             {subLinks.map((l) => (
@@ -55,7 +55,7 @@ export default function SamtokinLayout({ title, heroImage, children }: Props) {
                 className="py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors"
                 style={{
                   borderColor: "transparent",
-                  color: "#394c75",
+                  color: "var(--navy)",
                 }}
               >
                 {l.label}

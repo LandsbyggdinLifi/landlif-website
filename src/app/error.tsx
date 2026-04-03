@@ -15,7 +15,7 @@ export default function Error({
 
   return (
     <>
-      <section className="py-20 text-white" style={{ backgroundColor: "#394c75" }}>
+      <section className="py-20 text-white" style={{ backgroundColor: "var(--navy)" }}>
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-4xl font-bold">Eitthvað fór úrskeiðis</h1>
           <p className="text-blue-200 mt-2">Villa kom upp við að hlaða þessari síðu.</p>
@@ -36,7 +36,7 @@ export default function Error({
           <button
             onClick={unstable_retry}
             className="px-6 py-3 text-white rounded-lg font-medium transition hover:opacity-90"
-            style={{ backgroundColor: "#394c75" }}
+            style={{ backgroundColor: "var(--navy)" }}
           >
             Reyna aftur
           </button>

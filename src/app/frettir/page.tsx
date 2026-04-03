@@ -18,7 +18,7 @@ export default async function NewsPage() {
       {/* Header */}
       <section
         className="py-20 text-white"
-        style={{ backgroundColor: "#394c75" }}
+        style={{ backgroundColor: "var(--navy)" }}
       >
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-4xl font-bold">Fréttir</h1>

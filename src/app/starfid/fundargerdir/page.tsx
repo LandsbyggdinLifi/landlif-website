@@ -23,8 +23,8 @@ export default async function Page() {
               { href: "/starfid/fundargerdir/stjornarfundir", label: "Stj\u00F3rnarfundir" },
             ].map((l) => (
               <Link key={l.href} href={l.href}
-                className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-[#16a085] hover:shadow-sm transition-all text-[#394c75] font-medium">
-                <span style={{ color: "#16a085" }}>→</span> {l.label}
+                className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
+                <span style={{ color: "var(--teal)" }}>→</span> {l.label}
               </Link>
             ))}
           </div>

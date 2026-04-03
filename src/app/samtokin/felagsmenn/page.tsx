@@ -31,7 +31,7 @@ export default async function FelagsmennPage() {
         <PortableTextRenderer value={page.body} />
       ) : (
         <div>
-          <h2 className="text-xl font-bold mb-4" style={{ color: "#394c75" }}>
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>
             Framfarafélög og einstaklingar
           </h2>
           <ul className="space-y-3 mb-8">
@@ -39,7 +39,7 @@ export default async function FelagsmennPage() {
               <li key={org} className="flex items-center gap-3">
                 <span
                   className="w-2 h-2 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: "#16a085" }}
+                  style={{ backgroundColor: "var(--teal)" }}
                 />
                 <span className="text-gray-700">{org}</span>
               </li>
@@ -50,7 +50,7 @@ export default async function FelagsmennPage() {
           </p>
           <div
             className="rounded-xl p-6 text-white text-center"
-            style={{ backgroundColor: "#16a085" }}
+            style={{ backgroundColor: "var(--teal)" }}
           >
             <h3 className="text-lg font-bold mb-2">Gerast meðlimur</h3>
             <p className="text-green-100 text-sm mb-4">
@@ -59,7 +59,7 @@ export default async function FelagsmennPage() {
             <Link
               href="/hafa-samband"
               className="inline-block px-6 py-2 rounded-full bg-white font-semibold text-sm transition-opacity hover:opacity-90"
-              style={{ color: "#16a085" }}
+              style={{ color: "var(--teal)" }}
             >
               Hafa samband
             </Link>

@@ -32,7 +32,7 @@ export default async function HomePage() {
       {/* Hero */}
       <section
         className="relative flex items-center justify-center text-white"
-        style={{ minHeight: "520px", backgroundColor: "#394c75" }}
+        style={{ minHeight: "520px", backgroundColor: "var(--navy)" }}
       >
         {settings?.heroImage?.asset && (
           <Image
@@ -58,13 +58,13 @@ export default async function HomePage() {
             <Link
               href="/um-okkur"
               className="inline-block px-7 py-3 rounded-full font-semibold text-sm transition-colors"
-              style={{ backgroundColor: "#16a085", color: "white" }}
+              style={{ backgroundColor: "var(--teal)", color: "white" }}
             >
               Um okkur
             </Link>
             <Link
               href="/frettir"
-              className="inline-block px-7 py-3 rounded-full font-semibold text-sm border border-white text-white hover:bg-white hover:text-[#394c75] transition-colors"
+              className="inline-block px-7 py-3 rounded-full font-semibold text-sm border border-white text-white hover:bg-white hover:text-navy transition-colors"
             >
               Fréttir
             </Link>
@@ -73,11 +73,11 @@ export default async function HomePage() {
       </section>
 
       {/* Mission */}
-      <section style={{ backgroundColor: "#eff2f4" }} className="py-20">
+      <section style={{ backgroundColor: "var(--gray-light)" }} className="py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2
             className="text-3xl font-bold mb-6"
-            style={{ color: "#394c75" }}
+            style={{ color: "var(--navy)" }}
           >
             {missionHeading}
           </h2>
@@ -115,7 +115,7 @@ export default async function HomePage() {
                 <div className="text-4xl mb-4">{card.icon}</div>
                 <h3
                   className="text-lg font-semibold mb-2"
-                  style={{ color: "#394c75" }}
+                  style={{ color: "var(--navy)" }}
                 >
                   {card.title}
                 </h3>
@@ -130,19 +130,19 @@ export default async function HomePage() {
 
       {/* Latest news */}
       {latestNews?.length > 0 && (
-        <section style={{ backgroundColor: "#eff2f4" }} className="py-20">
+        <section style={{ backgroundColor: "var(--gray-light)" }} className="py-20">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex items-center justify-between mb-10">
               <h2
                 className="text-3xl font-bold"
-                style={{ color: "#394c75" }}
+                style={{ color: "var(--navy)" }}
               >
                 Nýjustu fréttir
               </h2>
               <Link
                 href="/frettir"
                 className="text-sm font-medium"
-                style={{ color: "#16a085" }}
+                style={{ color: "var(--teal)" }}
               >
                 Sjá allar fréttir →
               </Link>
@@ -159,7 +159,7 @@ export default async function HomePage() {
       {/* CTA */}
       <section
         className="py-20 text-white text-center"
-        style={{ backgroundColor: "#16a085" }}
+        style={{ backgroundColor: "var(--teal)" }}
       >
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-4">Vertu hluti af Landlífi</h2>
@@ -169,7 +169,7 @@ export default async function HomePage() {
           <Link
             href="/hafa-samband"
             className="inline-block px-8 py-3 rounded-full font-semibold text-sm bg-white transition-colors hover:bg-gray-100"
-            style={{ color: "#16a085" }}
+            style={{ color: "var(--teal)" }}
           >
             Hafa samband
           </Link>

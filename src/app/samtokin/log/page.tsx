@@ -42,7 +42,7 @@ export default async function LogPage() {
             { n: "11. grein", t: "Slit", b: "Slit samtakanna krefjast 2/3 samþykkis meðlima; eignir renna til uppbyggingar dreifbýlis." },
           ].map((a) => (
             <div key={a.n} className="mb-6">
-              <h3 className="font-semibold text-[#394c75] mb-1">{a.n} – {a.t}</h3>
+              <h3 className="font-semibold text-navy mb-1">{a.n} – {a.t}</h3>
               <p className="text-gray-600 leading-relaxed">{a.b}</p>
             </div>
           ))}

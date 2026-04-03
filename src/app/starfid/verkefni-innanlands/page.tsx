@@ -20,7 +20,7 @@ export default async function Page() {
           <p className="text-gray-600 leading-relaxed mb-8">
             Samtökin taka reglulega þátt í byggðaþingum og fundum um dreifbýlismál um allt Ísland.
           </p>
-          <h2 className="text-xl font-bold mb-4" style={{ color: "#394c75" }}>Tengd verkefni</h2>
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>Tengd verkefni</h2>
           <div className="grid gap-3">
             {[
               { href: "/starfid/verkefni-innanlands/heimsmarkmid", label: "Heimsmarkmið Sameinuðu þjóðanna" },
@@ -28,8 +28,8 @@ export default async function Page() {
               { href: "/starfid/verkefni-innanlands/rha", label: "Verkefni í samstarfi við RHA" },
             ].map((l) => (
               <Link key={l.href} href={l.href}
-                className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-[#16a085] hover:shadow-sm transition-all text-[#394c75] font-medium">
-                <span style={{ color: "#16a085" }}>→</span> {l.label}
+                className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
+                <span style={{ color: "var(--teal)" }}>→</span> {l.label}
               </Link>
             ))}
           </div>

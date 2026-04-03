@@ -19,7 +19,7 @@ export default function GlobalError({
           <button
             onClick={unstable_retry}
             className="px-6 py-3 text-white rounded-lg font-medium"
-            style={{ backgroundColor: "#394c75" }}
+            style={{ backgroundColor: "var(--navy)" }}
           >
             Reyna aftur
           </button>

@@ -16,7 +16,7 @@ export default async function ContactPage() {
     <>
       <section
         className="py-20 text-white"
-        style={{ backgroundColor: "#394c75" }}
+        style={{ backgroundColor: "var(--navy)" }}
       >
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-4xl font-bold">Hafa samband</h1>
@@ -32,7 +32,7 @@ export default async function ContactPage() {
           <div>
             <h2
               className="text-2xl font-bold mb-6"
-              style={{ color: "#394c75" }}
+              style={{ color: "var(--navy)" }}
             >
               Upplýsingar
             </h2>
@@ -41,14 +41,14 @@ export default async function ContactPage() {
                 <li className="flex items-start gap-3">
                   <span
                     className="mt-0.5 flex-shrink-0 w-5 h-5 text-center"
-                    style={{ color: "#16a085" }}
+                    style={{ color: "var(--teal)" }}
                   >
                     ✉
                   </span>
                   <a
                     href={`mailto:${settings?.email || "landlif@landlif.is"}`}
                     className="hover:underline"
-                    style={{ color: "#16a085" }}
+                    style={{ color: "var(--teal)" }}
                   >
                     {settings?.email || "landlif@landlif.is"}
                   </a>
@@ -58,14 +58,14 @@ export default async function ContactPage() {
                 <li className="flex items-start gap-3">
                   <span
                     className="mt-0.5 flex-shrink-0"
-                    style={{ color: "#16a085" }}
+                    style={{ color: "var(--teal)" }}
                   >
                     ☎
                   </span>
                   <a
                     href={`tel:${settings.phone}`}
                     className="hover:underline"
-                    style={{ color: "#16a085" }}
+                    style={{ color: "var(--teal)" }}
                   >
                     {settings.phone}
                   </a>
@@ -75,7 +75,7 @@ export default async function ContactPage() {
                 <li className="flex items-start gap-3">
                   <span
                     className="mt-0.5 flex-shrink-0"
-                    style={{ color: "#16a085" }}
+                    style={{ color: "var(--teal)" }}
                   >
                     📍
                   </span>
@@ -89,7 +89,7 @@ export default async function ContactPage() {
           <div>
             <h2
               className="text-2xl font-bold mb-6"
-              style={{ color: "#394c75" }}
+              style={{ color: "var(--navy)" }}
             >
               Sendu okkur skilaboð
             </h2>
@@ -109,7 +109,7 @@ export default async function ContactPage() {
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16a085]"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
                   placeholder="Nafn þitt"
                 />
               </div>
@@ -124,7 +124,7 @@ export default async function ContactPage() {
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16a085]"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
                   placeholder="netfang@example.is"
                 />
               </div>
@@ -139,14 +139,14 @@ export default async function ContactPage() {
                   id="body"
                   name="body"
                   rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#16a085]"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
                   placeholder="Hvernig getum við aðstoðað?"
                 />
               </div>
               <button
                 type="submit"
                 className="w-full py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-90"
-                style={{ backgroundColor: "#16a085" }}
+                style={{ backgroundColor: "var(--teal)" }}
               >
                 Senda skilaboð
               </button>

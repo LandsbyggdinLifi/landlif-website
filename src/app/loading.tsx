@@ -1,7 +1,7 @@
 export default function Loading() {
   return (
     <>
-      <section className="py-20" style={{ backgroundColor: "#394c75" }}>
+      <section className="py-20" style={{ backgroundColor: "var(--navy)" }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="h-9 w-48 bg-white/20 rounded animate-pulse" />
           <div className="h-4 w-72 bg-white/10 rounded mt-3 animate-pulse" />

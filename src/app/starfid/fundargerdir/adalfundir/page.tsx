@@ -23,7 +23,7 @@ export default async function Page() {
               "Aðalfundur LBL-2019, fundargerð",
             ].map((item) => (
               <li key={item} className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 text-gray-700 text-sm">
-                <span style={{ color: "#16a085" }}>📄</span> {item}
+                <span style={{ color: "var(--teal)" }}>📄</span> {item}
               </li>
             ))}
           </ul>

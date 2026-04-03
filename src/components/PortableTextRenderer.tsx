@@ -27,19 +27,19 @@ const components: PortableTextComponents = {
   },
   block: {
     h1: ({ children }) => (
-      <h1 className="text-3xl font-bold text-[#394c75] mt-8 mb-4">{children}</h1>
+      <h1 className="text-3xl font-bold text-navy mt-8 mb-4">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl font-bold text-[#394c75] mt-8 mb-3">{children}</h2>
+      <h2 className="text-2xl font-bold text-navy mt-8 mb-3">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl font-semibold text-[#394c75] mt-6 mb-2">{children}</h3>
+      <h3 className="text-xl font-semibold text-navy mt-6 mb-2">{children}</h3>
     ),
     normal: ({ children }) => (
       <p className="text-gray-700 leading-relaxed mb-4">{children}</p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-[#16a085] pl-4 italic text-gray-600 my-6">
+      <blockquote className="border-l-4 border-teal pl-4 italic text-gray-600 my-6">
         {children}
       </blockquote>
     ),
@@ -64,7 +64,7 @@ const components: PortableTextComponents = {
         href={value?.href}
         target={value?.href?.startsWith("http") ? "_blank" : undefined}
         rel={value?.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-        className="text-[#16a085] underline hover:text-[#0d7a63]"
+        className="text-teal underline hover:text-[#0d7a63]"
       >
         {children}
       </a>

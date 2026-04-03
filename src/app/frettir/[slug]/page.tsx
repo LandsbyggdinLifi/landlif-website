@@ -68,7 +68,7 @@ export default async function NewsPostPage({ params }: Props) {
       ) : (
         <div
           className="w-full flex items-center justify-center"
-          style={{ height: "200px", backgroundColor: "#394c75" }}
+          style={{ height: "200px", backgroundColor: "var(--navy)" }}
         />
       )}
 
@@ -77,7 +77,7 @@ export default async function NewsPostPage({ params }: Props) {
         <Link
           href="/frettir"
           className="inline-flex items-center gap-1 text-sm mb-8"
-          style={{ color: "#16a085" }}
+          style={{ color: "var(--teal)" }}
         >
           ← Til baka í fréttir
         </Link>
@@ -87,14 +87,14 @@ export default async function NewsPostPage({ params }: Props) {
         )}
         <h1
           className="text-3xl sm:text-4xl font-bold leading-tight mb-6"
-          style={{ color: "#394c75" }}
+          style={{ color: "var(--navy)" }}
         >
           {post.title}
         </h1>
 
         {post.excerpt && (
           <p className="text-lg text-gray-500 border-l-4 pl-4 mb-8 italic"
-            style={{ borderColor: "#16a085" }}>
+            style={{ borderColor: "var(--teal)" }}>
             {post.excerpt}
           </p>
         )}

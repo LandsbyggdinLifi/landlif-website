@@ -14,7 +14,7 @@ export default async function Page() {
       {page?.body ? <PortableTextRenderer value={page.body} /> : (
         <div>
           <p className="text-gray-600 leading-relaxed mb-6">Fundargerðir stjórnarfunda Landsbyggðin lifi.</p>
-          <h3 className="font-semibold text-[#394c75] mb-3">2025</h3>
+          <h3 className="font-semibold text-navy mb-3">2025</h3>
           <ul className="space-y-2 mb-6">
             {[
               "Stjórnarfundur 14. ágúst 2025",
@@ -24,7 +24,7 @@ export default async function Page() {
               "Fundargerð 13. febrúar 2025",
             ].map((item) => (
               <li key={item} className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 text-gray-700 text-sm">
-                <span style={{ color: "#16a085" }}>📄</span> {item}
+                <span style={{ color: "var(--teal)" }}>📄</span> {item}
               </li>
             ))}
           </ul>

@@ -20,7 +20,7 @@ export default async function Page() {
             Samtökin veita leiðsögn fyrir samfélagshópa sem skortir uppbyggingu og stefnu, og hjálpa þeim að takast á við sameiginlegar áskoranir með kerfisbundinni nálgun við þróun verkefna og lausna.
           </p>
           <div className="mt-8 p-5 rounded-xl bg-gray-50 border border-gray-100">
-            <p className="text-sm font-medium text-[#394c75] mb-1">Skjal til niðurhals</p>
+            <p className="text-sm font-medium text-navy mb-1">Skjal til niðurhals</p>
             <p className="text-sm text-gray-600">Skipulagnig starfsemi íbúasamtaka 2017</p>
           </div>
         </div>

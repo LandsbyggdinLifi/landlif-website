@@ -43,7 +43,7 @@ function DropdownMenu({
   return (
     <div className="relative" ref={ref} id={id}>
       <button
-        className="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-[#16a085] transition-colors"
+        className="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-teal transition-colors"
         onClick={() => setOpen(!open)}
       >
         {label}
@@ -60,7 +60,7 @@ function DropdownMenu({
             <Link
               key={l.href}
               href={l.href}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#16a085] transition-colors"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-teal transition-colors"
               onClick={() => setOpen(false)}
             >
               {l.label}
@@ -85,7 +85,7 @@ function MobileAccordion({
   return (
     <div>
       <button
-        className="flex items-center justify-between w-full py-2 text-sm font-medium text-gray-700 hover:text-[#16a085]"
+        className="flex items-center justify-between w-full py-2 text-sm font-medium text-gray-700 hover:text-teal"
         onClick={() => setOpen(!open)}
       >
         {label}
@@ -102,7 +102,7 @@ function MobileAccordion({
             <Link
               key={l.href}
               href={l.href}
-              className="block py-2 text-sm text-gray-600 hover:text-[#16a085]"
+              className="block py-2 text-sm text-gray-600 hover:text-teal"
               onClick={onClose}
             >
               {l.label}
@@ -134,15 +134,15 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-sm font-medium text-gray-600 hover:text-[#16a085] transition-colors">
+            <Link href="/" className="text-sm font-medium text-gray-600 hover:text-teal transition-colors">
               Forsíða
             </Link>
             <DropdownMenu label="Samtökin" links={samtokinLinks} id="dropdown-samtokin" />
             <DropdownMenu label="Starfið" links={starfidLinks} id="dropdown-starfid" />
-            <Link href="/frettir" className="text-sm font-medium text-gray-600 hover:text-[#16a085] transition-colors">
+            <Link href="/frettir" className="text-sm font-medium text-gray-600 hover:text-teal transition-colors">
               Fréttir
             </Link>
-            <Link href="/hafa-samband" className="text-sm font-medium text-gray-600 hover:text-[#16a085] transition-colors">
+            <Link href="/hafa-samband" className="text-sm font-medium text-gray-600 hover:text-teal transition-colors">
               Hafa samband
             </Link>
           </nav>
@@ -163,17 +163,17 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-gray-100 bg-white px-4 py-3 space-y-1">
-          <Link href="/" className="block py-2 text-sm font-medium text-gray-700 hover:text-[#16a085]"
+          <Link href="/" className="block py-2 text-sm font-medium text-gray-700 hover:text-teal"
             onClick={() => setMenuOpen(false)}>
             Forsíða
           </Link>
           <MobileAccordion label="Samtökin" links={samtokinLinks} onClose={() => setMenuOpen(false)} />
           <MobileAccordion label="Starfið" links={starfidLinks} onClose={() => setMenuOpen(false)} />
-          <Link href="/frettir" className="block py-2 text-sm font-medium text-gray-700 hover:text-[#16a085]"
+          <Link href="/frettir" className="block py-2 text-sm font-medium text-gray-700 hover:text-teal"
             onClick={() => setMenuOpen(false)}>
             Fréttir
           </Link>
-          <Link href="/hafa-samband" className="block py-2 text-sm font-medium text-gray-700 hover:text-[#16a085]"
+          <Link href="/hafa-samband" className="block py-2 text-sm font-medium text-gray-700 hover:text-teal"
             onClick={() => setMenuOpen(false)}>
             Hafa samband
           </Link>

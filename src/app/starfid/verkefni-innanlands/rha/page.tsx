@@ -13,7 +13,7 @@ export default async function Page() {
     <StarfidLayout title={page?.title || "Verkefni \u00ED samstarfi vi\u00F0 RHA"} section="verkefni-innanlands" heroImage={page?.heroImage}>
       {page?.body ? <PortableTextRenderer value={page.body} /> : (
         <div>
-          <h2 className="text-xl font-bold mb-4" style={{ color: "#394c75" }}>Netkönnun um búsetuskilyrði ungs fólks</h2>
+          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>Netkönnun um búsetuskilyrði ungs fólks</h2>
           <p className="text-gray-600 leading-relaxed mb-6">
             Þetta verkefni var unnið í samvinnu við Rannsóknamiðstöð Háskólans á Akureyri (RHA). Markmið rannsóknarinnar var að safna gögnum um viðhorf yngri aldurshópa til búsetuskilyrða.
           </p>
