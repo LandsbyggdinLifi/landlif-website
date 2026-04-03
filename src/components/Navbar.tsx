@@ -4,19 +4,19 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 
 const samtokinLinks = [
-  { href: "/samtokin/markmid", label: "Markmi\u00F0" },
-  { href: "/samtokin/log", label: "L\u00F6g" },
-  { href: "/samtokin/stjorn", label: "Stj\u00F3rn" },
-  { href: "/samtokin/felagsmenn", label: "F\u00E9lagsmenn" },
+  { href: "/samtokin/markmid", label: "Markmið" },
+  { href: "/samtokin/log", label: "Lög" },
+  { href: "/samtokin/stjorn", label: "Stjórn" },
+  { href: "/samtokin/felagsmenn", label: "Félagsmenn" },
 ];
 
 const starfidLinks = [
-  { href: "/starfid/stefnumorkun", label: "Stefnum\u00F6rkun" },
+  { href: "/starfid/stefnumorkun", label: "Stefnumörkun" },
   { href: "/starfid/verkefni-innanlands", label: "Verkefni innanlands" },
   { href: "/starfid/erlent-samstarf", label: "Erlent samstarf" },
-  { href: "/starfid/fundargerdir", label: "Fundarger\u00F0ir" },
-  { href: "/starfid/skipulag-ibuasamtaka", label: "Skipulag \u00EDb\u00FAasamtaka" },
-  { href: "/starfid/byggdastefna", label: "Bygg\u00F0astefna" },
+  { href: "/starfid/fundargerdir", label: "Fundargerðir" },
+  { href: "/starfid/skipulag-ibuasamtaka", label: "Skipulag íbúasamtaka" },
+  { href: "/starfid/byggdastefna", label: "Byggðastefna" },
 ];
 
 function DropdownMenu({
@@ -122,19 +122,19 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
             <span className="text-xl font-bold tracking-tight" style={{ color: "#394c75" }}>
-              Landsbygg\u00F0in lifi
+              Landsbyggðin lifi
             </span>
           </Link>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
             <Link href="/" className="text-sm font-medium text-gray-600 hover:text-[#16a085] transition-colors">
-              Fors\u00ED\u00F0a
+              Forsíða
             </Link>
-            <DropdownMenu label="Samt\u00F6kin" links={samtokinLinks} id="dropdown-samtokin" />
-            <DropdownMenu label="Starfi\u00F0" links={starfidLinks} id="dropdown-starfid" />
+            <DropdownMenu label="Samtökin" links={samtokinLinks} id="dropdown-samtokin" />
+            <DropdownMenu label="Starfið" links={starfidLinks} id="dropdown-starfid" />
             <Link href="/frettir" className="text-sm font-medium text-gray-600 hover:text-[#16a085] transition-colors">
-              Fr\u00E9ttir
+              Fréttir
             </Link>
             <Link href="/hafa-samband" className="text-sm font-medium text-gray-600 hover:text-[#16a085] transition-colors">
               Hafa samband
@@ -159,13 +159,13 @@ export default function Navbar() {
         <div className="md:hidden border-t border-gray-100 bg-white px-4 py-3 space-y-1">
           <Link href="/" className="block py-2 text-sm font-medium text-gray-700 hover:text-[#16a085]"
             onClick={() => setMenuOpen(false)}>
-            Fors\u00ED\u00F0a
+            Forsíða
           </Link>
-          <MobileAccordion label="Samt\u00F6kin" links={samtokinLinks} onClose={() => setMenuOpen(false)} />
-          <MobileAccordion label="Starfi\u00F0" links={starfidLinks} onClose={() => setMenuOpen(false)} />
+          <MobileAccordion label="Samtökin" links={samtokinLinks} onClose={() => setMenuOpen(false)} />
+          <MobileAccordion label="Starfið" links={starfidLinks} onClose={() => setMenuOpen(false)} />
           <Link href="/frettir" className="block py-2 text-sm font-medium text-gray-700 hover:text-[#16a085]"
             onClick={() => setMenuOpen(false)}>
-            Fr\u00E9ttir
+            Fréttir
           </Link>
           <Link href="/hafa-samband" className="block py-2 text-sm font-medium text-gray-700 hover:text-[#16a085]"
             onClick={() => setMenuOpen(false)}>

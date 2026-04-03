@@ -36,7 +36,7 @@ export default function StarfidLayout({ title, section, heroImage, children }: P
           </>
         )}
         <div className="relative z-10 max-w-4xl mx-auto px-6 pb-10 pt-20 w-full">
-          <p className="text-blue-300 text-sm mb-1">Starfi\u00F0</p>
+          <p className="text-blue-300 text-sm mb-1">Starfið</p>
           <h1 className="text-4xl font-bold text-white">{title}</h1>
         </div>
       </section>
