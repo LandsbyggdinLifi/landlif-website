@@ -38,11 +38,14 @@ export default function NewsCard({ post }: NewsCardProps) {
         </div>
       )}
       {!post.mainImage?.asset && (
-        <div
-          className="h-48 w-full flex items-center justify-center"
-          style={{ backgroundColor: "#eff2f4" }}
-        >
-          <span className="text-4xl text-gray-300">🌿</span>
+        <div className="relative h-48 w-full overflow-hidden bg-[#eff2f4] flex items-center justify-center">
+          <Image
+            src="/logo.png"
+            alt="Landsbyggðin lifi"
+            width={120}
+            height={92}
+            className="h-20 w-auto opacity-40"
+          />
         </div>
       )}
       <div className="p-5 flex flex-col flex-1">
