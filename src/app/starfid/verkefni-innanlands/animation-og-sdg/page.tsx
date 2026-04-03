@@ -5,7 +5,7 @@ import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "Animation og SDG" };
+export const metadata: Metadata = { title: "Animation og SDG", description: "Verkefni Landsbyggðar lifi tengd heimsmarkmiðum og animation." };
 
 export default async function Page() {
   const page = await client.fetch(pageByIdQuery, { id: "page-starfid-animation-sdg" }).catch(() => null);

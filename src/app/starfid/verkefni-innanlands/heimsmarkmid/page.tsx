@@ -5,7 +5,7 @@ import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "Heimsmarkmi\u00F0 Sameinuðu þjóðanna" };
+export const metadata: Metadata = { title: "Heimsmarkmi\u00F0 Sameinuðu þjóðanna", description: "Hvernig Landsbygg\u00F0in lifi tengist heimsmarkmi\u00F0um Sameinuðu þj\u00F3\u00F0anna um sj\u00E1lfb\u00E6ra þr\u00F3un." };
 
 export default async function Page() {
   const page = await client.fetch(pageByIdQuery, { id: "page-starfid-heimsmarkmid" }).catch(() => null);

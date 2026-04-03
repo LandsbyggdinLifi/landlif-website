@@ -5,7 +5,7 @@ import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "European Rural Parliament" };
+export const metadata: Metadata = { title: "European Rural Parliament", description: "Þátttaka Landsbyggðar lifi í European Rural Parliament, alþjóðlegri ráðstefnu um dreifbýlismál." };
 
 export default async function Page() {
   const page = await client.fetch(pageByIdQuery, { id: "page-starfid-erp" }).catch(() => null);

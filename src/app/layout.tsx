@@ -16,6 +16,15 @@ export const metadata: Metadata = {
   },
   description:
     "Landlíf – samtök um uppbyggingu og styrkingu dreifbýlis á Íslandi.",
+  metadataBase: new URL("https://www.landlif.is"),
+  openGraph: {
+    siteName: "Landlíf",
+    locale: "is_IS",
+    type: "website",
+    title: "Landlíf",
+    description: "Landlíf – samtök um uppbyggingu og styrkingu dreifbýlis á Íslandi.",
+    images: [{ url: "/logo.png", width: 652, height: 499, alt: "Landlíf" }],
+  },
 };
 
 export default function RootLayout({

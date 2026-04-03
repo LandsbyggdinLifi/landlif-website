@@ -5,7 +5,7 @@ import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "Hela norden skal leva" };
+export const metadata: Metadata = { title: "Hela norden skal leva", description: "Norrænt samstarfsverkefni um líflegt og blómlegt dreifbýli um allt Norðurlönd." };
 
 export default async function Page() {
   const page = await client.fetch(pageByIdQuery, { id: "page-starfid-hela-norden" }).catch(() => null);

@@ -5,7 +5,7 @@ import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "Fi\u00F0rildaverkefni\u00F0" };
+export const metadata: Metadata = { title: "Fi\u00F0rildaverkefni\u00F0", description: "Fi\u00F0rildaverkefni\u00F0 \u2013 alþj\u00F3\u00F0legt samstarfsverkefni um n\u00E1tt\u00FAru og dreifb\u00FDli." };
 
 export default async function Page() {
   const page = await client.fetch(pageByIdQuery, { id: "page-starfid-fidrildaverkefnid" }).catch(() => null);

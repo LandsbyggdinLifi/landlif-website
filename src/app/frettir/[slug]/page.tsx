@@ -26,9 +26,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .fetch(newsPostBySlugQuery, { slug })
     .catch(() => null);
   if (!post) return { title: "Frétt" };
+  const ogImage = post.mainImage?.asset
+    ? urlFor(post.mainImage).width(1200).height(630).url()
+    : "/logo.png";
   return {
     title: post.title,
     description: post.excerpt || undefined,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt || undefined,
+      type: "article",
+      publishedTime: post.publishedAt || undefined,
+      images: [{ url: ogImage, width: 1200, height: 630 }],
+    },
   };
 }
 
