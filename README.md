@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Landsbyggðin lifi — website
 
-## Getting Started
+Website for [Landsbyggðin lifi](https://landlif.is), an Icelandic rural community organisation. Built with Next.js 16 and Sanity CMS.
 
-First, run the development server:
+## Tech stack
+
+- **Next.js 16** (App Router, Turbopack)
+- **Sanity** — headless CMS for all content
+- **Tailwind CSS** — styling
+- **TypeScript**
+
+## Getting started
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Set up environment variables
+
+Create a `.env.local` file in the project root:
+
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
+SANITY_API_TOKEN=your_token
+```
+
+Find your project ID and create a token at [manage.sanity.io](https://manage.sanity.io). The token needs write access if you use any of the seed/migration scripts.
+
+### 3. Run the dev server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The Sanity Studio is available at [http://localhost:3000/studio](http://localhost:3000/studio).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+  app/           # Next.js App Router pages
+    samtokin/    # Samtökin section (4 pages)
+    starfid/     # Starfið section (12 pages)
+    frettir/     # News listing + [slug] detail
+    um-okkur/    # About page
+    hafa-samband/# Contact page
+    studio/      # Sanity Studio
+  components/    # Shared UI components
+  sanity/        # Sanity client, queries, schemas, image helper
+scripts/         # One-off migration and seed scripts
+public/          # Static assets (logo, etc.)
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Content management
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All page content is managed through Sanity Studio. Pages are fetched by fixed document IDs (e.g. `page-markmid`). News posts are fetched by slug.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If a page's Sanity document hasn't been created yet, the page falls back to hardcoded placeholder content until it's populated in the CMS.
