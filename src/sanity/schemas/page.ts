@@ -48,6 +48,17 @@ export const page = defineType({
             }),
           ],
         },
+        {
+          type: "file",
+          title: "Skjal",
+          fields: [
+            defineField({
+              name: "title",
+              title: "Heiti skjals",
+              type: "string",
+            }),
+          ],
+        },
       ],
     }),
   ],

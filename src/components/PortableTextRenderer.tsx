@@ -4,6 +4,24 @@ import { urlFor } from "@/sanity/image";
 
 const components: PortableTextComponents = {
   types: {
+    file: ({ value }) => {
+      if (!value?.url) return null;
+      const label = value.title || value.originalFilename || "Sækja skjal";
+      return (
+        <a
+          href={value.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 my-4 p-4 rounded-xl border border-gray-200 hover:border-teal hover:shadow-sm transition-all group"
+        >
+          <span className="text-2xl">📄</span>
+          <span className="text-sm font-medium text-navy group-hover:text-teal transition-colors">
+            {label}
+          </span>
+          <span className="ml-auto text-xs text-gray-400">PDF</span>
+        </a>
+      );
+    },
     image: ({ value }) => {
       if (!value?.asset?._ref) return null;
       return (

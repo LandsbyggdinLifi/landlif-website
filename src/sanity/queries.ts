@@ -73,6 +73,13 @@ export const pageByIdQuery = groq`
     _id,
     title,
     heroImage,
-    body
+    body[] {
+      ...,
+      _type == "file" => {
+        ...,
+        "url": asset->url,
+        "originalFilename": asset->originalFilename
+      }
+    }
   }
 `;
