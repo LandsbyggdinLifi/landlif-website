@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { client } from "@/sanity/client";
-import { samtokinPageQuery } from "@/sanity/queries";
+import { pageByIdQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
@@ -8,7 +8,7 @@ export const revalidate = 60;
 export const metadata: Metadata = { title: "Heimsmarkmi\u00F0 Sameinuðu þjóðanna" };
 
 export default async function Page() {
-  const page = await client.fetch(samtokinPageQuery, { id: "page-starfid-heimsmarkmid" }).catch(() => null);
+  const page = await client.fetch(pageByIdQuery, { id: "page-starfid-heimsmarkmid" }).catch(() => null);
   return (
     <StarfidLayout title={page?.title || "Heimsmarkmi\u00F0 Sameinuðu þjóðanna"} section="verkefni-innanlands" heroImage={page?.heroImage}>
       {page?.body ? <PortableTextRenderer value={page.body} /> : (

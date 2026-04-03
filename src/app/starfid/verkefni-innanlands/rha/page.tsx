@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { client } from "@/sanity/client";
-import { samtokinPageQuery } from "@/sanity/queries";
+import { pageByIdQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
@@ -8,7 +8,7 @@ export const revalidate = 60;
 export const metadata: Metadata = { title: "Verkefni \u00ED samstarfi vi\u00F0 RHA" };
 
 export default async function Page() {
-  const page = await client.fetch(samtokinPageQuery, { id: "page-starfid-rha" }).catch(() => null);
+  const page = await client.fetch(pageByIdQuery, { id: "page-starfid-rha" }).catch(() => null);
   return (
     <StarfidLayout title={page?.title || "Verkefni \u00ED samstarfi vi\u00F0 RHA"} section="verkefni-innanlands" heroImage={page?.heroImage}>
       {page?.body ? <PortableTextRenderer value={page.body} /> : (

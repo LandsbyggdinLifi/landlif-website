@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { client } from "@/sanity/client";
-import { samtokinPageQuery } from "@/sanity/queries";
+import { pageByIdQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import SamtokinLayout from "@/components/SamtokinLayout";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default async function LogPage() {
   const page = await client
-    .fetch(samtokinPageQuery, { id: "page-log" })
+    .fetch(pageByIdQuery, { id: "page-log" })
     .catch(() => null);
 
   return (

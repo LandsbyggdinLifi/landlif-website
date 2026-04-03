@@ -68,7 +68,7 @@ export const aboutPageQuery = groq`
   }
 `;
 
-export const samtokinPageQuery = groq`
+export const pageByIdQuery = groq`
   *[_type == "page" && _id == $id][0] {
     _id,
     title,

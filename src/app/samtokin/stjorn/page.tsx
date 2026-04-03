@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { client } from "@/sanity/client";
-import { samtokinPageQuery } from "@/sanity/queries";
+import { pageByIdQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import SamtokinLayout from "@/components/SamtokinLayout";
 
@@ -28,7 +28,7 @@ const alternates = [
 
 export default async function StjornPage() {
   const page = await client
-    .fetch(samtokinPageQuery, { id: "page-stjorn" })
+    .fetch(pageByIdQuery, { id: "page-stjorn" })
     .catch(() => null);
 
   return (

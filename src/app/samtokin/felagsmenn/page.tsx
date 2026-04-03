@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { client } from "@/sanity/client";
-import { samtokinPageQuery } from "@/sanity/queries";
+import { pageByIdQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import SamtokinLayout from "@/components/SamtokinLayout";
 
@@ -22,7 +22,7 @@ const memberOrgs = [
 
 export default async function FelagsmennPage() {
   const page = await client
-    .fetch(samtokinPageQuery, { id: "page-felagsmenn" })
+    .fetch(pageByIdQuery, { id: "page-felagsmenn" })
     .catch(() => null);
 
   return (
