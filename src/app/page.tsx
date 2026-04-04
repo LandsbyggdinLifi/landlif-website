@@ -88,28 +88,32 @@ export default async function HomePage() {
       </section>
 
       {/* Feature cards */}
-      {(settings?.featureCards?.length ?? 0) > 0 && (
-        <section className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {settings.featureCards.map((card: { icon?: string; title: string; body?: string }) => (
-                <div
-                  key={card.title}
-                  className="rounded-xl p-8 border border-gray-100 shadow-sm text-center"
-                >
-                  {card.icon && <div className="text-4xl mb-4">{card.icon}</div>}
-                  <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--navy)" }}>
-                    {card.title}
-                  </h3>
-                  {card.body && (
-                    <p className="text-gray-600 text-sm leading-relaxed">{card.body}</p>
-                  )}
-                </div>
-              ))}
+      {(() => {
+        const cards = settings?.featureCards?.length
+          ? settings.featureCards
+          : [
+              { icon: "🌾", title: "Dreifbýlisþróun", body: "Við styðjum verkefni sem styrkja atvinnulíf og þjónustu á landsbyggðinni." },
+              { icon: "🤝", title: "Samvinna", body: "Við tengjum saman einstaklinga, sveitarfélög og fyrirtæki í sameiginlegum hagsmunum." },
+              { icon: "📢", title: "Málsvara", body: "Við tökum þátt í stefnumótun og berjumst fyrir réttindum landsbyggðarinnar." },
+            ];
+        return (
+          <section className="py-20 bg-white">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {cards.map((card: { icon?: string; title: string; body?: string }) => (
+                  <div key={card.title} className="rounded-xl p-8 border border-gray-100 shadow-sm text-center">
+                    {card.icon && <div className="text-4xl mb-4">{card.icon}</div>}
+                    <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--navy)" }}>
+                      {card.title}
+                    </h3>
+                    {card.body && <p className="text-gray-600 text-sm leading-relaxed">{card.body}</p>}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        );
+      })()}
 
       {/* Latest news */}
       {latestNews?.length > 0 && (
