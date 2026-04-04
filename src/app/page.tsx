@@ -88,45 +88,28 @@ export default async function HomePage() {
       </section>
 
       {/* Feature cards */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "🌾",
-                title: "Dreifbýlisþróun",
-                body: "Við styðjum verkefni sem styrkja atvinnulíf og þjónustu á landsbyggðinni.",
-              },
-              {
-                icon: "🤝",
-                title: "Samvinna",
-                body: "Við tengjum saman einstaklinga, sveitarfélög og fyrirtæki í sameiginlegum hagsmunum.",
-              },
-              {
-                icon: "📢",
-                title: "Málsvara",
-                body: "Við tökum þátt í stefnumótun og berjumst fyrir réttindum landsbyggðarinnar.",
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="rounded-xl p-8 border border-gray-100 shadow-sm text-center"
-              >
-                <div className="text-4xl mb-4">{card.icon}</div>
-                <h3
-                  className="text-lg font-semibold mb-2"
-                  style={{ color: "var(--navy)" }}
+      {(settings?.featureCards?.length ?? 0) > 0 && (
+        <section className="py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {settings.featureCards.map((card: { icon?: string; title: string; body?: string }) => (
+                <div
+                  key={card.title}
+                  className="rounded-xl p-8 border border-gray-100 shadow-sm text-center"
                 >
-                  {card.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {card.body}
-                </p>
-              </div>
-            ))}
+                  {card.icon && <div className="text-4xl mb-4">{card.icon}</div>}
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--navy)" }}>
+                    {card.title}
+                  </h3>
+                  {card.body && (
+                    <p className="text-gray-600 text-sm leading-relaxed">{card.body}</p>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Latest news */}
       {latestNews?.length > 0 && (
@@ -162,9 +145,11 @@ export default async function HomePage() {
         style={{ backgroundColor: "var(--teal)" }}
       >
         <div className="max-w-2xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-4">Vertu hluti af Landlífi</h2>
+          <h2 className="text-3xl font-bold mb-4">
+            {settings?.ctaHeading || "Vertu hluti af Landlífi"}
+          </h2>
           <p className="text-green-100 mb-8 text-lg">
-            Gakktu til liðs við okkur og styðtu uppbyggingu dreifbýlisins.
+            {settings?.ctaText || "Gakktu til liðs við okkur og styðtu uppbyggingu dreifbýlisins."}
           </p>
           <Link
             href="/hafa-samband"

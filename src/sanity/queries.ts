@@ -9,6 +9,12 @@ export const siteSettingsQuery = groq`
     heroImage,
     missionHeading,
     missionText,
+    featureCards,
+    ctaHeading,
+    ctaText,
+    boardMembers,
+    alternateBoardMembers,
+    memberOrgs,
     email,
     phone,
     address
