@@ -12,6 +12,11 @@ export const siteSettingsQuery = groq`
     featureCards,
     ctaHeading,
     ctaText,
+    galleryImages[] {
+      asset,
+      caption,
+      alt
+    },
     boardMembers,
     alternateBoardMembers,
     memberOrgs,

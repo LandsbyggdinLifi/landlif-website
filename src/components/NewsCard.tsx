@@ -22,6 +22,10 @@ export default function NewsCard({ post }: NewsCardProps) {
       })
     : null;
 
+  const isNew =
+    post.publishedAt &&
+    Date.now() - new Date(post.publishedAt).getTime() < 30 * 24 * 60 * 60 * 1000;
+
   return (
     <Link
       href={`/frettir/${post.slug.current}`}
@@ -35,6 +39,14 @@ export default function NewsCard({ post }: NewsCardProps) {
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
+          {isNew && (
+            <span
+              className="absolute top-3 left-3 text-white text-xs font-semibold px-2 py-0.5 rounded-full"
+              style={{ backgroundColor: "var(--orange)" }}
+            >
+              Nýtt
+            </span>
+          )}
         </div>
       )}
       {!post.mainImage?.asset && (
@@ -49,9 +61,17 @@ export default function NewsCard({ post }: NewsCardProps) {
         </div>
       )}
       <div className="p-5 flex flex-col flex-1">
-        {date && (
-          <p className="text-xs text-gray-400 mb-1">{date}</p>
-        )}
+        <div className="flex items-center gap-2 mb-1">
+          {date && <p className="text-xs text-gray-400">{date}</p>}
+          {isNew && !post.mainImage?.asset && (
+            <span
+              className="text-white text-xs font-semibold px-2 py-0.5 rounded-full"
+              style={{ backgroundColor: "var(--orange)" }}
+            >
+              Nýtt
+            </span>
+          )}
+        </div>
         <h3
           className="font-semibold text-lg leading-snug mb-2 group-hover:text-teal transition-colors"
           style={{ color: "var(--navy)" }}

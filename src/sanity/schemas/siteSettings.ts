@@ -89,6 +89,22 @@ export const siteSettings = defineType({
       rows: 2,
       group: "homepage",
     }),
+    defineField({
+      name: "galleryImages",
+      title: "Myndasafn (viðburðir)",
+      type: "array",
+      group: "homepage",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            defineField({ name: "caption", title: "Skýritexti", type: "string" }),
+            defineField({ name: "alt", title: "Alt-texti", type: "string" }),
+          ],
+        },
+      ],
+    }),
 
     // Samtökin
     defineField({
