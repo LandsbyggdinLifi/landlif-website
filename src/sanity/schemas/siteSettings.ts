@@ -4,50 +4,67 @@ export const siteSettings = defineType({
   name: "siteSettings",
   title: "Stillingar",
   type: "document",
+  groups: [
+    { name: "general", title: "Almennt", default: true },
+    { name: "homepage", title: "Forsíða" },
+    { name: "samtokin", title: "Samtökin" },
+    { name: "contact", title: "Samband" },
+  ],
   fields: [
+    // Almennt
     defineField({
       name: "title",
       title: "Nafn stofnunar",
       type: "string",
+      group: "general",
     }),
     defineField({
       name: "description",
       title: "Lýsing",
       type: "text",
       rows: 3,
+      group: "general",
     }),
+
+    // Forsíða
     defineField({
       name: "heroHeading",
-      title: "Hero fyrirsögn (forsíða)",
+      title: "Hero fyrirsögn",
       type: "string",
+      group: "homepage",
     }),
     defineField({
       name: "heroSubtext",
-      title: "Hero undirtitill (forsíða)",
+      title: "Hero undirtitill",
       type: "text",
       rows: 2,
+      group: "homepage",
     }),
     defineField({
       name: "heroImage",
-      title: "Hero-mynd (forsíða)",
+      title: "Hero-mynd",
       type: "image",
       options: { hotspot: true },
+      group: "homepage",
     }),
     defineField({
       name: "missionHeading",
       title: "Hlutverk – fyrirsögn",
       type: "string",
+      group: "homepage",
     }),
     defineField({
       name: "missionText",
       title: "Hlutverk – texti",
       type: "text",
       rows: 4,
+      group: "homepage",
     }),
     defineField({
       name: "featureCards",
-      title: "Forsíðukort",
+      title: "Kort (3 stk)",
       type: "array",
+      group: "homepage",
       of: [
         {
           type: "object",
@@ -64,19 +81,24 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "ctaHeading",
-      title: "CTA fyrirsögn (forsíða)",
+      title: "CTA fyrirsögn",
       type: "string",
+      group: "homepage",
     }),
     defineField({
       name: "ctaText",
-      title: "CTA texti (forsíða)",
+      title: "CTA texti",
       type: "text",
       rows: 2,
+      group: "homepage",
     }),
+
+    // Samtökin
     defineField({
       name: "boardMembers",
       title: "Aðalstjórn",
       type: "array",
+      group: "samtokin",
       of: [
         {
           type: "object",
@@ -95,6 +117,7 @@ export const siteSettings = defineType({
       name: "alternateBoardMembers",
       title: "Varastjórn",
       type: "array",
+      group: "samtokin",
       of: [
         {
           type: "object",
@@ -112,22 +135,28 @@ export const siteSettings = defineType({
       name: "memberOrgs",
       title: "Félagsmenn (samtök)",
       type: "array",
+      group: "samtokin",
       of: [{ type: "string" }],
     }),
+
+    // Samband
     defineField({
       name: "email",
       title: "Netfang",
       type: "string",
+      group: "contact",
     }),
     defineField({
       name: "phone",
       title: "Símanúmer",
       type: "string",
+      group: "contact",
     }),
     defineField({
       name: "address",
       title: "Heimilisfang",
       type: "string",
+      group: "contact",
     }),
   ],
   preview: {
