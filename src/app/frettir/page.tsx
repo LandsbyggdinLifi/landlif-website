@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { client } from "@/sanity/client";
-import { newsPostsQuery } from "@/sanity/queries";
+import { newsPostsPagedQuery, newsPostsCountQuery } from "@/sanity/queries";
 import NewsCard from "@/components/NewsCard";
 
 export const revalidate = 60;
@@ -10,8 +11,23 @@ export const metadata: Metadata = {
   description: "Nýjustu fréttir frá Landlífi.",
 };
 
-export default async function NewsPage() {
-  const posts = await client.fetch(newsPostsQuery).catch(() => []);
+const PER_PAGE = 9;
+
+interface Props {
+  searchParams: Promise<{ page?: string }>;
+}
+
+export default async function NewsPage({ searchParams }: Props) {
+  const { page: pageParam } = await searchParams;
+  const page = Math.max(1, Number(pageParam ?? 1));
+  const offset = (page - 1) * PER_PAGE;
+
+  const [posts, total] = await Promise.all([
+    client.fetch(newsPostsPagedQuery, { offset }).catch(() => []),
+    client.fetch(newsPostsCountQuery).catch(() => 0),
+  ]);
+
+  const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
 
   return (
     <>
@@ -39,13 +55,51 @@ export default async function NewsPage() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {posts.map(
-                (post: Parameters<typeof NewsCard>[0]["post"]) => (
-                  <NewsCard key={post._id} post={post} />
-                )
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {posts.map(
+                  (post: Parameters<typeof NewsCard>[0]["post"]) => (
+                    <NewsCard key={post._id} post={post} />
+                  )
+                )}
+              </div>
+
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-6 mt-14">
+                  {page > 1 ? (
+                    <Link
+                      href={`/frettir?page=${page - 1}`}
+                      className="text-sm font-medium px-4 py-2 rounded-lg border transition-colors hover:border-teal"
+                      style={{ color: "var(--navy)", borderColor: "#d1d5db" }}
+                    >
+                      ← Fyrri
+                    </Link>
+                  ) : (
+                    <span className="text-sm font-medium px-4 py-2 rounded-lg border border-gray-200 text-gray-300 cursor-not-allowed">
+                      ← Fyrri
+                    </span>
+                  )}
+
+                  <span className="text-sm text-gray-500">
+                    Síða {page} af {totalPages}
+                  </span>
+
+                  {page < totalPages ? (
+                    <Link
+                      href={`/frettir?page=${page + 1}`}
+                      className="text-sm font-medium px-4 py-2 rounded-lg border transition-colors hover:border-teal"
+                      style={{ color: "var(--navy)", borderColor: "#d1d5db" }}
+                    >
+                      Næsta →
+                    </Link>
+                  ) : (
+                    <span className="text-sm font-medium px-4 py-2 rounded-lg border border-gray-200 text-gray-300 cursor-not-allowed">
+                      Næsta →
+                    </span>
+                  )}
+                </div>
               )}
-            </div>
+            </>
           )}
         </div>
       </section>

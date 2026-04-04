@@ -49,6 +49,19 @@ export const newsPostBySlugQuery = groq`
   }
 `;
 
+export const newsPostsCountQuery = groq`count(*[_type == "newsPost"])`;
+
+export const newsPostsPagedQuery = groq`
+  *[_type == "newsPost"] | order(publishedAt desc)[$offset...$offset + 9] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    excerpt,
+    mainImage
+  }
+`;
+
 export const latestNewsQuery = groq`
   *[_type == "newsPost"] | order(publishedAt desc)[0..8] {
     _id,
@@ -57,6 +70,33 @@ export const latestNewsQuery = groq`
     publishedAt,
     excerpt,
     mainImage
+  }
+`;
+
+export const eventAlbumsQuery = groq`
+  *[_type == "eventAlbum"] | order(date desc) {
+    _id,
+    title,
+    slug,
+    date,
+    description,
+    coverImage
+  }
+`;
+
+export const eventAlbumBySlugQuery = groq`
+  *[_type == "eventAlbum" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    date,
+    description,
+    coverImage,
+    photos[] {
+      asset,
+      caption,
+      alt
+    }
   }
 `;
 

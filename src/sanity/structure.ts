@@ -62,4 +62,5 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
       S.documentTypeListItem("newsPost").title("Fr\u00E9ttir"),
+      S.documentTypeListItem("eventAlbum").title("Myndasöfn (viðburðir)"),
     ]);

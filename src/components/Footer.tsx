@@ -36,6 +36,9 @@ export default async function Footer() {
                 <Link href="/frettir" className="hover:text-white transition-colors">Fréttir</Link>
               </li>
               <li>
+                <Link href="/myndir" className="hover:text-white transition-colors">Myndir</Link>
+              </li>
+              <li>
                 <Link href="/hafa-samband" className="hover:text-white transition-colors">Hafa samband</Link>
               </li>
             </ul>
