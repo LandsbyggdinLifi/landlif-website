@@ -45,7 +45,7 @@ export const newsPostBySlugQuery = groq`
 `;
 
 export const latestNewsQuery = groq`
-  *[_type == "newsPost"] | order(publishedAt desc)[0..2] {
+  *[_type == "newsPost"] | order(publishedAt desc)[0..8] {
     _id,
     title,
     slug,

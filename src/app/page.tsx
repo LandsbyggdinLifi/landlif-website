@@ -3,7 +3,7 @@ import Image from "next/image";
 import { client } from "@/sanity/client";
 import { siteSettingsQuery, latestNewsQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
-import NewsCard from "@/components/NewsCard";
+import NewsSection from "@/components/NewsSection";
 
 export const revalidate = 60;
 
@@ -116,32 +116,7 @@ export default async function HomePage() {
       })()}
 
       {/* Latest news */}
-      {latestNews?.length > 0 && (
-        <section style={{ backgroundColor: "var(--gray-light)" }} className="py-20">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="flex items-center justify-between mb-10">
-              <h2
-                className="text-3xl font-bold"
-                style={{ color: "var(--navy)" }}
-              >
-                Nýjustu fréttir
-              </h2>
-              <Link
-                href="/frettir"
-                className="text-sm font-medium"
-                style={{ color: "var(--teal)" }}
-              >
-                Sjá allar fréttir →
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {latestNews.map((post: Parameters<typeof NewsCard>[0]["post"]) => (
-                <NewsCard key={post._id} post={post} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      {latestNews?.length > 0 && <NewsSection posts={latestNews} />}
 
       {/* CTA */}
       <section
