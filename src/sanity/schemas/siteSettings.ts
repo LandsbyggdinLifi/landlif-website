@@ -5,28 +5,25 @@ export const siteSettings = defineType({
   title: "Stillingar",
   type: "document",
   groups: [
-    { name: "general", title: "Almennt", default: true },
-    { name: "homepage", title: "Forsíða" },
+    { name: "homepage", title: "Forsíða", default: true },
     { name: "samtokin", title: "Samtökin" },
     { name: "contact", title: "Samband" },
   ],
   fields: [
-    // Almennt
+    // Forsíða
     defineField({
       name: "title",
       title: "Nafn stofnunar",
       type: "string",
-      group: "general",
+      group: "homepage",
     }),
     defineField({
       name: "description",
       title: "Lýsing",
       type: "text",
       rows: 3,
-      group: "general",
+      group: "homepage",
     }),
-
-    // Forsíða
     defineField({
       name: "heroHeading",
       title: "Hero fyrirsögn",
