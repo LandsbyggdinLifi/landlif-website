@@ -177,6 +177,14 @@ export default function Navbar() {
             <DropdownMenu label="Samtökin" links={samtokinLinks} id="dropdown-samtokin" active={inSamtokin} />
             <DropdownMenu label="Starfið" links={starfidLinks} id="dropdown-starfid" active={inStarfid} />
             <Link
+              href="/myndir"
+              className={`text-sm font-medium transition-colors ${
+                pathname.startsWith("/myndir") ? "text-teal" : "text-gray-600 hover:text-teal"
+              }`}
+            >
+              Myndasöfn
+            </Link>
+            <Link
               href="/hafa-samband"
               className={`text-sm font-medium transition-colors ${
                 pathname === "/hafa-samband" ? "text-teal" : "text-gray-600 hover:text-teal"
@@ -218,6 +226,13 @@ export default function Navbar() {
           </Link>
           <MobileAccordion label="Samtökin" links={samtokinLinks} onClose={() => setMenuOpen(false)} active={inSamtokin} />
           <MobileAccordion label="Starfið" links={starfidLinks} onClose={() => setMenuOpen(false)} active={inStarfid} />
+          <Link
+            href="/myndir"
+            className={`block py-2 text-sm font-medium ${pathname.startsWith("/myndir") ? "text-teal" : "text-gray-700 hover:text-teal"}`}
+            onClick={() => setMenuOpen(false)}
+          >
+            Myndasöfn
+          </Link>
           <Link
             href="/hafa-samband"
             className={`block py-2 text-sm font-medium ${pathname === "/hafa-samband" ? "text-teal" : "text-gray-700 hover:text-teal"}`}
