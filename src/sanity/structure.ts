@@ -10,7 +10,7 @@ export const structure: StructureResolver = (S) =>
   S.list()
     .title("Landsbygg\u00F0in lifi")
     .items([
-      S.listItem().title("Stillingar").id("siteSettings").child(
+      S.listItem().title("Forsíða").id("siteSettings").child(
         S.document().schemaType("siteSettings").documentId("siteSettings")
       ),
       singleton(S, "Um okkur", "page-um-okkur"),

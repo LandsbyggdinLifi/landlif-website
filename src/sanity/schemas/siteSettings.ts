@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 
 export const siteSettings = defineType({
   name: "siteSettings",
-  title: "Stillingar",
+  title: "Forsíða",
   type: "document",
   groups: [
     { name: "homepage", title: "Forsíða", default: true },
