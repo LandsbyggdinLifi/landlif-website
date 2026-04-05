@@ -53,7 +53,6 @@ export const structure: StructureResolver = (S) =>
           S.listItem().title("Samstarf Erlendis").child(
             S.list().title("Samstarf Erlendis").items([
               singleton(S, "Yfirlit", "page-starfid-erlent-samstarf"),
-              singleton(S, "Erlend verkefni", "page-starfid-erlend-verkefni"),
               singleton(S, "European Rural Parliament", "page-starfid-erp"),
               singleton(S, "Fi\u00F0rildaverkefni\u00F0", "page-starfid-fidrildaverkefnid"),
               singleton(S, "Finnskaverkefni\u00F0", "page-starfid-finnskaverkefnid"),
