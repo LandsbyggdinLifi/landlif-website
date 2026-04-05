@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { client } from "@/sanity/client";
 import { siteSettingsQuery, latestNewsQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { urlFor, hotspotPosition } from "@/sanity/image";
 import NewsSection from "@/components/NewsSection";
 import PhotoStrip from "@/components/PhotoStrip";
 
@@ -41,6 +41,7 @@ export default async function HomePage() {
             alt="Hero mynd"
             fill
             className="object-cover"
+            style={{ objectPosition: hotspotPosition(settings.heroImage) }}
             priority
           />
         )}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { client } from "@/sanity/client";
 import { newsPostBySlugQuery, newsPostsQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { urlFor, hotspotPosition } from "@/sanity/image";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 
 export const revalidate = 60;
@@ -68,6 +68,7 @@ export default async function NewsPostPage({ params }: Props) {
             alt={post.mainImage.alt || post.title}
             fill
             className="object-cover"
+            style={{ objectPosition: hotspotPosition(post.mainImage) }}
             priority
           />
           <div

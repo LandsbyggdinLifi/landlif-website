@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { client } from "@/sanity/client";
 import { eventAlbumBySlugQuery, eventAlbumsQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { urlFor, hotspotPosition } from "@/sanity/image";
 import PhotoLightbox from "@/components/PhotoLightbox";
 
 export const revalidate = 60;
@@ -72,6 +72,7 @@ export default async function AlbumPage({ params }: Props) {
             alt={album.title}
             fill
             className="object-cover"
+            style={{ objectPosition: hotspotPosition(album.coverImage) }}
             priority
           />
           <div

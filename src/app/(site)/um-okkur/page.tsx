@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { client } from "@/sanity/client";
 import { aboutPageQuery } from "@/sanity/queries";
-import { urlFor } from "@/sanity/image";
+import { urlFor, hotspotPosition } from "@/sanity/image";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 
 export const revalidate = 60;
@@ -31,6 +31,7 @@ export default async function AboutPage() {
               alt=""
               fill
               className="object-cover"
+              style={{ objectPosition: hotspotPosition(page.heroImage) }}
               priority
             />
             <div
