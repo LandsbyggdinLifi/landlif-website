@@ -6,15 +6,19 @@ import NewsCard from "@/components/NewsCard";
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: "Fréttir",
-  description: "Nýjustu fréttir frá Landlífi.",
-};
-
 const PER_PAGE = 9;
 
 interface Props {
   searchParams: Promise<{ page?: string }>;
+}
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const { page: pageParam } = await searchParams;
+  const page = Math.max(1, Number(pageParam ?? 1));
+  return {
+    title: page > 1 ? `Fréttir – Síða ${page}` : "Fréttir",
+    description: "Nýjustu fréttir frá Landlífi.",
+  };
 }
 
 export default async function NewsPage({ searchParams }: Props) {

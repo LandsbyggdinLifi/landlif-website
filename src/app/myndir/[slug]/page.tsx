@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { client } from "@/sanity/client";
 import { eventAlbumBySlugQuery, eventAlbumsQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
+import PhotoLightbox from "@/components/PhotoLightbox";
 
 export const revalidate = 60;
 
@@ -25,9 +26,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .fetch(eventAlbumBySlugQuery, { slug })
     .catch(() => null);
   if (!album) return { title: "Myndasafn" };
+  const ogImage = album.coverImage?.asset
+    ? urlFor(album.coverImage).width(1200).height(630).url()
+    : "/logo.png";
   return {
     title: album.title,
     description: album.description || undefined,
+    openGraph: {
+      title: album.title,
+      description: album.description || undefined,
+      images: [{ url: ogImage, width: 1200, height: 630 }],
+    },
   };
 }
 
@@ -105,22 +114,13 @@ export default async function AlbumPage({ params }: Props) {
           )}
 
           {album.photos?.length > 0 ? (
-            <div className="columns-2 md:columns-3 gap-3">
-              {album.photos.map((photo: Photo, i: number) => (
-                <div key={i} className="break-inside-avoid mb-3 rounded-lg overflow-hidden shadow-sm">
-                  <Image
-                    src={urlFor(photo).width(800).url()}
-                    alt={photo.alt || photo.caption || album.title}
-                    width={800}
-                    height={600}
-                    className="w-full object-cover"
-                  />
-                  {photo.caption && (
-                    <p className="text-xs text-gray-500 px-3 py-2 bg-white">{photo.caption}</p>
-                  )}
-                </div>
-              ))}
-            </div>
+            <PhotoLightbox
+              photos={album.photos.map((photo: Photo) => ({
+                src: urlFor(photo).width(1200).url(),
+                alt: photo.alt || photo.caption || album.title,
+                caption: photo.caption,
+              }))}
+            />
           ) : (
             <p className="text-gray-400 text-center py-16">Engar myndir í þessu safni enn.</p>
           )}

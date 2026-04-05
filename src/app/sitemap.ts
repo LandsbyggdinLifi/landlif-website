@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { client } from "@/sanity/client";
-import { newsPostsQuery } from "@/sanity/queries";
+import { newsPostsQuery, eventAlbumsQuery } from "@/sanity/queries";
 
 const BASE_URL = "https://www.landlif.is";
 
@@ -29,10 +29,15 @@ const staticRoutes: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/starfid/fundargerdir/stjornarfundir`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/starfid/skipulag-ibuasamtaka`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/starfid/byggdastefna`, changeFrequency: "monthly", priority: 0.6 },
+  { url: `${BASE_URL}/myndir`, changeFrequency: "monthly", priority: 0.7 },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await client.fetch(newsPostsQuery).catch(() => []);
+  const [posts, albums] = await Promise.all([
+    client.fetch(newsPostsQuery).catch(() => []),
+    client.fetch(eventAlbumsQuery).catch(() => []),
+  ]);
+
   const newsRoutes: MetadataRoute.Sitemap = posts.map(
     (post: { slug: { current: string }; publishedAt?: string }) => ({
       url: `${BASE_URL}/frettir/${post.slug.current}`,
@@ -42,5 +47,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  return [...staticRoutes, ...newsRoutes];
+  const albumRoutes: MetadataRoute.Sitemap = albums.map(
+    (album: { slug: { current: string }; date?: string }) => ({
+      url: `${BASE_URL}/myndir/${album.slug.current}`,
+      lastModified: album.date ? new Date(album.date) : new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })
+  );
+
+  return [...staticRoutes, ...newsRoutes, ...albumRoutes];
 }
