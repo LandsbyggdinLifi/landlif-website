@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { client } from "@/sanity/client";
 import { starfidPagesBySectionQuery } from "@/sanity/queries";
 import StarfidLayout from "@/components/StarfidLayout";
+import NavCards from "@/components/NavCards";
 
 export const revalidate = 60;
 export const metadata: Metadata = { title: "Starfið", description: "Yfirlit yfir starfsemi Landsbyggðar lifi." };
@@ -27,26 +27,14 @@ export default async function StarfidPage() {
   return (
     <StarfidLayout title="Starfið">
       <div>
-        <div className="grid gap-3">
-          {sections.map((l) => (
-            <Link key={l.href} href={l.href}
-              className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
-              <span style={{ color: "var(--teal)" }}>→</span> {l.label}
-            </Link>
-          ))}
-        </div>
-
+        <NavCards cards={sections} />
         {dynamicPages.length > 0 && (
           <div className="mt-10">
             <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>Fleiri síður</h2>
-            <div className="grid gap-3">
-              {dynamicPages.map((p) => (
-                <Link key={p._id} href={`/starfid/${p.slug.current}`}
-                  className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
-                  <span style={{ color: "var(--teal)" }}>→</span> {p.title}
-                </Link>
-              ))}
-            </div>
+            <NavCards cards={dynamicPages.map((p) => ({
+              href: `/starfid/${p.slug.current}`,
+              label: p.title,
+            }))} />
           </div>
         )}
       </div>
