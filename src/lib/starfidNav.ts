@@ -18,8 +18,6 @@ export const starfidSubNav: Record<string, { href: string; label: string }[]> = 
   "samstarf-erlendis": [
     { href: "/starfid/samstarf-erlendis", label: "Yfirlit" },
     { href: "/starfid/samstarf-erlendis/european-rural-parliament", label: "European Rural Parliament" },
-    { href: "/starfid/samstarf-erlendis/fidrildaverkefnid", label: "Fiðrildaverkefnið" },
-    { href: "/starfid/samstarf-erlendis/finnskaverkefnid", label: "Finnskaverkefnið" },
     { href: "/starfid/samstarf-erlendis/hela-norden", label: "Hela norden skal leva" },
   ],
   "verkefni-erlendis": [

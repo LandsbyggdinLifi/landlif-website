@@ -16,8 +16,6 @@ const staticRoutes: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/starfid/stefnumorkun`, changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/starfid/samstarf-erlendis`, changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/starfid/samstarf-erlendis/european-rural-parliament`, changeFrequency: "monthly", priority: 0.6 },
-  { url: `${BASE_URL}/starfid/samstarf-erlendis/fidrildaverkefnid`, changeFrequency: "monthly", priority: 0.6 },
-  { url: `${BASE_URL}/starfid/samstarf-erlendis/finnskaverkefnid`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/starfid/samstarf-erlendis/hela-norden`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/starfid/verkefni-erlendis`, changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/starfid/samstarf-innanlands`, changeFrequency: "monthly", priority: 0.7 },

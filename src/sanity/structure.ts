@@ -54,8 +54,6 @@ export const structure: StructureResolver = (S) =>
             S.list().title("Samstarf Erlendis").items([
               singleton(S, "Yfirlit", "page-starfid-erlent-samstarf"),
               singleton(S, "European Rural Parliament", "page-starfid-erp"),
-              singleton(S, "Fi\u00F0rildaverkefni\u00F0", "page-starfid-fidrildaverkefnid"),
-              singleton(S, "Finnskaverkefni\u00F0", "page-starfid-finnskaverkefnid"),
               singleton(S, "Hela norden skal leva", "page-starfid-hela-norden"),
               S.divider(),
               dynamicList(S, "N\u00fdjar undirs\u00ed\u00f0ur", "samstarf-erlendis-dynamic", "samstarf-erlendis"),

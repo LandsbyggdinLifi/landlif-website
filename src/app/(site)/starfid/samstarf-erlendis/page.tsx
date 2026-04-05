@@ -25,8 +25,6 @@ export default async function Page() {
           <div className="grid gap-3">
             {[
               { href: "/starfid/samstarf-erlendis/european-rural-parliament", label: "European Rural Parliament" },
-              { href: "/starfid/samstarf-erlendis/fidrildaverkefnid", label: "Fiðrildaverkefnið" },
-              { href: "/starfid/samstarf-erlendis/finnskaverkefnid", label: "Finnskaverkefnið" },
               { href: "/starfid/samstarf-erlendis/hela-norden", label: "Hela norden skal leva" },
             ].map((l) => (
               <Link key={l.href} href={l.href}
