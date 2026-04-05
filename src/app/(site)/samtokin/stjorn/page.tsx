@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { client } from "@/sanity/client";
-import { siteSettingsQuery } from "@/sanity/queries";
+import { samtokinSettingsQuery } from "@/sanity/queries";
 import SamtokinLayout from "@/components/SamtokinLayout";
 
 export const revalidate = 60;
@@ -26,7 +26,7 @@ const fallbackAlternates = [
 ];
 
 export default async function StjornPage() {
-  const settings = await client.fetch(siteSettingsQuery).catch(() => null);
+  const settings = await client.fetch(samtokinSettingsQuery).catch(() => null);
 
   const board = settings?.boardMembers?.length ? settings.boardMembers : fallbackBoard;
   const alternates = settings?.alternateBoardMembers?.length ? settings.alternateBoardMembers : fallbackAlternates;

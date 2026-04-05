@@ -6,7 +6,6 @@ export const siteSettings = defineType({
   type: "document",
   groups: [
     { name: "homepage", title: "Forsíða", default: true },
-    { name: "samtokin", title: "Samtökin" },
     { name: "contact", title: "Samband" },
   ],
   fields: [
@@ -104,52 +103,6 @@ export const siteSettings = defineType({
           ],
         },
       ],
-    }),
-
-    // Samtökin
-    defineField({
-      name: "boardMembers",
-      title: "Aðalstjórn",
-      type: "array",
-      group: "samtokin",
-      of: [
-        {
-          type: "object",
-          fields: [
-            defineField({ name: "name", title: "Nafn", type: "string" }),
-            defineField({ name: "role", title: "Hlutverk", type: "string" }),
-            defineField({ name: "location", title: "Staðsetning", type: "string" }),
-          ],
-          preview: {
-            select: { title: "name", subtitle: "role" },
-          },
-        },
-      ],
-    }),
-    defineField({
-      name: "alternateBoardMembers",
-      title: "Varastjórn",
-      type: "array",
-      group: "samtokin",
-      of: [
-        {
-          type: "object",
-          fields: [
-            defineField({ name: "name", title: "Nafn", type: "string" }),
-            defineField({ name: "location", title: "Staðsetning", type: "string" }),
-          ],
-          preview: {
-            select: { title: "name", subtitle: "location" },
-          },
-        },
-      ],
-    }),
-    defineField({
-      name: "memberOrgs",
-      title: "Félagsmenn (samtök)",
-      type: "array",
-      group: "samtokin",
-      of: [{ type: "string" }],
     }),
 
     // Samband

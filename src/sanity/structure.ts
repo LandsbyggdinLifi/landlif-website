@@ -21,8 +21,9 @@ export const structure: StructureResolver = (S) =>
         S.list().title("Samt\u00F6kin").items([
           singleton(S, "Markmi\u00F0", "page-markmid"),
           singleton(S, "L\u00F6g", "page-log"),
-          singleton(S, "Stj\u00F3rn", "page-stjorn"),
-          singleton(S, "F\u00E9lagsmenn", "page-felagsmenn"),
+          S.listItem().title("Stj\u00F3rn og f\u00E9lagsmenn").id("samtokinSettings").child(
+            S.document().schemaType("samtokinSettings").documentId("samtokinSettings")
+          ),
         ])
       ),
 

@@ -119,6 +119,14 @@ export const aboutPageQuery = groq`
   }
 `;
 
+export const samtokinSettingsQuery = groq`
+  *[_type == "samtokinSettings"][0] {
+    boardMembers,
+    alternateBoardMembers,
+    memberOrgs
+  }
+`;
+
 export const pageByIdQuery = groq`
   *[_type == "page" && _id == $id][0] {
     _id,

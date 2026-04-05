@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { client } from "@/sanity/client";
-import { siteSettingsQuery } from "@/sanity/queries";
+import { samtokinSettingsQuery } from "@/sanity/queries";
 import SamtokinLayout from "@/components/SamtokinLayout";
 
 export const revalidate = 60;
@@ -20,7 +20,7 @@ const fallbackOrgs = [
 ];
 
 export default async function FelagsmennPage() {
-  const settings = await client.fetch(siteSettingsQuery).catch(() => null);
+  const settings = await client.fetch(samtokinSettingsQuery).catch(() => null);
 
   const orgs = settings?.memberOrgs?.length ? settings.memberOrgs : fallbackOrgs;
 
