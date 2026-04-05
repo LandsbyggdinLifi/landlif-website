@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { urlFor } from "@/sanity/image";
 import { starfidSubNav } from "@/lib/starfidNav";
 
@@ -8,6 +11,40 @@ interface Props {
   section?: string;
   heroImage?: { asset: { _ref: string } };
   children: React.ReactNode;
+}
+
+function SubNav({ section }: { section: string }) {
+  const pathname = usePathname();
+  const links = starfidSubNav[section];
+  if (!links) return null;
+
+  return (
+    <nav className="flex flex-col gap-1">
+      {links.map((l) => {
+        const active = pathname === l.href;
+        return (
+          <Link
+            key={l.href}
+            href={l.href}
+            className="px-4 py-3 rounded-lg text-sm font-medium transition-colors"
+            style={
+              active
+                ? { backgroundColor: "var(--navy)", color: "white" }
+                : { color: "var(--navy)" }
+            }
+            onMouseEnter={(e) => {
+              if (!active) (e.currentTarget as HTMLElement).style.backgroundColor = "var(--gray-light)";
+            }}
+            onMouseLeave={(e) => {
+              if (!active) (e.currentTarget as HTMLElement).style.backgroundColor = "";
+            }}
+          >
+            {l.label}
+          </Link>
+        );
+      })}
+    </nav>
+  );
 }
 
 export default function StarfidLayout({ title, section, heroImage, children }: Props) {
@@ -35,35 +72,30 @@ export default function StarfidLayout({ title, section, heroImage, children }: P
             />
           </>
         )}
-        <div className="relative z-10 max-w-4xl mx-auto px-6 pb-10 pt-20 w-full">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 pb-10 pt-20 w-full">
           <p className="text-blue-300 text-sm mb-1">Starfið</p>
           <h1 className="text-4xl font-bold text-white">{title}</h1>
         </div>
       </section>
 
-      {/* Sub-nav */}
-      {subLinks && (
-        <div style={{ backgroundColor: "var(--gray-light)" }} className="border-b border-gray-200">
-          <div className="max-w-4xl mx-auto px-6">
-            <nav className="flex gap-6 overflow-x-auto">
-              {subLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors"
-                  style={{ borderColor: "transparent", color: "var(--navy)" }}
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </div>
-      )}
-
-      {/* Content */}
+      {/* Content + optional sidebar */}
       <section className="py-12 bg-white">
-        <div className="max-w-3xl mx-auto px-6">{children}</div>
+        <div className="max-w-6xl mx-auto px-6">
+          {subLinks ? (
+            <div className="flex flex-col md:flex-row gap-10">
+              {/* Sidebar */}
+              <aside className="md:w-52 flex-shrink-0">
+                <div className="rounded-xl border border-gray-100 p-3 md:sticky md:top-24">
+                  <SubNav section={section!} />
+                </div>
+              </aside>
+              {/* Main content */}
+              <div className="flex-1 min-w-0">{children}</div>
+            </div>
+          ) : (
+            <div className="max-w-3xl mx-auto">{children}</div>
+          )}
+        </div>
       </section>
     </>
   );
