@@ -14,8 +14,10 @@ const samtokinLinks = [
 
 const starfidLinks = [
   { href: "/starfid/stefnumorkun", label: "Stefnumörkun" },
-  { href: "/starfid/verkefni-innanlands", label: "Verkefni innanlands" },
-  { href: "/starfid/erlent-samstarf", label: "Erlent samstarf" },
+  { href: "/starfid/samstarf-erlendis", label: "Samstarf Erlendis" },
+  { href: "/starfid/verkefni-erlendis", label: "Verkefni Erlendis" },
+  { href: "/starfid/samstarf-innanlands", label: "Samstarf Innanlands" },
+  { href: "/starfid/verkefni-innanlands", label: "Verkefni Innanlands" },
   { href: "/starfid/fundargerdir", label: "Fundargerðir" },
   { href: "/starfid/skipulag-ibuasamtaka", label: "Skipulag íbúasamtaka" },
   { href: "/starfid/byggdastefna", label: "Byggðastefna" },

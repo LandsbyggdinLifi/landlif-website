@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Hela norden skal leva", description:
 export default async function Page() {
   const page = await client.fetch(pageByIdQuery, { id: "page-starfid-hela-norden" }).catch(() => null);
   return (
-    <StarfidLayout title={page?.title || "Hela norden skal leva"} section="erlent-samstarf" heroImage={page?.heroImage}>
+    <StarfidLayout title={page?.title || "Hela norden skal leva"} section="samstarf-erlendis" heroImage={page?.heroImage}>
       {page?.body ? <PortableTextRenderer value={page.body} /> : (
         <div>
           <blockquote className="border-l-4 pl-4 italic text-gray-600 mb-6" style={{ borderColor: "var(--teal)" }}>

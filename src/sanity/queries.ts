@@ -127,6 +127,32 @@ export const samtokinSettingsQuery = groq`
   }
 `;
 
+export const starfidPageBySlugQuery = groq`
+  *[_type == "page" && section == $section && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    section,
+    heroImage,
+    body[] {
+      ...,
+      _type == "file" => {
+        ...,
+        "url": asset->url,
+        "originalFilename": asset->originalFilename
+      }
+    }
+  }
+`;
+
+export const starfidPagesBySectionQuery = groq`
+  *[_type == "page" && section == $section] | order(_createdAt asc) {
+    _id,
+    title,
+    slug
+  }
+`;
+
 export const pageByIdQuery = groq`
   *[_type == "page" && _id == $id][0] {
     _id,

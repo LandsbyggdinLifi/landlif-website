@@ -6,31 +6,29 @@ import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
 export const revalidate = 60;
-export const metadata: Metadata = { title: "Verkefni Innanlands", description: "Yfirlit yfir verkefni Landsbyggðar lifi innanlands." };
+export const metadata: Metadata = { title: "Samstarf Erlendis", description: "Landsbyggðin lifi í alþjóðlegu samstarfi um dreifbýlismál og styrkingu landsbyggðar." };
 
 type DynamicPage = { _id: string; title: string; slug: { current: string } };
 
 export default async function Page() {
   const [page, dynamicPages] = await Promise.all([
-    client.fetch(pageByIdQuery, { id: "page-starfid-verkefni-innanlands" }).catch(() => null),
-    client.fetch(starfidPagesBySectionQuery, { section: "verkefni-innanlands" }).catch(() => []),
+    client.fetch(pageByIdQuery, { id: "page-starfid-erlent-samstarf" }).catch(() => null),
+    client.fetch(starfidPagesBySectionQuery, { section: "samstarf-erlendis" }).catch(() => []),
   ]);
   return (
-    <StarfidLayout title={page?.title || "Verkefni Innanlands"} section="verkefni-innanlands" heroImage={page?.heroImage}>
+    <StarfidLayout title={page?.title || "Samstarf Erlendis"} section="samstarf-erlendis" heroImage={page?.heroImage}>
       {page?.body ? <PortableTextRenderer value={page.body} /> : (
         <div>
-          <p className="text-gray-600 leading-relaxed mb-6">
-            Landsbyggðin lifi hefur tekið þátt í ýmsum verkefnum innanlands. Meðal þeirra er könnun árið 2015 á búsetuskilyrðum ungs fólks, unnin í samvinnu við Rannsóknamiðstöð Háskólans á Akureyri.
-          </p>
           <p className="text-gray-600 leading-relaxed mb-8">
-            Samtökin taka reglulega þátt í byggðaþingum og fundum um dreifbýlismál um allt Ísland.
+            Landsbyggðin lifi er virk þátttakandi í alþjóðlegu samstarfi um dreifbýlismál. Samtökin eiga aðild að nokkrum alþjóðlegum samtökum og verkefnum.
           </p>
-          <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>Tengd verkefni</h2>
           <div className="grid gap-3">
             {[
-              { href: "/starfid/verkefni-innanlands/heimsmarkmid", label: "Heimsmarkmið Sameinuðu þjóðanna" },
-              { href: "/starfid/verkefni-innanlands/animation-og-sdg", label: "Animation og SDG" },
-              { href: "/starfid/verkefni-innanlands/rha", label: "Verkefni í samstarfi við RHA" },
+              { href: "/starfid/samstarf-erlendis/erlend-verkefni", label: "Erlend verkefni" },
+              { href: "/starfid/samstarf-erlendis/european-rural-parliament", label: "European Rural Parliament" },
+              { href: "/starfid/samstarf-erlendis/fidrildaverkefnid", label: "Fiðrildaverkefnið" },
+              { href: "/starfid/samstarf-erlendis/finnskaverkefnid", label: "Finnskaverkefnið" },
+              { href: "/starfid/samstarf-erlendis/hela-norden", label: "Hela norden skal leva" },
             ].map((l) => (
               <Link key={l.href} href={l.href}
                 className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
@@ -45,7 +43,7 @@ export default async function Page() {
           <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>Fleiri verkefni</h2>
           <div className="grid gap-3">
             {dynamicPages.map((p: DynamicPage) => (
-              <Link key={p._id} href={`/starfid/verkefni-innanlands/${p.slug.current}`}
+              <Link key={p._id} href={`/starfid/samstarf-erlendis/${p.slug.current}`}
                 className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
                 <span style={{ color: "var(--teal)" }}>→</span> {p.title}
               </Link>

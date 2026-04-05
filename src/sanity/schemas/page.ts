@@ -16,7 +16,29 @@ export const page = defineType({
       title: "Slóð",
       type: "slug",
       options: { source: "title", maxLength: 96 },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const doc = context.document as { section?: string };
+          if (doc?.section && !value?.current)
+            return "Slóð er nauðsynleg þegar hluti er valinn.";
+          return true;
+        }),
+    }),
+    defineField({
+      name: "section",
+      title: "Hluti",
+      type: "string",
+      options: {
+        list: [
+          { title: "Starfið (efsta stig)", value: "starfid" },
+          { title: "Samstarf Erlendis", value: "samstarf-erlendis" },
+          { title: "Verkefni Erlendis", value: "verkefni-erlendis" },
+          { title: "Samstarf Innanlands", value: "samstarf-innanlands" },
+          { title: "Verkefni Innanlands", value: "verkefni-innanlands" },
+        ],
+      },
+      description:
+        "Veldu hluta fyrir nýjar undirsíður. Skilja eftir autt fyrir fastar singleton-síður.",
     }),
     defineField({
       name: "heroImage",
@@ -63,6 +85,10 @@ export const page = defineType({
     }),
   ],
   preview: {
-    select: { title: "title", media: "heroImage" },
+    select: { title: "title", subtitle: "section", media: "heroImage" },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    prepare({ title, subtitle, media }: { title?: string; subtitle?: string; media?: any }) {
+      return { title, subtitle: subtitle ?? "Singleton", media };
+    },
   },
 });

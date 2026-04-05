@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "European Rural Parliament", descript
 export default async function Page() {
   const page = await client.fetch(pageByIdQuery, { id: "page-starfid-erp" }).catch(() => null);
   return (
-    <StarfidLayout title={page?.title || "European Rural Parliament"} section="erlent-samstarf" heroImage={page?.heroImage}>
+    <StarfidLayout title={page?.title || "European Rural Parliament"} section="samstarf-erlendis" heroImage={page?.heroImage}>
       {page?.body ? <PortableTextRenderer value={page.body} /> : (
         <div>
           <p className="text-gray-600 leading-relaxed mb-6">

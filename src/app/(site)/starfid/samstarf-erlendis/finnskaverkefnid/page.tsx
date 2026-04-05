@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Finnskaverkefni\u00F0", description:
 export default async function Page() {
   const page = await client.fetch(pageByIdQuery, { id: "page-starfid-finnskaverkefnid" }).catch(() => null);
   return (
-    <StarfidLayout title={page?.title || "Finnskaverkefni\u00F0"} section="erlent-samstarf" heroImage={page?.heroImage}>
+    <StarfidLayout title={page?.title || "Finnskaverkefni\u00F0"} section="samstarf-erlendis" heroImage={page?.heroImage}>
       {page?.body ? <PortableTextRenderer value={page.body} /> : (
         <div>
           <p className="text-gray-600 leading-relaxed mb-6">
