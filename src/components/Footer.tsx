@@ -64,8 +64,14 @@ export default async function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-blue-700 mt-10 pt-6 text-xs text-blue-300 text-center">
-          © {new Date().getFullYear()} {settings?.title || "Landsbyggðin lifi"}. Öll réttindi áskilin.
+        <div className="border-t border-blue-700 mt-10 pt-6 text-xs text-blue-300 text-center flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span>© {new Date().getFullYear()} {settings?.title || "Landsbyggðin lifi"}. Öll réttindi áskilin.</span>
+          <Link
+            href="/studio"
+            className="hover:text-white transition-colors"
+          >
+            Stjórnborð
+          </Link>
         </div>
       </div>
     </footer>
