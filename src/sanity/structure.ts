@@ -97,7 +97,6 @@ export const structure: StructureResolver = (S) =>
             ])
           ),
           singleton(S, "Skipulag \u00EDb\u00FAasamtaka", "page-starfid-skipulag-ibuasamtaka"),
-          singleton(S, "Bygg\u00F0astefna", "page-starfid-byggdastefna"),
           S.divider(),
           dynamicList(S, "N\u00fdjar s\u00ed\u00f0ur undir Starfi\u00F0", "starfid-top-dynamic", "starfid"),
         ])

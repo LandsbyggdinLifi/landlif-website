@@ -6,7 +6,6 @@ export const starfidTopLinks = [
   { href: "/starfid/verkefni-innanlands", label: "Verkefni Innanlands" },
   { href: "/starfid/fundargerdir", label: "Fundargerðir" },
   { href: "/starfid/skipulag-ibuasamtaka", label: "Skipulag íbúasamtaka" },
-  { href: "/starfid/byggdastefna", label: "Byggðastefna" },
 ];
 
 export const starfidSubNav: Record<string, { href: string; label: string }[]> = {

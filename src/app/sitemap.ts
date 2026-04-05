@@ -30,7 +30,6 @@ const staticRoutes: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/starfid/fundargerdir/adalfundir`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/starfid/fundargerdir/stjornarfundir`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/starfid/skipulag-ibuasamtaka`, changeFrequency: "monthly", priority: 0.6 },
-  { url: `${BASE_URL}/starfid/byggdastefna`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/myndir`, changeFrequency: "monthly", priority: 0.7 },
 ];
 
