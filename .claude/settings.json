@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:landlif.is)",
+      "Bash(node -e ':*)",
+      "Bash(ls /c/Users/GG/Projects/LBL/landlif-website/*.test* /c/Users/GG/Projects/LBL/landlif-website/__tests__ /c/Users/GG/Projects/LBL/landlif-website/src/**/*.test*)",
+      "Bash(git commit -m ':*)",
+      "Bash(gh run:*)",
+      "Bash(mkdir -p \"\\(site\\)\")",
+      "Bash(mv frettir:*)"
+    ]
+  }
+}
