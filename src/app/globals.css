@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --teal: #16a085;
-  --navy: #394c75;
-  --gray-light: #eff2f4;
-  --orange: #f45c00;
+  --teal: #e8520a;
+  --navy: #1c1c1e;
+  --gray-light: #f2f2f2;
+  --orange: #e8520a;
 }
 
 @theme inline {
