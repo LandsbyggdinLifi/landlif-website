@@ -1,0 +1,56 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { client } from "@/sanity/client";
+import { starfidPagesBySectionQuery } from "@/sanity/queries";
+import StarfidLayout from "@/components/StarfidLayout";
+
+export const revalidate = 60;
+export const metadata: Metadata = { title: "Starfið", description: "Yfirlit yfir starfsemi Landsbyggðar lifi." };
+
+type DynamicPage = { _id: string; title: string; slug: { current: string } };
+
+const sections = [
+  { href: "/starfid/samstarf-erlendis", label: "Samstarf Erlendis" },
+  { href: "/starfid/verkefni-erlendis", label: "Verkefni Erlendis" },
+  { href: "/starfid/samstarf-innanlands", label: "Samstarf Innanlands" },
+  { href: "/starfid/verkefni-innanlands", label: "Verkefni Innanlands" },
+  { href: "/starfid/fundargerdir", label: "Fundargerðir" },
+  { href: "/starfid/stefnumorkun", label: "Stefnumörkun" },
+  { href: "/starfid/skipulag-ibuasamtaka", label: "Skipulag íbúasamtaka" },
+  { href: "/starfid/byggdastefna", label: "Byggðastefna" },
+];
+
+export default async function StarfidPage() {
+  const dynamicPages: DynamicPage[] = await client
+    .fetch(starfidPagesBySectionQuery, { section: "starfid" })
+    .catch(() => []);
+
+  return (
+    <StarfidLayout title="Starfið">
+      <div>
+        <div className="grid gap-3">
+          {sections.map((l) => (
+            <Link key={l.href} href={l.href}
+              className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
+              <span style={{ color: "var(--teal)" }}>→</span> {l.label}
+            </Link>
+          ))}
+        </div>
+
+        {dynamicPages.length > 0 && (
+          <div className="mt-10">
+            <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>Fleiri síður</h2>
+            <div className="grid gap-3">
+              {dynamicPages.map((p) => (
+                <Link key={p._id} href={`/starfid/${p.slug.current}`}
+                  className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
+                  <span style={{ color: "var(--teal)" }}>→</span> {p.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </StarfidLayout>
+  );
+}
