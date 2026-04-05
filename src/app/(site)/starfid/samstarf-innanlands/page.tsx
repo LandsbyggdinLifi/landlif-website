@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { client } from "@/sanity/client";
 import { pageByIdQuery, starfidPagesBySectionQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
-import NavCards from "@/components/NavCards";
 
 export const revalidate = 60;
 export const metadata: Metadata = { title: "Samstarf Innanlands", description: "Samstarf Landsbyggðar lifi við íslenskar stofnanir og samtök." };
@@ -26,10 +26,14 @@ export default async function Page() {
       )}
       {dynamicPages.length > 0 ? (
         <div className="mt-6">
-          <NavCards cards={dynamicPages.map((p: DynamicPage) => ({
-            href: `/starfid/samstarf-innanlands/${p.slug.current}`,
-            label: p.title,
-          }))} />
+          <div className="grid gap-3">
+            {dynamicPages.map((p: DynamicPage) => (
+              <Link key={p._id} href={`/starfid/samstarf-innanlands/${p.slug.current}`}
+                className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
+                <span style={{ color: "var(--teal)" }}>→</span> {p.title}
+              </Link>
+            ))}
+          </div>
         </div>
       ) : (
         !page?.body && <p className="text-gray-400 text-sm mt-4">Engin verkefni skráð enn.</p>
