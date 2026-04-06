@@ -6,17 +6,23 @@ import { usePathname } from "next/navigation";
 import { urlFor } from "@/sanity/image";
 import { starfidSubNav } from "@/lib/starfidNav";
 
+interface NavLink {
+  href: string;
+  label: string;
+}
+
 interface Props {
   title: string;
   section?: string;
   heroImage?: { asset: { _ref: string } };
+  subNavLinks?: NavLink[];
   children: React.ReactNode;
 }
 
-function SubNav({ section }: { section: string }) {
+function SubNav({ section, subNavLinks }: { section: string; subNavLinks?: NavLink[] }) {
   const pathname = usePathname();
-  const links = starfidSubNav[section];
-  if (!links) return null;
+  const links = subNavLinks ?? starfidSubNav[section];
+  if (!links || links.length === 0) return null;
 
   return (
     <nav className="flex flex-col gap-1">
@@ -47,8 +53,8 @@ function SubNav({ section }: { section: string }) {
   );
 }
 
-export default function StarfidLayout({ title, section, heroImage, children }: Props) {
-  const subLinks = section ? starfidSubNav[section] : null;
+export default function StarfidLayout({ title, section, heroImage, subNavLinks, children }: Props) {
+  const subLinks = subNavLinks ?? (section ? starfidSubNav[section] : null);
 
   return (
     <>
@@ -86,7 +92,7 @@ export default function StarfidLayout({ title, section, heroImage, children }: P
               {/* Sidebar */}
               <aside className="md:w-52 flex-shrink-0">
                 <div className="rounded-xl border border-gray-100 p-3 md:sticky md:top-24">
-                  <SubNav section={section!} />
+                  <SubNav section={section!} subNavLinks={subNavLinks} />
                 </div>
               </aside>
               {/* Main content */}

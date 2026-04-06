@@ -15,8 +15,17 @@ export default async function Page() {
     client.fetch(pageByIdQuery, { id: "page-starfid-samstarf-innanlands" }).catch(() => null),
     client.fetch(starfidPagesBySectionQuery, { section: "samstarf-innanlands" }).catch(() => []),
   ]);
+
+  const subNavLinks = [
+    { href: "/starfid/samstarf-innanlands", label: "Yfirlit" },
+    ...(dynamicPages as DynamicPage[]).map((p) => ({
+      href: `/starfid/samstarf-innanlands/${p.slug.current}`,
+      label: p.title,
+    })),
+  ];
+
   return (
-    <StarfidLayout title={page?.title || "Samstarf Innanlands"} section="samstarf-innanlands" heroImage={page?.heroImage}>
+    <StarfidLayout title={page?.title || "Samstarf Innanlands"} section="samstarf-innanlands" heroImage={page?.heroImage} subNavLinks={subNavLinks}>
       {page?.body ? (
         <PortableTextRenderer value={page.body} />
       ) : (

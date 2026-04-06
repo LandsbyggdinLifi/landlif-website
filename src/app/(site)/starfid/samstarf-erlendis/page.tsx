@@ -20,8 +20,18 @@ export default async function Page() {
     client.fetch(pageByIdQuery, { id: "page-starfid-erlent-samstarf" }).catch(() => null),
     client.fetch(starfidPagesBySectionQuery, { section: "samstarf-erlendis" }).catch(() => []),
   ]);
+
+  const subNavLinks = [
+    { href: "/starfid/samstarf-erlendis", label: "Yfirlit" },
+    ...staticLinks,
+    ...(dynamicPages as DynamicPage[]).map((p) => ({
+      href: `/starfid/samstarf-erlendis/${p.slug.current}`,
+      label: p.title,
+    })),
+  ];
+
   return (
-    <StarfidLayout title={page?.title || "Samstarf Erlendis"} section="samstarf-erlendis" heroImage={page?.heroImage}>
+    <StarfidLayout title={page?.title || "Samstarf Erlendis"} section="samstarf-erlendis" heroImage={page?.heroImage} subNavLinks={subNavLinks}>
       {page?.body ? <PortableTextRenderer value={page.body} /> : (
         <div>
           <p className="text-gray-600 leading-relaxed mb-8">

@@ -15,8 +15,17 @@ export default async function Page() {
     client.fetch(pageByIdQuery, { id: "page-starfid-verkefni-erlendis" }).catch(() => null),
     client.fetch(starfidPagesBySectionQuery, { section: "verkefni-erlendis" }).catch(() => []),
   ]);
+
+  const subNavLinks = [
+    { href: "/starfid/verkefni-erlendis", label: "Yfirlit" },
+    ...(dynamicPages as DynamicPage[]).map((p) => ({
+      href: `/starfid/verkefni-erlendis/${p.slug.current}`,
+      label: p.title,
+    })),
+  ];
+
   return (
-    <StarfidLayout title={page?.title || "Verkefni Erlendis"} section="verkefni-erlendis" heroImage={page?.heroImage}>
+    <StarfidLayout title={page?.title || "Verkefni Erlendis"} section="verkefni-erlendis" heroImage={page?.heroImage} subNavLinks={subNavLinks}>
       {page?.body ? (
         <PortableTextRenderer value={page.body} />
       ) : (
