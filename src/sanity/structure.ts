@@ -1,105 +1,93 @@
 import type { StructureResolver } from "sanity/structure";
 
-function singleton(S: Parameters<StructureResolver>[0], title: string, id: string) {
+type S = Parameters<StructureResolver>[0];
+
+function singleton(S: S, title: string, id: string) {
   return S.listItem().title(title).id(id).child(
     S.document().schemaType("page").documentId(id)
   );
 }
 
-function dynamicList(
-  S: Parameters<StructureResolver>[0],
-  title: string,
-  id: string,
-  section: string
-) {
+// Flat document list that includes both singleton pages (by _id) and
+// dynamically created pages (by section field). Editors can create new
+// pages from this list and they appear here automatically.
+function sectionList(S: S, title: string, id: string, section: string, singletonIds: string[] = []) {
+  const idClause = singletonIds.length > 0
+    ? ` || _id in [${singletonIds.map((i) => `"${i}"`).join(", ")}]`
+    : "";
   return S.listItem()
     .title(title)
     .id(id)
     .child(
       S.documentList()
         .title(title)
-        .filter(`_type == "page" && section == "${section}"`)
-        .defaultOrdering([{ field: "_createdAt", direction: "asc" }])
+        .filter(`_type == "page" && (section == "${section}"${idClause})`)
+        .defaultOrdering([
+          { field: "sortOrder", direction: "asc" },
+          { field: "_createdAt", direction: "asc" },
+        ])
     );
 }
 
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title("Landsbygg\u00F0in lifi")
+    .title("Landsbyggðin lifi")
     .items([
-      S.listItem().title("Fors\u00ED\u00F0a").id("siteSettings").child(
+      S.listItem().title("Forsíða").id("siteSettings").child(
         S.document().schemaType("siteSettings").documentId("siteSettings")
       ),
       singleton(S, "Um okkur", "page-um-okkur"),
       S.divider(),
 
       // Samtökin
-      S.listItem().title("Samt\u00F6kin").child(
-        S.list().title("Samt\u00F6kin").items([
-          singleton(S, "Markmi\u00F0", "page-markmid"),
-          singleton(S, "L\u00F6g", "page-log"),
-          S.listItem().title("Stj\u00F3rn og f\u00E9lagsmenn").id("samtokinSettings").child(
+      S.listItem().title("Samtökin").child(
+        S.list().title("Samtökin").items([
+          singleton(S, "Markmið", "page-markmid"),
+          singleton(S, "Lög", "page-log"),
+          S.listItem().title("Stjórn og félagsmenn").id("samtokinSettings").child(
             S.document().schemaType("samtokinSettings").documentId("samtokinSettings")
           ),
         ])
       ),
 
-      // Starfið
-      S.listItem().title("Starfi\u00F0").child(
-        S.list().title("Starfi\u00F0").items([
-          singleton(S, "Stefnum\u00F6rkun", "page-starfid-stefnumorkun"),
+      // Starfið — each sub-section is a flat document list
+      S.listItem().title("Starfið").child(
+        S.list().title("Starfið").items([
+          singleton(S, "Stefnumörkun", "page-starfid-stefnumorkun"),
 
-          // Samstarf Erlendis
-          S.listItem().title("Samstarf Erlendis").child(
-            S.list().title("Samstarf Erlendis").items([
-              singleton(S, "Yfirlit", "page-starfid-erlent-samstarf"),
-              singleton(S, "European Rural Parliament", "page-starfid-erp"),
-              singleton(S, "Hela norden skal leva", "page-starfid-hela-norden"),
-              S.divider(),
-              dynamicList(S, "N\u00fdjar undirs\u00ed\u00f0ur", "samstarf-erlendis-dynamic", "samstarf-erlendis"),
-            ])
-          ),
+          sectionList(S, "Samstarf Erlendis", "section-samstarf-erlendis", "samstarf-erlendis", [
+            "page-starfid-erlent-samstarf",
+            "page-starfid-erp",
+            "page-starfid-hela-norden",
+          ]),
 
-          // Verkefni Erlendis
-          S.listItem().title("Verkefni Erlendis").child(
-            S.list().title("Verkefni Erlendis").items([
-              dynamicList(S, "Verkefni", "verkefni-erlendis-dynamic", "verkefni-erlendis"),
-            ])
-          ),
+          sectionList(S, "Verkefni Erlendis", "section-verkefni-erlendis", "verkefni-erlendis", [
+            "page-starfid-verkefni-erlendis",
+          ]),
 
-          // Samstarf Innanlands
-          S.listItem().title("Samstarf Innanlands").child(
-            S.list().title("Samstarf Innanlands").items([
-              dynamicList(S, "Samstarf", "samstarf-innanlands-dynamic", "samstarf-innanlands"),
-            ])
-          ),
+          sectionList(S, "Samstarf Innanlands", "section-samstarf-innanlands", "samstarf-innanlands", [
+            "page-starfid-samstarf-innanlands",
+          ]),
 
-          // Verkefni Innanlands
-          S.listItem().title("Verkefni Innanlands").child(
-            S.list().title("Verkefni Innanlands").items([
-              singleton(S, "Yfirlit", "page-starfid-verkefni-innanlands"),
-              singleton(S, "Heimsmarkmi\u00F0", "page-starfid-heimsmarkmid"),
-              singleton(S, "Animation og SDG", "page-starfid-animation-sdg"),
-              singleton(S, "Samstarf vi\u00F0 RHA", "page-starfid-rha"),
-              S.divider(),
-              dynamicList(S, "N\u00fdjar undirs\u00ed\u00f0ur", "verkefni-innanlands-dynamic", "verkefni-innanlands"),
-            ])
-          ),
+          sectionList(S, "Verkefni Innanlands", "section-verkefni-innanlands", "verkefni-innanlands", [
+            "page-starfid-verkefni-innanlands",
+            "page-starfid-heimsmarkmid",
+            "page-starfid-animation-sdg",
+            "page-starfid-rha",
+          ]),
 
-          S.listItem().title("Fundarger\u00F0ir").child(
-            S.list().title("Fundarger\u00F0ir").items([
-              singleton(S, "Yfirlit", "page-starfid-fundargerdir"),
-              singleton(S, "A\u00F0alfundir", "page-starfid-adalfundir"),
-              singleton(S, "Stj\u00F3rnarfundir", "page-starfid-stjornarfundir"),
-            ])
-          ),
-          singleton(S, "Skipulag \u00EDb\u00FAasamtaka", "page-starfid-skipulag-ibuasamtaka"),
-          S.divider(),
-          dynamicList(S, "N\u00fdjar s\u00ed\u00f0ur undir Starfi\u00F0", "starfid-top-dynamic", "starfid"),
+          sectionList(S, "Fundargerðir", "section-fundargerdir", "fundargerdir", [
+            "page-starfid-fundargerdir",
+            "page-starfid-adalfundir",
+            "page-starfid-stjornarfundir",
+          ]),
+
+          singleton(S, "Skipulag íbúasamtaka", "page-starfid-skipulag-ibuasamtaka"),
+          singleton(S, "Byggðastefna", "page-starfid-byggdastefna"),
         ])
       ),
 
       S.divider(),
-      S.documentTypeListItem("newsPost").title("Fr\u00E9ttir"),
+      S.documentTypeListItem("newsPost").title("Fréttir"),
       S.documentTypeListItem("eventAlbum").title("Myndasöfn (viðburðir)"),
     ]);
