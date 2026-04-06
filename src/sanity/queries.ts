@@ -146,9 +146,10 @@ export const starfidPageBySlugQuery = groq`
 `;
 
 export const starfidPagesBySectionQuery = groq`
-  *[_type == "page" && section == $section] | order(_createdAt asc) {
+  *[_type == "page" && section == $section] | order(sortOrder asc, _createdAt asc) {
     _id,
     title,
+    navTitle,
     slug
   }
 `;

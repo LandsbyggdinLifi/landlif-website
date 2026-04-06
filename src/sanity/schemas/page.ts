@@ -25,6 +25,19 @@ export const page = defineType({
         }),
     }),
     defineField({
+      name: "navTitle",
+      title: "Heiti í hliðarspjaldi",
+      type: "string",
+      description: "Styttra heiti sem birtist í hliðarspjaldinu. Ef autt er notað titillinn.",
+    }),
+    defineField({
+      name: "sortOrder",
+      title: "Röðun",
+      type: "number",
+      description: "Lægri tala = framar í listanum. Sjálfgefið 100.",
+      initialValue: 100,
+    }),
+    defineField({
       name: "section",
       title: "Hluti",
       type: "string",

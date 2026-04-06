@@ -8,7 +8,7 @@ import StarfidLayout from "@/components/StarfidLayout";
 export const revalidate = 60;
 export const metadata: Metadata = { title: "Samstarf Erlendis", description: "Landsbyggðin lifi í alþjóðlegu samstarfi um dreifbýlismál og styrkingu landsbyggðar." };
 
-type DynamicPage = { _id: string; title: string; slug: { current: string } };
+type DynamicPage = { _id: string; title: string; navTitle?: string; slug: { current: string } };
 
 const staticLinks = [
   { href: "/starfid/samstarf-erlendis/european-rural-parliament", label: "European Rural Parliament" },
@@ -26,7 +26,7 @@ export default async function Page() {
     ...staticLinks,
     ...(dynamicPages as DynamicPage[]).map((p) => ({
       href: `/starfid/samstarf-erlendis/${p.slug.current}`,
-      label: p.title,
+      label: p.navTitle ?? p.title,
     })),
   ];
 

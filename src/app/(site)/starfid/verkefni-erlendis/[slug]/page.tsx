@@ -11,7 +11,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-type SiblingPage = { _id: string; title: string; slug: { current: string } };
+type SiblingPage = { _id: string; title: string; navTitle?: string; slug: { current: string } };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -34,7 +34,7 @@ export default async function Page({ params }: Props) {
     { href: "/starfid/verkefni-erlendis", label: "Yfirlit" },
     ...(siblings as SiblingPage[]).map((p) => ({
       href: `/starfid/verkefni-erlendis/${p.slug.current}`,
-      label: p.title,
+      label: p.navTitle ?? p.title,
     })),
   ];
 

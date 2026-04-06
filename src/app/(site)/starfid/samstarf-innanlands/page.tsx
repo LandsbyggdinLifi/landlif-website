@@ -8,7 +8,7 @@ import StarfidLayout from "@/components/StarfidLayout";
 export const revalidate = 60;
 export const metadata: Metadata = { title: "Samstarf Innanlands", description: "Samstarf Landsbyggðar lifi við íslenskar stofnanir og samtök." };
 
-type DynamicPage = { _id: string; title: string; slug: { current: string } };
+type DynamicPage = { _id: string; title: string; navTitle?: string; slug: { current: string } };
 
 export default async function Page() {
   const [page, dynamicPages] = await Promise.all([
@@ -20,7 +20,7 @@ export default async function Page() {
     { href: "/starfid/samstarf-innanlands", label: "Yfirlit" },
     ...(dynamicPages as DynamicPage[]).map((p) => ({
       href: `/starfid/samstarf-innanlands/${p.slug.current}`,
-      label: p.title,
+      label: p.navTitle ?? p.title,
     })),
   ];
 

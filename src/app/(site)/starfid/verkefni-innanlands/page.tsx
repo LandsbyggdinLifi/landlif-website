@@ -8,7 +8,7 @@ import StarfidLayout from "@/components/StarfidLayout";
 export const revalidate = 60;
 export const metadata: Metadata = { title: "Verkefni Innanlands", description: "Yfirlit yfir verkefni Landsbyggðar lifi innanlands." };
 
-type DynamicPage = { _id: string; title: string; slug: { current: string } };
+type DynamicPage = { _id: string; title: string; navTitle?: string; slug: { current: string } };
 
 const staticLinks = [
   { href: "/starfid/verkefni-innanlands/heimsmarkmid", label: "Heimsmarkmið Sameinuðu þjóðanna" },
@@ -27,7 +27,7 @@ export default async function Page() {
     ...staticLinks,
     ...(dynamicPages as DynamicPage[]).map((p) => ({
       href: `/starfid/verkefni-innanlands/${p.slug.current}`,
-      label: p.title,
+      label: p.navTitle ?? p.title,
     })),
   ];
 

@@ -16,7 +16,7 @@ const staticLinks = [
   { href: "/starfid/samstarf-erlendis/hela-norden", label: "Hela norden skal leva" },
 ];
 
-type SiblingPage = { _id: string; title: string; slug: { current: string } };
+type SiblingPage = { _id: string; title: string; navTitle?: string; slug: { current: string } };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -40,7 +40,7 @@ export default async function Page({ params }: Props) {
     ...staticLinks,
     ...(siblings as SiblingPage[]).map((p) => ({
       href: `/starfid/samstarf-erlendis/${p.slug.current}`,
-      label: p.title,
+      label: p.navTitle ?? p.title,
     })),
   ];
 
