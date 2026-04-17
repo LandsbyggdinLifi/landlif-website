@@ -16,27 +16,27 @@ type SiblingPage = { _id: string; title: string; navTitle?: string; slug: { curr
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const page = await client
-    .fetch(starfidPageBySlugQuery, { section: "samstarf-innanlands", slug })
+    .fetch(starfidPageBySlugQuery, { section: "fundargerdir", slug })
     .catch(() => null);
-  return { title: page?.title ?? "Samstarf Innanlands" };
+  return { title: page?.title ?? "Fundargerðir" };
 }
 
 export default async function Page({ params }: Props) {
   const { slug } = await params;
   const [page, siblings] = await Promise.all([
-    client.fetch(starfidPageBySlugQuery, { section: "samstarf-innanlands", slug }).catch(() => null),
-    client.fetch(starfidPagesBySectionQuery, { section: "samstarf-innanlands" }).catch(() => []),
+    client.fetch(starfidPageBySlugQuery, { section: "fundargerdir", slug }).catch(() => null),
+    client.fetch(starfidPagesBySectionQuery, { section: "fundargerdir" }).catch(() => []),
   ]);
 
   if (!page) notFound();
 
   const subNavLinks = (siblings as SiblingPage[]).map((p) => ({
-    href: `/starfid/samstarf-innanlands/${p.slug.current}`,
+    href: `/starfid/fundargerdir/${p.slug.current}`,
     label: p.navTitle ?? p.title,
   }));
 
   return (
-    <StarfidLayout title={page.title} section="samstarf-innanlands" heroImage={page.heroImage} subNavLinks={subNavLinks} navLayout="horizontal">
+    <StarfidLayout title={page.title} section="fundargerdir" heroImage={page.heroImage} subNavLinks={subNavLinks} navLayout="horizontal">
       {page.body ? (
         <PortableTextRenderer value={page.body} />
       ) : (

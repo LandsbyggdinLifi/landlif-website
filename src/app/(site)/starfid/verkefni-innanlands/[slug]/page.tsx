@@ -11,12 +11,6 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-const staticLinks = [
-  { href: "/starfid/verkefni-innanlands/heimsmarkmid", label: "Heimsmarkmið Sameinuðu þjóðanna" },
-  { href: "/starfid/verkefni-innanlands/animation-og-sdg", label: "Animation og SDG" },
-  { href: "/starfid/verkefni-innanlands/rha", label: "Verkefni í samstarfi við RHA" },
-];
-
 type SiblingPage = { _id: string; title: string; navTitle?: string; slug: { current: string } };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -36,17 +30,13 @@ export default async function Page({ params }: Props) {
 
   if (!page) notFound();
 
-  const subNavLinks = [
-    { href: "/starfid/verkefni-innanlands", label: "Yfirlit" },
-    ...staticLinks,
-    ...(siblings as SiblingPage[]).map((p) => ({
-      href: `/starfid/verkefni-innanlands/${p.slug.current}`,
-      label: p.navTitle ?? p.title,
-    })),
-  ];
+  const subNavLinks = (siblings as SiblingPage[]).map((p) => ({
+    href: `/starfid/verkefni-innanlands/${p.slug.current}`,
+    label: p.navTitle ?? p.title,
+  }));
 
   return (
-    <StarfidLayout title={page.title} section="verkefni-innanlands" heroImage={page.heroImage} subNavLinks={subNavLinks}>
+    <StarfidLayout title={page.title} section="verkefni-innanlands" heroImage={page.heroImage} subNavLinks={subNavLinks} navLayout="horizontal">
       {page.body ? (
         <PortableTextRenderer value={page.body} />
       ) : (

@@ -48,6 +48,7 @@ export const page = defineType({
           { title: "Verkefni Erlendis", value: "verkefni-erlendis" },
           { title: "Samstarf Innanlands", value: "samstarf-innanlands" },
           { title: "Verkefni Innanlands", value: "verkefni-innanlands" },
+          { title: "Fundargerðir", value: "fundargerdir" },
         ],
       },
       description:

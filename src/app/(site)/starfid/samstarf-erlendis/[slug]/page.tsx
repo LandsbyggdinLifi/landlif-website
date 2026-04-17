@@ -11,11 +11,6 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-const staticLinks = [
-  { href: "/starfid/samstarf-erlendis/european-rural-parliament", label: "European Rural Parliament" },
-  { href: "/starfid/samstarf-erlendis/hela-norden", label: "Hela norden skal leva" },
-];
-
 type SiblingPage = { _id: string; title: string; navTitle?: string; slug: { current: string } };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -35,17 +30,13 @@ export default async function Page({ params }: Props) {
 
   if (!page) notFound();
 
-  const subNavLinks = [
-    { href: "/starfid/samstarf-erlendis", label: "Yfirlit" },
-    ...staticLinks,
-    ...(siblings as SiblingPage[]).map((p) => ({
-      href: `/starfid/samstarf-erlendis/${p.slug.current}`,
-      label: p.navTitle ?? p.title,
-    })),
-  ];
+  const subNavLinks = (siblings as SiblingPage[]).map((p) => ({
+    href: `/starfid/samstarf-erlendis/${p.slug.current}`,
+    label: p.navTitle ?? p.title,
+  }));
 
   return (
-    <StarfidLayout title={page.title} section="samstarf-erlendis" heroImage={page.heroImage} subNavLinks={subNavLinks}>
+    <StarfidLayout title={page.title} section="samstarf-erlendis" heroImage={page.heroImage} subNavLinks={subNavLinks} navLayout="horizontal">
       {page.body ? (
         <PortableTextRenderer value={page.body} />
       ) : (

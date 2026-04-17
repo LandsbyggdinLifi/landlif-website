@@ -30,16 +30,13 @@ export default async function Page({ params }: Props) {
 
   if (!page) notFound();
 
-  const subNavLinks = [
-    { href: "/starfid/verkefni-erlendis", label: "Yfirlit" },
-    ...(siblings as SiblingPage[]).map((p) => ({
-      href: `/starfid/verkefni-erlendis/${p.slug.current}`,
-      label: p.navTitle ?? p.title,
-    })),
-  ];
+  const subNavLinks = (siblings as SiblingPage[]).map((p) => ({
+    href: `/starfid/verkefni-erlendis/${p.slug.current}`,
+    label: p.navTitle ?? p.title,
+  }));
 
   return (
-    <StarfidLayout title={page.title} section="verkefni-erlendis" heroImage={page.heroImage} subNavLinks={subNavLinks}>
+    <StarfidLayout title={page.title} section="verkefni-erlendis" heroImage={page.heroImage} subNavLinks={subNavLinks} navLayout="horizontal">
       {page.body ? (
         <PortableTextRenderer value={page.body} />
       ) : (

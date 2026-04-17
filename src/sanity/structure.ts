@@ -1,3 +1,4 @@
+import type { InitialValueTemplateItem } from "sanity";
 import type { StructureResolver } from "sanity/structure";
 
 type S = Parameters<StructureResolver>[0];
@@ -15,6 +16,15 @@ function sectionList(S: S, title: string, id: string, section: string, singleton
   const idClause = singletonIds.length > 0
     ? ` || _id in [${singletonIds.map((i) => `"${i}"`).join(", ")}]`
     : "";
+  const templateId = `page-${section}`;
+  // Pass a plain InitialValueTemplateItem object instead of using S.initialValueTemplateItem()
+  // to avoid build-time template lookup in the structure builder context.
+  const templateItem: InitialValueTemplateItem = {
+    type: "initialValueTemplateItem",
+    id: templateId,
+    templateId,
+    schemaType: "page",
+  };
   return S.listItem()
     .title(title)
     .id(id)
@@ -26,6 +36,7 @@ function sectionList(S: S, title: string, id: string, section: string, singleton
           { field: "sortOrder", direction: "asc" },
           { field: "_createdAt", direction: "asc" },
         ])
+        .initialValueTemplates([templateItem])
     );
 }
 

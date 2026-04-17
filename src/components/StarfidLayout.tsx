@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { urlFor } from "@/sanity/image";
-import { starfidSubNav } from "@/lib/starfidNav";
 
 interface NavLink {
   href: string;
@@ -16,12 +15,13 @@ interface Props {
   section?: string;
   heroImage?: { asset: { _ref: string } };
   subNavLinks?: NavLink[];
+  navLayout?: "vertical" | "horizontal";
   children: React.ReactNode;
 }
 
-function SubNav({ section, subNavLinks }: { section: string; subNavLinks?: NavLink[] }) {
+function SubNav({ subNavLinks }: { subNavLinks?: NavLink[] }) {
   const pathname = usePathname();
-  const links = subNavLinks ?? starfidSubNav[section];
+  const links = subNavLinks;
   if (!links || links.length === 0) return null;
 
   return (
@@ -53,8 +53,42 @@ function SubNav({ section, subNavLinks }: { section: string; subNavLinks?: NavLi
   );
 }
 
-export default function StarfidLayout({ title, section, heroImage, subNavLinks, children }: Props) {
-  const subLinks = subNavLinks ?? (section ? starfidSubNav[section] : null);
+function HorizontalNav({ subNavLinks }: { subNavLinks?: NavLink[] }) {
+  const pathname = usePathname();
+  const links = subNavLinks;
+  if (!links || links.length === 0) return null;
+
+  return (
+    <nav className="flex gap-0 border-b border-gray-200 mb-10 overflow-x-auto">
+      {links.map((l) => {
+        const active = pathname === l.href;
+        return (
+          <Link
+            key={l.href}
+            href={l.href}
+            className="px-5 py-3 text-sm font-medium whitespace-nowrap border-b-2 -mb-px transition-colors"
+            style={
+              active
+                ? { borderColor: "var(--navy)", color: "var(--navy)" }
+                : { borderColor: "transparent", color: "#6b7280" }
+            }
+            onMouseEnter={(e) => {
+              if (!active) (e.currentTarget as HTMLElement).style.color = "var(--navy)";
+            }}
+            onMouseLeave={(e) => {
+              if (!active) (e.currentTarget as HTMLElement).style.color = "#6b7280";
+            }}
+          >
+            {l.label}
+          </Link>
+        );
+      })}
+    </nav>
+  );
+}
+
+export default function StarfidLayout({ title, section, heroImage, subNavLinks, navLayout = "vertical", children }: Props) {
+  const subLinks = subNavLinks ?? null;
 
   return (
     <>
@@ -84,15 +118,20 @@ export default function StarfidLayout({ title, section, heroImage, subNavLinks, 
         </div>
       </section>
 
-      {/* Content + optional sidebar */}
+      {/* Content + optional nav */}
       <section className="py-12 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          {subLinks ? (
+          {navLayout === "horizontal" ? (
+            <>
+              <HorizontalNav subNavLinks={subNavLinks} />
+              <div className="max-w-3xl">{children}</div>
+            </>
+          ) : subLinks ? (
             <div className="flex flex-col md:flex-row gap-10">
               {/* Sidebar */}
               <aside className="md:w-52 flex-shrink-0">
                 <div className="rounded-xl border border-gray-100 p-3 md:sticky md:top-24">
-                  <SubNav section={section!} subNavLinks={subNavLinks} />
+                  <SubNav subNavLinks={subNavLinks} />
                 </div>
               </aside>
               {/* Main content */}
