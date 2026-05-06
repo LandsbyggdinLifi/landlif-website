@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { client } from "@/sanity/client";
 import { pageByIdQuery, starfidPagesBySectionQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
@@ -15,7 +16,13 @@ export default async function Page() {
     client.fetch(starfidPagesBySectionQuery, { section: "verkefni-erlendis" }).catch(() => []),
   ]);
 
-  const subNavLinks = (dynamicPages as DynamicPage[]).map((p) => ({
+  const pages = dynamicPages as DynamicPage[];
+
+  if (pages.length > 0) {
+    redirect(`/starfid/verkefni-erlendis/${pages[0].slug.current}`);
+  }
+
+  const subNavLinks = pages.map((p) => ({
     href: `/starfid/verkefni-erlendis/${p.slug.current}`,
     label: p.navTitle ?? p.title,
   }));

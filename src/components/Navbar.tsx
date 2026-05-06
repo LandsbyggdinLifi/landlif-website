@@ -13,7 +13,6 @@ const samtokinLinks = [
 ];
 
 const starfidLinks = [
-  { href: "/starfid", label: "Yfirlit" },
   { href: "/starfid/stefnumorkun", label: "Stefnumörkun" },
   { href: "/starfid/samstarf-erlendis", label: "Samstarf Erlendis" },
   { href: "/starfid/verkefni-erlendis", label: "Verkefni Erlendis" },

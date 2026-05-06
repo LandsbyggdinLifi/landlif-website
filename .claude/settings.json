@@ -7,7 +7,25 @@
       "Bash(git commit -m ':*)",
       "Bash(gh run:*)",
       "Bash(mkdir -p \"\\(site\\)\")",
-      "Bash(mv frettir:*)"
+      "Bash(mv frettir:*)",
+      "Bash(grep -n \"prepareTemplates\" node_modules/sanity/lib/_chunks-es/*.js)",
+      "Bash(python3 -c \" import sys, json lines = sys.stdin.read\\(\\).strip\\(\\).split\\('\\\\n'\\) for line in lines[-30:]: try: obj = json.loads\\(line\\) role = obj.get\\('role',''\\) content = obj.get\\('content',''\\) if isinstance\\(content, list\\): for c in content: if isinstance\\(c, dict\\) and c.get\\('type'\\) == 'text': print\\(f'[{role}]: {c[\\\\\"text\\\\\"][:500]}'\\) elif isinstance\\(content, str\\): print\\(f'[{role}]: {content[:500]}'\\) except: pass \")",
+      "Bash(git -C \"c:/Users/GG/Projects/LBL/landlif-website\" diff --stat HEAD)",
+      "Bash(git -C \"c:/Users/GG/Projects/LBL/landlif-website\" status --short)",
+      "Bash(git -C \"c:/Users/GG/Projects/LBL/landlif-website\" diff src/lib/starfidNav.ts)",
+      "Bash(git -C \"c:/Users/GG/Projects/LBL/landlif-website\" diff src/sanity/schemas/page.ts)",
+      "Bash(git -C \"c:/Users/GG/Projects/LBL/landlif-website\" log --oneline -3)",
+      "Bash(git -C c:/Users/GG/Projects/LBL/landlif-website add 'src/app/\\(site\\)/starfid/fundargerdir/page.tsx' 'src/app/\\(site\\)/starfid/fundargerdir/adalfundir/page.tsx' 'src/app/\\(site\\)/starfid/fundargerdir/stjornarfundir/page.tsx' 'src/app/\\(site\\)/starfid/fundargerdir/[slug]/page.tsx' 'src/app/\\(site\\)/starfid/samstarf-erlendis/[slug]/page.tsx' 'src/app/\\(site\\)/starfid/samstarf-erlendis/european-rural-parliament/page.tsx' 'src/app/\\(site\\)/starfid/samstarf-erlendis/hela-norden/page.tsx' 'src/app/\\(site\\)/starfid/samstarf-erlendis/page.tsx' 'src/app/\\(site\\)/starfid/samstarf-innanlands/[slug]/page.tsx' 'src/app/\\(site\\)/starfid/samstarf-innanlands/page.tsx' 'src/app/\\(site\\)/starfid/verkefni-erlendis/[slug]/page.tsx' 'src/app/\\(site\\)/starfid/verkefni-erlendis/page.tsx' 'src/app/\\(site\\)/starfid/verkefni-innanlands/[slug]/page.tsx' 'src/app/\\(site\\)/starfid/verkefni-innanlands/animation-og-sdg/page.tsx' 'src/app/\\(site\\)/starfid/verkefni-innanlands/heimsmarkmid/page.tsx' 'src/app/\\(site\\)/starfid/verkefni-innanlands/page.tsx' 'src/app/\\(site\\)/starfid/verkefni-innanlands/rha/page.tsx' src/components/StarfidLayout.tsx src/lib/starfidNav.ts src/sanity.config.ts src/sanity/schemas/page.ts src/sanity/structure.ts)",
+      "Bash(git -C c:/Users/GG/Projects/LBL/landlif-website commit -m ' *)",
+      "Bash(git -C \"c:/Users/GG/Projects/LBL/landlif-website\" push origin main)",
+      "Bash(npm install *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(tasklist /fi \"imagename eq node.exe\" /v)",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue | Measure-Object -Property WorkingSet -Sum | Select-Object Count, @{N='TotalGB';E={[math]::Round\\($_.Sum/1GB,2\\)}})",
+      "PowerShell($procs = Get-Process node -ErrorAction SilentlyContinue; Write-Host \"Count: $\\($procs.Count\\)\"; Write-Host \"Total WS GB: $\\([math]::Round\\(\\($procs | Measure-Object WorkingSet -Sum\\).Sum/1GB, 2\\)\\)\")",
+      "PowerShell(Stop-Process -Name node -Force -ErrorAction SilentlyContinue)",
+      "Read(//c/Users/GG/.claude/**)"
     ]
   }
 }
