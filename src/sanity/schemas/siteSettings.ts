@@ -9,18 +9,12 @@ export const siteSettings = defineType({
     { name: "contact", title: "Samband" },
   ],
   fields: [
-    // Forsíða
+    // 1. Hero
     defineField({
-      name: "title",
-      title: "Nafn stofnunar",
-      type: "string",
-      group: "homepage",
-    }),
-    defineField({
-      name: "description",
-      title: "Lýsing",
-      type: "text",
-      rows: 3,
+      name: "heroImage",
+      title: "Hero-mynd",
+      type: "image",
+      options: { hotspot: true },
       group: "homepage",
     }),
     defineField({
@@ -36,13 +30,7 @@ export const siteSettings = defineType({
       rows: 2,
       group: "homepage",
     }),
-    defineField({
-      name: "heroImage",
-      title: "Hero-mynd",
-      type: "image",
-      options: { hotspot: true },
-      group: "homepage",
-    }),
+    // 2. Hlutverk
     defineField({
       name: "missionHeading",
       title: "Hlutverk – fyrirsögn",
@@ -56,6 +44,7 @@ export const siteSettings = defineType({
       rows: 4,
       group: "homepage",
     }),
+    // 3. Kort
     defineField({
       name: "featureCards",
       title: "Kort (3 stk)",
@@ -75,19 +64,7 @@ export const siteSettings = defineType({
         },
       ],
     }),
-    defineField({
-      name: "ctaHeading",
-      title: "CTA fyrirsögn",
-      type: "string",
-      group: "homepage",
-    }),
-    defineField({
-      name: "ctaText",
-      title: "CTA texti",
-      type: "text",
-      rows: 2,
-      group: "homepage",
-    }),
+    // 4. Myndasafn
     defineField({
       name: "galleryImages",
       title: "Myndasafn (viðburðir)",
@@ -103,6 +80,34 @@ export const siteSettings = defineType({
           ],
         },
       ],
+    }),
+    // 5. CTA
+    defineField({
+      name: "ctaHeading",
+      title: "CTA fyrirsögn",
+      type: "string",
+      group: "homepage",
+    }),
+    defineField({
+      name: "ctaText",
+      title: "CTA texti",
+      type: "text",
+      rows: 2,
+      group: "homepage",
+    }),
+    // 6. Fótur
+    defineField({
+      name: "title",
+      title: "Nafn Stofnunar - Birtist neðst til vinstri á síðunni",
+      type: "string",
+      group: "homepage",
+    }),
+    defineField({
+      name: "description",
+      title: "Lýsing",
+      type: "text",
+      rows: 3,
+      group: "homepage",
     }),
 
     // Samband
