@@ -87,7 +87,7 @@ function HorizontalNav({ subNavLinks }: { subNavLinks?: NavLink[] }) {
   );
 }
 
-export default function StarfidLayout({ title, section, heroImage, subNavLinks, navLayout = "vertical", children }: Props) {
+export default function StarfidLayout({ title, heroImage, subNavLinks, navLayout = "vertical", children }: Props) {
   const subLinks = subNavLinks ?? null;
 
   return (
@@ -108,12 +108,12 @@ export default function StarfidLayout({ title, section, heroImage, subNavLinks, 
             />
             <div
               className="absolute inset-0"
-              style={{ backgroundColor: "rgba(57,76,117,0.6)" }}
+              style={{ backgroundColor: "rgba(28,28,30,0.6)" }}
             />
           </>
         )}
         <div className="relative z-10 max-w-6xl mx-auto px-6 pb-10 pt-20 w-full">
-          <p className="text-blue-300 text-sm mb-1">Starfið</p>
+          <p className="text-gray-400 text-sm mb-1">Starfið</p>
           <h1 className="text-4xl font-bold text-white">{title}</h1>
         </div>
       </section>

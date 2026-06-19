@@ -82,7 +82,7 @@ const components: PortableTextComponents = {
         href={value?.href}
         target={value?.href?.startsWith("http") ? "_blank" : undefined}
         rel={value?.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-        className="text-teal underline hover:text-[#0d7a63]"
+        className="text-teal underline hover:text-teal-dark"
       >
         {children}
       </a>

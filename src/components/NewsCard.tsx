@@ -11,9 +11,10 @@ interface NewsCardProps {
     excerpt?: string;
     mainImage?: { asset: { _ref: string }; alt?: string };
   };
+  isNew?: boolean;
 }
 
-export default function NewsCard({ post }: NewsCardProps) {
+export default function NewsCard({ post, isNew = false }: NewsCardProps) {
   const date = post.publishedAt
     ? new Date(post.publishedAt).toLocaleDateString("is-IS", {
         year: "numeric",
@@ -21,10 +22,6 @@ export default function NewsCard({ post }: NewsCardProps) {
         day: "numeric",
       })
     : null;
-
-  const isNew =
-    post.publishedAt &&
-    Date.now() - new Date(post.publishedAt).getTime() < 30 * 24 * 60 * 60 * 1000;
 
   return (
     <Link

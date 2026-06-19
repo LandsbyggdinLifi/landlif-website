@@ -17,9 +17,6 @@ export const siteSettingsQuery = groq`
       caption,
       alt
     },
-    boardMembers,
-    alternateBoardMembers,
-    memberOrgs,
     email,
     phone,
     address

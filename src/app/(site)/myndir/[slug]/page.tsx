@@ -77,11 +77,11 @@ export default async function AlbumPage({ params }: Props) {
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(57,76,117,0.75))" }}
+            style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(28,28,30,0.75))" }}
           />
           <div className="absolute bottom-0 left-0 right-0 max-w-6xl mx-auto px-6 pb-8">
             {formattedDate && (
-              <p className="text-blue-200 text-sm mb-1">{formattedDate}</p>
+              <p className="text-gray-300 text-sm mb-1">{formattedDate}</p>
             )}
             <h1 className="text-3xl sm:text-4xl font-bold text-white">{album.title}</h1>
           </div>
@@ -93,7 +93,7 @@ export default async function AlbumPage({ params }: Props) {
         >
           <div className="max-w-6xl mx-auto px-6">
             {formattedDate && (
-              <p className="text-blue-200 text-sm mb-2">{formattedDate}</p>
+              <p className="text-gray-300 text-sm mb-2">{formattedDate}</p>
             )}
             <h1 className="text-4xl font-bold">{album.title}</h1>
           </div>

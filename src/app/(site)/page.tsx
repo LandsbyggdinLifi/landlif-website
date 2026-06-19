@@ -47,13 +47,13 @@ export default async function HomePage() {
         )}
         <div
           className="absolute inset-0"
-          style={{ backgroundColor: "rgba(57,76,117,0.65)" }}
+          style={{ backgroundColor: "rgba(28,28,30,0.65)" }}
         />
         <div className="relative z-10 text-center max-w-3xl mx-auto px-6 py-24">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 drop-shadow">
             {heroHeading}
           </h1>
-          <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-200 mb-8 max-w-xl mx-auto leading-relaxed">
             {heroSubtext}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -157,7 +157,7 @@ export default async function HomePage() {
           <h2 className="text-3xl font-bold mb-4">
             {settings?.ctaHeading || "Vertu hluti af Landlífi"}
           </h2>
-          <p className="text-green-100 mb-8 text-lg">
+          <p className="text-orange-100 mb-8 text-lg">
             {settings?.ctaText || "Gakktu til liðs við okkur og styðtu uppbyggingu dreifbýlisins."}
           </p>
           <Link

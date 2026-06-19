@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import NewsCard from "@/components/NewsCard";
+import { isRecent } from "@/lib/date";
 
 type Post = {
   _id: string;
@@ -40,7 +41,7 @@ export default function NewsSection({ posts }: { posts: Post[] }) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {visiblePosts.map((post) => (
-            <NewsCard key={post._id} post={post} />
+            <NewsCard key={post._id} post={post} isNew={isRecent(post.publishedAt)} />
           ))}
         </div>
 

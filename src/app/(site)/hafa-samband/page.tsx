@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { client } from "@/sanity/client";
 import { siteSettingsQuery } from "@/sanity/queries";
+import ContactForm from "@/components/ContactForm";
 
 export const revalidate = 60;
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 
 export default async function ContactPage() {
   const settings = await client.fetch(siteSettingsQuery).catch(() => null);
+  const email = settings?.email || "landlif@landlif.is";
 
   return (
     <>
@@ -20,7 +22,7 @@ export default async function ContactPage() {
       >
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-4xl font-bold">Hafa samband</h1>
-          <p className="text-blue-200 mt-2">
+          <p className="text-gray-300 mt-2">
             Við heyrum gjarnan frá þér
           </p>
         </div>
@@ -37,23 +39,21 @@ export default async function ContactPage() {
               Upplýsingar
             </h2>
             <ul className="space-y-4 text-gray-700">
-              {(settings?.email || "landlif@landlif.is") && (
-                <li className="flex items-start gap-3">
-                  <span
-                    className="mt-0.5 flex-shrink-0 w-5 h-5 text-center"
-                    style={{ color: "var(--teal)" }}
-                  >
-                    ✉
-                  </span>
-                  <a
-                    href={`mailto:${settings?.email || "landlif@landlif.is"}`}
-                    className="hover:underline"
-                    style={{ color: "var(--teal)" }}
-                  >
-                    {settings?.email || "landlif@landlif.is"}
-                  </a>
-                </li>
-              )}
+              <li className="flex items-start gap-3">
+                <span
+                  className="mt-0.5 flex-shrink-0 w-5 h-5 text-center"
+                  style={{ color: "var(--teal)" }}
+                >
+                  ✉
+                </span>
+                <a
+                  href={`mailto:${email}`}
+                  className="hover:underline"
+                  style={{ color: "var(--teal)" }}
+                >
+                  {email}
+                </a>
+              </li>
               {settings?.phone && (
                 <li className="flex items-start gap-3">
                   <span
@@ -93,64 +93,7 @@ export default async function ContactPage() {
             >
               Sendu okkur skilaboð
             </h2>
-            <form
-              action={`mailto:${settings?.email || "landlif@landlif.is"}`}
-              method="get"
-              className="space-y-4"
-            >
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Nafn
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
-                  placeholder="Nafn þitt"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Netfang
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
-                  placeholder="netfang@example.is"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="body"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Skilaboð
-                </label>
-                <textarea
-                  id="body"
-                  name="body"
-                  rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
-                  placeholder="Hvernig getum við aðstoðað?"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-90"
-                style={{ backgroundColor: "var(--teal)" }}
-              >
-                Senda skilaboð
-              </button>
-            </form>
+            <ContactForm email={email} />
           </div>
         </div>
       </section>

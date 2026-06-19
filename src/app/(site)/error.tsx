@@ -18,7 +18,7 @@ export default function Error({
       <section className="py-20 text-white" style={{ backgroundColor: "var(--navy)" }}>
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-4xl font-bold">Eitthvað fór úrskeiðis</h1>
-          <p className="text-blue-200 mt-2">Villa kom upp við að hlaða þessari síðu.</p>
+          <p className="text-gray-300 mt-2">Villa kom upp við að hlaða þessari síðu.</p>
         </div>
       </section>
 

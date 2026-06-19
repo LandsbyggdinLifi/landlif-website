@@ -1,14 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --teal: #e8520a;
-  --navy: #1c1c1e;
+  /* Brand palette. Note: --teal/--navy keep their historical names but now
+     hold the current brand values (orange + near-black). Accents/links use
+     --teal (orange); dark sections/headings use --navy (near-black). */
+  --teal: #e8520a; /* primary accent (orange) */
+  --teal-dark: #b8400a; /* hover/darker accent */
+  --navy: #1c1c1e; /* dark surfaces + headings (near-black) */
   --gray-light: #f2f2f2;
   --orange: #e8520a;
 }
 
 @theme inline {
   --color-teal: var(--teal);
+  --color-teal-dark: var(--teal-dark);
   --color-navy: var(--navy);
   --color-gray-light: var(--gray-light);
   --color-orange: var(--orange);

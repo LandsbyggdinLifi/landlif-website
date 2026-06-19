@@ -1,13 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { urlFor } from "@/sanity/image";
-
-const subLinks = [
-  { href: "/samtokin/markmid", label: "Markmið" },
-  { href: "/samtokin/log", label: "Lög" },
-  { href: "/samtokin/stjorn", label: "Stjórn" },
-  { href: "/samtokin/felagsmenn", label: "Félagsmenn" },
-];
+import SamtokinSubNav from "@/components/SamtokinSubNav";
 
 interface Props {
   title: string;
@@ -34,12 +27,12 @@ export default function SamtokinLayout({ title, heroImage, children }: Props) {
             />
             <div
               className="absolute inset-0"
-              style={{ backgroundColor: "rgba(57,76,117,0.6)" }}
+              style={{ backgroundColor: "rgba(28,28,30,0.6)" }}
             />
           </>
         )}
         <div className="relative z-10 max-w-4xl mx-auto px-6 pb-10 pt-20 w-full">
-          <p className="text-blue-300 text-sm mb-1">Samtökin</p>
+          <p className="text-gray-400 text-sm mb-1">Samtökin</p>
           <h1 className="text-4xl font-bold text-white">{title}</h1>
         </div>
       </section>
@@ -47,21 +40,7 @@ export default function SamtokinLayout({ title, heroImage, children }: Props) {
       {/* Sub-nav */}
       <div style={{ backgroundColor: "var(--gray-light)" }} className="border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-6">
-          <nav className="flex gap-6 overflow-x-auto">
-            {subLinks.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors"
-                style={{
-                  borderColor: "transparent",
-                  color: "var(--navy)",
-                }}
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
+          <SamtokinSubNav />
         </div>
       </div>
 

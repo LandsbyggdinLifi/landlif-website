@@ -17,6 +17,7 @@ const sections = [
   { href: "/starfid/fundargerdir", label: "Fundargerðir" },
   { href: "/starfid/stefnumorkun", label: "Stefnumörkun" },
   { href: "/starfid/skipulag-ibuasamtaka", label: "Skipulag íbúasamtaka" },
+  { href: "/starfid/byggdastefna", label: "Byggðastefna" },
 ];
 
 export default async function StarfidPage() {

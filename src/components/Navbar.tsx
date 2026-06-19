@@ -20,6 +20,7 @@ const starfidLinks = [
   { href: "/starfid/verkefni-innanlands", label: "Verkefni Innanlands" },
   { href: "/starfid/fundargerdir", label: "Fundargerðir" },
   { href: "/starfid/skipulag-ibuasamtaka", label: "Skipulag íbúasamtaka" },
+  { href: "/starfid/byggdastefna", label: "Byggðastefna" },
 ];
 
 function DropdownMenu({
@@ -52,6 +53,8 @@ function DropdownMenu({
           active ? "text-teal" : "text-gray-600 hover:text-teal"
         }`}
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-haspopup="true"
       >
         {label}
         <svg
@@ -200,6 +203,8 @@ export default function Navbar() {
             className="md:hidden p-2 rounded text-gray-600"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Opna valmynd"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             <span className="block w-5 h-0.5 bg-current mb-1" />
             <span className="block w-5 h-0.5 bg-current mb-1" />
@@ -210,7 +215,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-gray-100 bg-white px-4 py-3 space-y-1">
+        <div id="mobile-menu" className="md:hidden border-t border-gray-100 bg-white px-4 py-3 space-y-1">
           <Link
             href="/"
             className={`block py-2 text-sm font-medium ${pathname === "/" ? "text-teal" : "text-gray-700 hover:text-teal"}`}

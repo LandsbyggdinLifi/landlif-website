@@ -27,6 +27,7 @@ const staticRoutes: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/starfid/fundargerdir/adalfundir`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/starfid/fundargerdir/stjornarfundir`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/starfid/skipulag-ibuasamtaka`, changeFrequency: "monthly", priority: 0.6 },
+  { url: `${BASE_URL}/starfid/byggdastefna`, changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/myndir`, changeFrequency: "monthly", priority: 0.7 },
 ];
 
@@ -35,6 +36,7 @@ const DYNAMIC_SECTIONS: { section: string; prefix: string }[] = [
   { section: "verkefni-erlendis", prefix: "/starfid/verkefni-erlendis" },
   { section: "samstarf-innanlands", prefix: "/starfid/samstarf-innanlands" },
   { section: "verkefni-innanlands", prefix: "/starfid/verkefni-innanlands" },
+  { section: "fundargerdir", prefix: "/starfid/fundargerdir" },
   { section: "starfid", prefix: "/starfid" },
 ];
 

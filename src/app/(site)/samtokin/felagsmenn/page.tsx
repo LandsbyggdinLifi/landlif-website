@@ -49,7 +49,7 @@ export default async function FelagsmennPage() {
           style={{ backgroundColor: "var(--teal)" }}
         >
           <h3 className="text-lg font-bold mb-2">Gerast meðlimur</h3>
-          <p className="text-green-100 text-sm mb-4">
+          <p className="text-orange-100 text-sm mb-4">
             Viltu styðja uppbyggingu landsbyggðarinnar? Hafðu samband við okkur.
           </p>
           <Link

@@ -36,7 +36,7 @@ export default async function AboutPage() {
             />
             <div
               className="absolute inset-0"
-              style={{ backgroundColor: "rgba(57,76,117,0.6)" }}
+              style={{ backgroundColor: "rgba(28,28,30,0.6)" }}
             />
           </>
         )}

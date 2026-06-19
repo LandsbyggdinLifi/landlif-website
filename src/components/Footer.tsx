@@ -17,15 +17,15 @@ export default async function Footer() {
             <h3 className="text-lg font-bold mb-3">
               {settings?.title || "Landsbyggðin lifi"}
             </h3>
-            <p className="text-sm text-blue-100 leading-relaxed">
+            <p className="text-sm text-gray-200 leading-relaxed">
               Samtök um uppbyggingu og styrkingu dreifbýlis á Íslandi.
             </p>
           </div>
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-blue-200 mb-3">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-3">
               Tenglar
             </h4>
-            <ul className="space-y-2 text-sm text-blue-100">
+            <ul className="space-y-2 text-sm text-gray-200">
               <li>
                 <Link href="/" className="hover:text-white transition-colors">Forsíða</Link>
               </li>
@@ -44,10 +44,10 @@ export default async function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-blue-200 mb-3">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-3">
               Samband
             </h4>
-            <ul className="space-y-2 text-sm text-blue-100">
+            <ul className="space-y-2 text-sm text-gray-200">
               <li>
                 <a href={`mailto:${email}`} className="hover:text-white transition-colors">
                   {email}
@@ -64,7 +64,7 @@ export default async function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-blue-700 mt-10 pt-6 text-xs text-blue-300 text-center flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="border-t border-white/15 mt-10 pt-6 text-xs text-gray-400 text-center flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>© {new Date().getFullYear()} {settings?.title || "Landsbyggðin lifi"}. Öll réttindi áskilin.</span>
           <Link
             href="/studio"

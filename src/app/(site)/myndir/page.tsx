@@ -32,7 +32,7 @@ export default async function GalleryPage() {
       >
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-4xl font-bold">Myndir</h1>
-          <p className="text-blue-200 mt-2">Myndasöfn af viðburðum Landlífs</p>
+          <p className="text-gray-300 mt-2">Myndasöfn af viðburðum Landlífs</p>
         </div>
       </section>
 

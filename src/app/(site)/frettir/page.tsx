@@ -3,6 +3,7 @@ import Link from "next/link";
 import { client } from "@/sanity/client";
 import { newsPostsPagedQuery, newsPostsCountQuery } from "@/sanity/queries";
 import NewsCard from "@/components/NewsCard";
+import { isRecent } from "@/lib/date";
 
 export const revalidate = 60;
 
@@ -42,7 +43,7 @@ export default async function NewsPage({ searchParams }: Props) {
       >
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-4xl font-bold">Fréttir</h1>
-          <p className="text-blue-200 mt-2">
+          <p className="text-gray-300 mt-2">
             Nýjustu fréttir og tilkynningar frá Landlífi
           </p>
         </div>
@@ -63,7 +64,7 @@ export default async function NewsPage({ searchParams }: Props) {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {posts.map(
                   (post: Parameters<typeof NewsCard>[0]["post"]) => (
-                    <NewsCard key={post._id} post={post} />
+                    <NewsCard key={post._id} post={post} isNew={isRecent(post.publishedAt)} />
                   )
                 )}
               </div>
