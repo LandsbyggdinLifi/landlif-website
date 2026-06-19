@@ -31,19 +31,19 @@ export default async function StarfidPage() {
         <div className="grid gap-3">
           {sections.map((l) => (
             <Link key={l.href} href={l.href}
-              className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
-              <span style={{ color: "var(--teal)" }}>→</span> {l.label}
+              className="flex items-center gap-2 p-4 rounded-lg border border-stone/15 hover:border-amber hover:shadow-sm transition-all text-moss-deep font-medium">
+              <span className="text-amber">→</span> {l.label}
             </Link>
           ))}
         </div>
         {dynamicPages.length > 0 && (
           <div className="mt-10">
-            <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>Fleiri síður</h2>
+            <h2 className="font-serif text-xl font-semibold mb-4 text-moss-deep">Fleiri síður</h2>
             <div className="grid gap-3">
               {dynamicPages.map((p) => (
                 <Link key={p._id} href={`/starfid/${p.slug.current}`}
-                  className="flex items-center gap-2 p-4 rounded-lg border border-gray-100 hover:border-teal hover:shadow-sm transition-all text-navy font-medium">
-                  <span style={{ color: "var(--teal)" }}>→</span> {p.title}
+                  className="flex items-center gap-2 p-4 rounded-lg border border-stone/15 hover:border-amber hover:shadow-sm transition-all text-moss-deep font-medium">
+                  <span className="text-amber">→</span> {p.title}
                 </Link>
               ))}
             </div>

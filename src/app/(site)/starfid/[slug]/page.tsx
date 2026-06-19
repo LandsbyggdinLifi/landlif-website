@@ -32,7 +32,7 @@ export default async function Page({ params }: Props) {
       {page.body ? (
         <PortableTextRenderer value={page.body} />
       ) : (
-        <p className="text-gray-600 leading-relaxed">Efni vantar.</p>
+        <p className="text-ink/80 leading-relaxed">Efni vantar.</p>
       )}
     </StarfidLayout>
   );

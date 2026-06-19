@@ -8,18 +8,17 @@ export default function GlobalError({
 }) {
   return (
     <html lang="is">
-      <body className="min-h-screen flex items-center justify-center bg-white">
+      <body className="min-h-screen flex items-center justify-center bg-paper">
         <div className="text-center px-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-3">
+          <h1 className="text-3xl font-bold text-ink mb-3">
             Eitthvað fór úrskeiðis
           </h1>
-          <p className="text-gray-500 mb-6">
+          <p className="text-stone mb-6">
             Villa kom upp. Vinsamlegast reyndu aftur.
           </p>
           <button
             onClick={unstable_retry}
-            className="px-6 py-3 text-white rounded-lg font-medium"
-            style={{ backgroundColor: "var(--navy)" }}
+            className="px-6 py-3 rounded-full font-semibold bg-amber text-white hover:bg-amber-dark transition-colors"
           >
             Reyna aftur
           </button>

@@ -29,7 +29,7 @@ export default function ContactForm({ email }: { email: string }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="name" className="block text-sm font-medium text-ink/80 mb-1">
           Nafn
         </label>
         <input
@@ -37,12 +37,12 @@ export default function ContactForm({ email }: { email: string }) {
           id="name"
           name="name"
           required
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
+          className="w-full px-4 py-2 border border-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber"
           placeholder="Nafn þitt"
         />
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="email" className="block text-sm font-medium text-ink/80 mb-1">
           Netfang
         </label>
         <input
@@ -50,12 +50,12 @@ export default function ContactForm({ email }: { email: string }) {
           id="email"
           name="email"
           required
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
+          className="w-full px-4 py-2 border border-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber"
           placeholder="netfang@example.is"
         />
       </div>
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="message" className="block text-sm font-medium text-ink/80 mb-1">
           Skilaboð
         </label>
         <textarea
@@ -63,22 +63,21 @@ export default function ContactForm({ email }: { email: string }) {
           name="message"
           rows={5}
           required
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
+          className="w-full px-4 py-2 border border-stone/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber"
           placeholder="Hvernig getum við aðstoðað?"
         />
       </div>
       <button
         type="submit"
-        className="w-full py-3 rounded-lg text-white font-semibold transition-opacity hover:opacity-90"
-        style={{ backgroundColor: "var(--teal)" }}
+        className="w-full py-3 rounded-full bg-amber text-white font-semibold transition-colors hover:bg-amber-dark"
       >
         Senda skilaboð
       </button>
       {sent && (
-        <p className="text-sm text-gray-500" role="status">
+        <p className="text-sm text-stone" role="status">
           Tölvupóstforritið þitt ætti að hafa opnast með skilaboðunum. Ef ekki, sendu
           okkur póst beint á{" "}
-          <a href={`mailto:${email}`} className="underline" style={{ color: "var(--teal)" }}>
+          <a href={`mailto:${email}`} className="underline text-amber hover:text-amber-dark">
             {email}
           </a>
           .

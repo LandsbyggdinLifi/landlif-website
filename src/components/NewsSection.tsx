@@ -21,19 +21,15 @@ export default function NewsSection({ posts }: { posts: Post[] }) {
   const visiblePosts = posts.slice(page * perPage, page * perPage + perPage);
 
   return (
-    <section style={{ backgroundColor: "var(--gray-light)" }} className="py-20">
+    <section className="py-24 bg-sand">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between mb-10">
-          <h2
-            className="text-3xl font-bold"
-            style={{ color: "var(--navy)" }}
-          >
+        <div className="flex items-end justify-between mb-10">
+          <h2 className="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-moss-deep">
             Nýjustu fréttir
           </h2>
           <Link
             href="/frettir"
-            className="text-sm font-medium"
-            style={{ color: "var(--teal)" }}
+            className="text-sm font-semibold text-amber hover:text-amber-dark transition-colors whitespace-nowrap"
           >
             Sjá allar fréttir →
           </Link>
@@ -50,8 +46,7 @@ export default function NewsSection({ posts }: { posts: Post[] }) {
             <button
               onClick={() => setPage((p) => p - 1)}
               disabled={page === 0}
-              className="w-9 h-9 rounded-full flex items-center justify-center text-lg leading-none transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
-              style={{ backgroundColor: "var(--teal)", color: "white" }}
+              className="w-9 h-9 rounded-full flex items-center justify-center text-lg leading-none bg-amber text-white transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
               aria-label="Fyrri fréttir"
             >
               ‹
@@ -61,10 +56,9 @@ export default function NewsSection({ posts }: { posts: Post[] }) {
               <button
                 key={i}
                 onClick={() => setPage(i)}
-                className="w-2.5 h-2.5 rounded-full transition-colors"
-                style={{
-                  backgroundColor: i === page ? "var(--teal)" : "#9ca3af",
-                }}
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                  i === page ? "bg-amber" : "bg-stone/40"
+                }`}
                 aria-label={`Síða ${i + 1}`}
               />
             ))}
@@ -72,8 +66,7 @@ export default function NewsSection({ posts }: { posts: Post[] }) {
             <button
               onClick={() => setPage((p) => p + 1)}
               disabled={page === totalPages - 1}
-              className="w-9 h-9 rounded-full flex items-center justify-center text-lg leading-none transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
-              style={{ backgroundColor: "var(--teal)", color: "white" }}
+              className="w-9 h-9 rounded-full flex items-center justify-center text-lg leading-none bg-amber text-white transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
               aria-label="Næstu fréttir"
             >
               ›

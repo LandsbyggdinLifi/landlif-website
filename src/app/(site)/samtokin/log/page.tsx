@@ -22,7 +22,7 @@ export default async function LogPage() {
         <PortableTextRenderer value={page.body} />
       ) : (
         <div>
-          <p className="text-sm text-gray-400 mb-8">
+          <p className="text-sm text-stone mb-8">
             Samþykkt á stofnfundi í Akureyri 12. júní 2001. Breytt á aðalfundum
             í Rím (Svarfaðardal) 5. júní 2004, á Hvanneyri 10. júní 2007, á
             Kópaskeri 23. ágúst 2008, á Ytri-Vík 6. nóvember 2010 og á
@@ -42,8 +42,8 @@ export default async function LogPage() {
             { n: "11. grein", t: "Slit", b: "Slit samtakanna krefjast 2/3 samþykkis meðlima; eignir renna til uppbyggingar dreifbýlis." },
           ].map((a) => (
             <div key={a.n} className="mb-6">
-              <h3 className="font-semibold text-navy mb-1">{a.n} – {a.t}</h3>
-              <p className="text-gray-600 leading-relaxed">{a.b}</p>
+              <h3 className="font-serif text-lg font-semibold text-moss-deep mb-1">{a.n} – {a.t}</h3>
+              <p className="text-ink/80 leading-relaxed">{a.b}</p>
             </div>
           ))}
         </div>

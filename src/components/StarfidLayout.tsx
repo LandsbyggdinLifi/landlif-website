@@ -32,18 +32,11 @@ function SubNav({ subNavLinks }: { subNavLinks?: NavLink[] }) {
           <Link
             key={l.href}
             href={l.href}
-            className="px-4 py-3 rounded-lg text-sm font-medium transition-colors"
-            style={
+            className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
               active
-                ? { backgroundColor: "var(--navy)", color: "white" }
-                : { color: "var(--navy)" }
-            }
-            onMouseEnter={(e) => {
-              if (!active) (e.currentTarget as HTMLElement).style.backgroundColor = "var(--gray-light)";
-            }}
-            onMouseLeave={(e) => {
-              if (!active) (e.currentTarget as HTMLElement).style.backgroundColor = "";
-            }}
+                ? "bg-moss text-white"
+                : "text-ink/75 hover:bg-sand hover:text-moss"
+            }`}
           >
             {l.label}
           </Link>
@@ -59,25 +52,18 @@ function HorizontalNav({ subNavLinks }: { subNavLinks?: NavLink[] }) {
   if (!links || links.length === 0) return null;
 
   return (
-    <nav className="flex gap-0 border-b border-gray-200 mb-10 overflow-x-auto">
+    <nav className="flex border-b border-stone/15 mb-10 overflow-x-auto">
       {links.map((l) => {
         const active = pathname === l.href;
         return (
           <Link
             key={l.href}
             href={l.href}
-            className="px-5 py-3 text-sm font-medium whitespace-nowrap border-b-2 -mb-px transition-colors"
-            style={
+            className={`px-5 py-3 text-sm font-medium whitespace-nowrap border-b-2 -mb-px transition-colors ${
               active
-                ? { borderColor: "var(--navy)", color: "var(--navy)" }
-                : { borderColor: "transparent", color: "#6b7280" }
-            }
-            onMouseEnter={(e) => {
-              if (!active) (e.currentTarget as HTMLElement).style.color = "var(--navy)";
-            }}
-            onMouseLeave={(e) => {
-              if (!active) (e.currentTarget as HTMLElement).style.color = "#6b7280";
-            }}
+                ? "border-amber text-ink"
+                : "border-transparent text-stone hover:text-ink"
+            }`}
           >
             {l.label}
           </Link>
@@ -93,14 +79,11 @@ export default function StarfidLayout({ title, heroImage, subNavLinks, navLayout
   return (
     <>
       {/* Hero */}
-      <section
-        className="relative flex items-end"
-        style={{ minHeight: "220px", backgroundColor: "var(--navy)" }}
-      >
+      <section className="relative flex items-end bg-moss-deep min-h-[260px]">
         {heroImage?.asset && (
           <>
             <Image
-              src={urlFor(heroImage).width(1600).height(440).url()}
+              src={urlFor(heroImage).width(1600).height(520).url()}
               alt=""
               fill
               className="object-cover"
@@ -108,18 +91,25 @@ export default function StarfidLayout({ title, heroImage, subNavLinks, navLayout
             />
             <div
               className="absolute inset-0"
-              style={{ backgroundColor: "rgba(28,28,30,0.6)" }}
+              style={{
+                background:
+                  "linear-gradient(to top, rgba(36,58,46,0.92) 0%, rgba(36,58,46,0.45) 100%)",
+              }}
             />
           </>
         )}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 pb-10 pt-20 w-full">
-          <p className="text-gray-400 text-sm mb-1">Starfið</p>
-          <h1 className="text-4xl font-bold text-white">{title}</h1>
+        <div className="relative z-10 max-w-6xl mx-auto px-6 pb-10 pt-24 w-full">
+          <p className="text-amber text-xs font-semibold uppercase tracking-widest mb-2">
+            Starfið
+          </p>
+          <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-white">
+            {title}
+          </h1>
         </div>
       </section>
 
       {/* Content + optional nav */}
-      <section className="py-12 bg-white">
+      <section className="py-14 bg-paper">
         <div className="max-w-6xl mx-auto px-6">
           {navLayout === "horizontal" ? (
             <>
@@ -130,7 +120,7 @@ export default function StarfidLayout({ title, heroImage, subNavLinks, navLayout
             <div className="flex flex-col md:flex-row gap-10">
               {/* Sidebar */}
               <aside className="md:w-52 flex-shrink-0">
-                <div className="rounded-xl border border-gray-100 p-3 md:sticky md:top-24">
+                <div className="rounded-xl border border-stone/15 bg-white p-3 md:sticky md:top-24">
                   <SubNav subNavLinks={subNavLinks} />
                 </div>
               </aside>

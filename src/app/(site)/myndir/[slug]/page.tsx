@@ -77,41 +77,38 @@ export default async function AlbumPage({ params }: Props) {
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(28,28,30,0.75))" }}
+            style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(36,58,46,0.8))" }}
           />
           <div className="absolute bottom-0 left-0 right-0 max-w-6xl mx-auto px-6 pb-8">
             {formattedDate && (
-              <p className="text-gray-300 text-sm mb-1">{formattedDate}</p>
+              <p className="text-white/70 text-sm mb-1">{formattedDate}</p>
             )}
-            <h1 className="text-3xl sm:text-4xl font-bold text-white">{album.title}</h1>
+            <h1 className="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-white">{album.title}</h1>
           </div>
         </div>
       ) : (
-        <section
-          className="py-20 text-white"
-          style={{ backgroundColor: "var(--navy)" }}
-        >
+        <section className="py-20 bg-moss-deep text-white">
           <div className="max-w-6xl mx-auto px-6">
+            <span className="block w-12 h-px bg-amber mb-5" />
             {formattedDate && (
-              <p className="text-gray-300 text-sm mb-2">{formattedDate}</p>
+              <p className="text-white/70 text-sm mb-2">{formattedDate}</p>
             )}
-            <h1 className="text-4xl font-bold">{album.title}</h1>
+            <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight">{album.title}</h1>
           </div>
         </section>
       )}
 
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-paper">
         <div className="max-w-6xl mx-auto px-6">
           <Link
             href="/myndir"
-            className="inline-flex items-center gap-1 text-sm mb-8"
-            style={{ color: "var(--teal)" }}
+            className="inline-flex items-center gap-1 text-sm mb-8 text-amber hover:text-amber-dark transition-colors"
           >
             ← Til baka í myndir
           </Link>
 
           {album.description && (
-            <p className="text-gray-600 text-base mb-10 max-w-2xl">{album.description}</p>
+            <p className="text-stone text-base mb-10 max-w-2xl">{album.description}</p>
           )}
 
           {album.photos?.length > 0 ? (
@@ -123,7 +120,7 @@ export default async function AlbumPage({ params }: Props) {
               }))}
             />
           ) : (
-            <p className="text-gray-400 text-center py-16">Engar myndir í þessu safni enn.</p>
+            <p className="text-stone text-center py-16">Engar myndir í þessu safni enn.</p>
           )}
         </div>
       </section>

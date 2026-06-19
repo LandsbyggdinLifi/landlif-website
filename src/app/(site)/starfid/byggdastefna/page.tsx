@@ -17,7 +17,7 @@ export default async function Page() {
       {page?.body ? (
         <PortableTextRenderer value={page.body} />
       ) : (
-        <p className="text-gray-600 leading-relaxed">
+        <p className="text-ink/80 leading-relaxed">
           Landsbyggðin lifi vinnur að byggðastefnu sem styrkir búsetu, atvinnulíf og
           þjónustu um allt land. Efni þessarar síðu verður birt þegar það hefur verið
           skráð í Sanity Studio.

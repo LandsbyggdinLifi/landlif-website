@@ -13,15 +13,15 @@ export default async function Page() {
     <StarfidLayout title={page?.title || "Skipulag \u00EDb\u00FAasamtaka"} heroImage={page?.heroImage}>
       {page?.body ? <PortableTextRenderer value={page.body} /> : (
         <div>
-          <p className="text-gray-600 leading-relaxed mb-6">
+          <p className="text-ink/80 leading-relaxed mb-6">
             &ldquo;Íbúasamtök&rdquo; er hugtak sem nær yfir ýmsar tegundir af frjálsum félagasamtökum sem beinast að búsetuháttum, samfélagsumhverfi og velferð borgaranna á landsvæðum sem eru landsvæðislega skilgreind.
           </p>
-          <p className="text-gray-600 leading-relaxed mb-6">
+          <p className="text-ink/80 leading-relaxed mb-6">
             Samtökin veita leiðsögn fyrir samfélagshópa sem skortir uppbyggingu og stefnu, og hjálpa þeim að takast á við sameiginlegar áskoranir með kerfisbundinni nálgun við þróun verkefna og lausna.
           </p>
-          <div className="mt-8 p-5 rounded-xl bg-gray-50 border border-gray-100">
-            <p className="text-sm font-medium text-navy mb-1">Skjal til niðurhals</p>
-            <p className="text-sm text-gray-600">Skipulagnig starfsemi íbúasamtaka 2017</p>
+          <div className="mt-8 p-5 rounded-xl bg-sand/50 border border-stone/15">
+            <p className="text-sm font-medium text-moss-deep mb-1">Skjal til niðurhals</p>
+            <p className="text-sm text-stone">Skipulagnig starfsemi íbúasamtaka 2017</p>
           </div>
         </div>
       )}

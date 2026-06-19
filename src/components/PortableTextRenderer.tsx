@@ -12,13 +12,13 @@ const components: PortableTextComponents = {
           href={value.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 my-4 p-4 rounded-xl border border-gray-200 hover:border-teal hover:shadow-sm transition-all group"
+          className="flex items-center gap-3 my-4 p-4 rounded-xl border border-stone/20 hover:border-amber hover:shadow-sm transition-all group"
         >
           <span className="text-2xl">📄</span>
-          <span className="text-sm font-medium text-navy group-hover:text-teal transition-colors">
+          <span className="text-sm font-medium text-moss group-hover:text-amber transition-colors">
             {label}
           </span>
-          <span className="ml-auto text-xs text-gray-400">PDF</span>
+          <span className="ml-auto text-xs text-stone">PDF</span>
         </a>
       );
     },
@@ -26,7 +26,7 @@ const components: PortableTextComponents = {
       if (!value?.asset?._ref) return null;
       return (
         <figure className="my-8">
-          <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden">
             <Image
               src={urlFor(value).width(1200).url()}
               alt={value.alt || ""}
@@ -35,7 +35,7 @@ const components: PortableTextComponents = {
             />
           </div>
           {value.alt && (
-            <figcaption className="text-center text-sm text-gray-500 mt-2">
+            <figcaption className="text-center text-sm text-stone mt-2">
               {value.alt}
             </figcaption>
           )}
@@ -45,31 +45,31 @@ const components: PortableTextComponents = {
   },
   block: {
     h1: ({ children }) => (
-      <h1 className="text-3xl font-bold text-navy mt-8 mb-4">{children}</h1>
+      <h1 className="font-serif text-3xl font-semibold text-moss-deep mt-8 mb-4">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl font-bold text-navy mt-8 mb-3">{children}</h2>
+      <h2 className="font-serif text-2xl font-semibold text-moss-deep mt-8 mb-3">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl font-semibold text-navy mt-6 mb-2">{children}</h3>
+      <h3 className="font-serif text-xl font-semibold text-moss-deep mt-6 mb-2">{children}</h3>
     ),
     normal: ({ children }) => (
-      <p className="text-gray-700 leading-relaxed mb-4">{children}</p>
+      <p className="text-ink/80 leading-relaxed mb-4">{children}</p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-teal pl-4 italic text-gray-600 my-6">
+      <blockquote className="border-l-4 border-amber pl-4 italic text-stone my-6">
         {children}
       </blockquote>
     ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc list-inside space-y-1 mb-4 text-gray-700">
+      <ul className="list-disc list-inside space-y-1 mb-4 text-ink/80">
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal list-inside space-y-1 mb-4 text-gray-700">
+      <ol className="list-decimal list-inside space-y-1 mb-4 text-ink/80">
         {children}
       </ol>
     ),
@@ -82,7 +82,7 @@ const components: PortableTextComponents = {
         href={value?.href}
         target={value?.href?.startsWith("http") ? "_blank" : undefined}
         rel={value?.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-        className="text-teal underline hover:text-teal-dark"
+        className="text-moss underline underline-offset-2 hover:text-amber transition-colors"
       >
         {children}
       </a>

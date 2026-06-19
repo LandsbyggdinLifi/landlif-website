@@ -16,69 +16,43 @@ export default async function ContactPage() {
 
   return (
     <>
-      <section
-        className="py-20 text-white"
-        style={{ backgroundColor: "var(--navy)" }}
-      >
+      <section className="py-20 bg-moss-deep text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl font-bold">Hafa samband</h1>
-          <p className="text-gray-300 mt-2">
-            Við heyrum gjarnan frá þér
-          </p>
+          <span className="block w-12 h-px bg-amber mb-5" />
+          <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight">
+            Hafa samband
+          </h1>
+          <p className="text-white/70 mt-3">Við heyrum gjarnan frá þér</p>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper">
         <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact info */}
           <div>
-            <h2
-              className="text-2xl font-bold mb-6"
-              style={{ color: "var(--navy)" }}
-            >
+            <h2 className="font-serif text-2xl font-semibold mb-6 text-moss-deep">
               Upplýsingar
             </h2>
-            <ul className="space-y-4 text-gray-700">
+            <ul className="space-y-4 text-ink/80">
               <li className="flex items-start gap-3">
-                <span
-                  className="mt-0.5 flex-shrink-0 w-5 h-5 text-center"
-                  style={{ color: "var(--teal)" }}
-                >
+                <span className="mt-0.5 flex-shrink-0 w-5 h-5 text-center text-amber">
                   ✉
                 </span>
-                <a
-                  href={`mailto:${email}`}
-                  className="hover:underline"
-                  style={{ color: "var(--teal)" }}
-                >
+                <a href={`mailto:${email}`} className="text-moss hover:text-amber transition-colors">
                   {email}
                 </a>
               </li>
               {settings?.phone && (
                 <li className="flex items-start gap-3">
-                  <span
-                    className="mt-0.5 flex-shrink-0"
-                    style={{ color: "var(--teal)" }}
-                  >
-                    ☎
-                  </span>
-                  <a
-                    href={`tel:${settings.phone}`}
-                    className="hover:underline"
-                    style={{ color: "var(--teal)" }}
-                  >
+                  <span className="mt-0.5 flex-shrink-0 text-amber">☎</span>
+                  <a href={`tel:${settings.phone}`} className="text-moss hover:text-amber transition-colors">
                     {settings.phone}
                   </a>
                 </li>
               )}
               {settings?.address && (
                 <li className="flex items-start gap-3">
-                  <span
-                    className="mt-0.5 flex-shrink-0"
-                    style={{ color: "var(--teal)" }}
-                  >
-                    📍
-                  </span>
+                  <span className="mt-0.5 flex-shrink-0 text-amber">📍</span>
                   <span>{settings.address}</span>
                 </li>
               )}
@@ -87,10 +61,7 @@ export default async function ContactPage() {
 
           {/* Simple contact form */}
           <div>
-            <h2
-              className="text-2xl font-bold mb-6"
-              style={{ color: "var(--navy)" }}
-            >
+            <h2 className="font-serif text-2xl font-semibold mb-6 text-moss-deep">
               Sendu okkur skilaboð
             </h2>
             <ContactForm email={email} />

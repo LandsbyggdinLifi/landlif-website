@@ -22,19 +22,10 @@ export default function SamtokinSubNav() {
             key={l.href}
             href={l.href}
             className={`py-3 text-sm whitespace-nowrap border-b-2 -mb-px transition-colors ${
-              active ? "font-semibold" : "font-medium"
-            }`}
-            style={
               active
-                ? { borderColor: "var(--navy)", color: "var(--navy)" }
-                : { borderColor: "transparent", color: "#6b7280" }
-            }
-            onMouseEnter={(e) => {
-              if (!active) (e.currentTarget as HTMLElement).style.color = "var(--navy)";
-            }}
-            onMouseLeave={(e) => {
-              if (!active) (e.currentTarget as HTMLElement).style.color = "#6b7280";
-            }}
+                ? "border-amber text-ink font-semibold"
+                : "border-transparent text-stone font-medium hover:text-ink"
+            }`}
           >
             {l.label}
           </Link>

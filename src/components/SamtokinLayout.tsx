@@ -12,14 +12,11 @@ export default function SamtokinLayout({ title, heroImage, children }: Props) {
   return (
     <>
       {/* Hero */}
-      <section
-        className="relative flex items-end"
-        style={{ minHeight: "220px", backgroundColor: "var(--navy)" }}
-      >
+      <section className="relative flex items-end bg-moss-deep min-h-[260px]">
         {heroImage?.asset && (
           <>
             <Image
-              src={urlFor(heroImage).width(1600).height(440).url()}
+              src={urlFor(heroImage).width(1600).height(520).url()}
               alt=""
               fill
               className="object-cover"
@@ -27,25 +24,32 @@ export default function SamtokinLayout({ title, heroImage, children }: Props) {
             />
             <div
               className="absolute inset-0"
-              style={{ backgroundColor: "rgba(28,28,30,0.6)" }}
+              style={{
+                background:
+                  "linear-gradient(to top, rgba(36,58,46,0.92) 0%, rgba(36,58,46,0.45) 100%)",
+              }}
             />
           </>
         )}
-        <div className="relative z-10 max-w-4xl mx-auto px-6 pb-10 pt-20 w-full">
-          <p className="text-gray-400 text-sm mb-1">Samtökin</p>
-          <h1 className="text-4xl font-bold text-white">{title}</h1>
+        <div className="relative z-10 max-w-4xl mx-auto px-6 pb-10 pt-24 w-full">
+          <p className="text-amber text-xs font-semibold uppercase tracking-widest mb-2">
+            Samtökin
+          </p>
+          <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-white">
+            {title}
+          </h1>
         </div>
       </section>
 
       {/* Sub-nav */}
-      <div style={{ backgroundColor: "var(--gray-light)" }} className="border-b border-gray-200">
+      <div className="bg-sand border-b border-stone/15">
         <div className="max-w-4xl mx-auto px-6">
           <SamtokinSubNav />
         </div>
       </div>
 
       {/* Content */}
-      <section className="py-12 bg-white">
+      <section className="py-14 bg-paper">
         <div className="max-w-3xl mx-auto px-6">{children}</div>
       </section>
     </>

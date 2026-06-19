@@ -73,39 +73,29 @@ export default async function NewsPostPage({ params }: Props) {
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.4))" }}
+            style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(36,58,46,0.55))" }}
           />
         </div>
       ) : (
-        <div
-          className="w-full flex items-center justify-center"
-          style={{ height: "200px", backgroundColor: "var(--navy)" }}
-        />
+        <div className="w-full flex items-center justify-center bg-moss-deep" style={{ height: "200px" }} />
       )}
 
       {/* Content */}
       <div className="max-w-3xl mx-auto px-6 py-12">
         <Link
           href="/frettir"
-          className="inline-flex items-center gap-1 text-sm mb-8"
-          style={{ color: "var(--teal)" }}
+          className="inline-flex items-center gap-1 text-sm mb-8 text-amber hover:text-amber-dark transition-colors"
         >
           ← Til baka í fréttir
         </Link>
 
-        {date && (
-          <p className="text-sm text-gray-400 mb-3">{date}</p>
-        )}
-        <h1
-          className="text-3xl sm:text-4xl font-bold leading-tight mb-6"
-          style={{ color: "var(--navy)" }}
-        >
+        {date && <p className="text-sm text-stone mb-3">{date}</p>}
+        <h1 className="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-6 text-moss-deep">
           {post.title}
         </h1>
 
         {post.excerpt && (
-          <p className="text-lg text-gray-500 border-l-4 pl-4 mb-8 italic"
-            style={{ borderColor: "var(--teal)" }}>
+          <p className="text-lg text-stone border-l-4 border-amber pl-4 mb-8 italic">
             {post.excerpt}
           </p>
         )}

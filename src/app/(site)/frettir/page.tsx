@@ -37,23 +37,21 @@ export default async function NewsPage({ searchParams }: Props) {
   return (
     <>
       {/* Header */}
-      <section
-        className="py-20 text-white"
-        style={{ backgroundColor: "var(--navy)" }}
-      >
+      <section className="py-20 bg-moss-deep text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl font-bold">Fréttir</h1>
-          <p className="text-gray-300 mt-2">
+          <span className="block w-12 h-px bg-amber mb-5" />
+          <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight">Fréttir</h1>
+          <p className="text-white/70 mt-3">
             Nýjustu fréttir og tilkynningar frá Landlífi
           </p>
         </div>
       </section>
 
       {/* Posts grid */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper">
         <div className="max-w-6xl mx-auto px-6">
           {posts.length === 0 ? (
-            <div className="text-center py-24 text-gray-400">
+            <div className="text-center py-24 text-stone">
               <p className="text-lg">Engar fréttir fundust.</p>
               <p className="text-sm mt-2">
                 Bættu við fréttum í Sanity Studio.
@@ -74,31 +72,29 @@ export default async function NewsPage({ searchParams }: Props) {
                   {page > 1 ? (
                     <Link
                       href={`/frettir?page=${page - 1}`}
-                      className="text-sm font-medium px-4 py-2 rounded-lg border transition-colors hover:border-teal"
-                      style={{ color: "var(--navy)", borderColor: "#d1d5db" }}
+                      className="text-sm font-medium px-4 py-2 rounded-full border border-stone/30 text-ink hover:border-amber hover:text-amber transition-colors"
                     >
                       ← Fyrri
                     </Link>
                   ) : (
-                    <span className="text-sm font-medium px-4 py-2 rounded-lg border border-gray-200 text-gray-300 cursor-not-allowed">
+                    <span className="text-sm font-medium px-4 py-2 rounded-full border border-stone/20 text-stone/40 cursor-not-allowed">
                       ← Fyrri
                     </span>
                   )}
 
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-stone">
                     Síða {page} af {totalPages}
                   </span>
 
                   {page < totalPages ? (
                     <Link
                       href={`/frettir?page=${page + 1}`}
-                      className="text-sm font-medium px-4 py-2 rounded-lg border transition-colors hover:border-teal"
-                      style={{ color: "var(--navy)", borderColor: "#d1d5db" }}
+                      className="text-sm font-medium px-4 py-2 rounded-full border border-stone/30 text-ink hover:border-amber hover:text-amber transition-colors"
                     >
                       Næsta →
                     </Link>
                   ) : (
-                    <span className="text-sm font-medium px-4 py-2 rounded-lg border border-gray-200 text-gray-300 cursor-not-allowed">
+                    <span className="text-sm font-medium px-4 py-2 rounded-full border border-stone/20 text-stone/40 cursor-not-allowed">
                       Næsta →
                     </span>
                   )}

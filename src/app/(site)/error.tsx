@@ -15,18 +15,19 @@ export default function Error({
 
   return (
     <>
-      <section className="py-20 text-white" style={{ backgroundColor: "var(--navy)" }}>
+      <section className="py-20 bg-moss-deep text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl font-bold">Eitthvað fór úrskeiðis</h1>
-          <p className="text-gray-300 mt-2">Villa kom upp við að hlaða þessari síðu.</p>
+          <span className="block w-12 h-px bg-amber mb-5" />
+          <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight">Eitthvað fór úrskeiðis</h1>
+          <p className="text-white/70 mt-3">Villa kom upp við að hlaða þessari síðu.</p>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-gray-500 mb-6">
+          <p className="text-stone mb-6">
             {error.digest && (
-              <span className="text-xs text-gray-400 block mb-2">
+              <span className="text-xs text-stone block mb-2">
                 Villa-auðkenni: {error.digest}
               </span>
             )}
@@ -35,8 +36,7 @@ export default function Error({
           </p>
           <button
             onClick={unstable_retry}
-            className="px-6 py-3 text-white rounded-lg font-medium transition hover:opacity-90"
-            style={{ backgroundColor: "var(--navy)" }}
+            className="px-6 py-3 rounded-full font-semibold bg-amber text-white hover:bg-amber-dark transition-colors"
           >
             Reyna aftur
           </button>

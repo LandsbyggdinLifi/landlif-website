@@ -26,20 +26,18 @@ export default async function GalleryPage() {
 
   return (
     <>
-      <section
-        className="py-20 text-white"
-        style={{ backgroundColor: "var(--navy)" }}
-      >
+      <section className="py-20 bg-moss-deep text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl font-bold">Myndir</h1>
-          <p className="text-gray-300 mt-2">Myndasöfn af viðburðum Landlífs</p>
+          <span className="block w-12 h-px bg-amber mb-5" />
+          <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight">Myndir</h1>
+          <p className="text-white/70 mt-3">Myndasöfn af viðburðum Landlífs</p>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-paper">
         <div className="max-w-6xl mx-auto px-6">
           {albums.length === 0 ? (
-            <div className="text-center py-24 text-gray-400">
+            <div className="text-center py-24 text-stone">
               <p className="text-lg">Engin myndasöfn fundust.</p>
               <p className="text-sm mt-2">Bættu við myndasöfnum í Sanity Studio.</p>
             </div>
@@ -58,9 +56,9 @@ export default async function GalleryPage() {
                   <Link
                     key={album._id}
                     href={`/myndir/${album.slug.current}`}
-                    className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                    className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm border border-stone/15 hover:shadow-md transition-shadow"
                   >
-                    <div className="relative h-48 w-full overflow-hidden bg-gray-light">
+                    <div className="relative h-48 w-full overflow-hidden bg-sand">
                       {album.coverImage?.asset ? (
                         <Image
                           src={urlFor(album.coverImage).width(600).height(400).url()}
@@ -82,16 +80,13 @@ export default async function GalleryPage() {
                     </div>
                     <div className="p-5">
                       {formattedDate && (
-                        <p className="text-xs text-gray-400 mb-1">{formattedDate}</p>
+                        <p className="text-xs text-stone mb-1">{formattedDate}</p>
                       )}
-                      <h2
-                        className="font-semibold text-lg leading-snug group-hover:text-teal transition-colors"
-                        style={{ color: "var(--navy)" }}
-                      >
+                      <h2 className="font-serif text-xl font-semibold leading-snug text-moss-deep group-hover:text-amber transition-colors">
                         {album.title}
                       </h2>
                       {album.description && (
-                        <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                        <p className="text-sm text-stone mt-1 line-clamp-2">
                           {album.description}
                         </p>
                       )}

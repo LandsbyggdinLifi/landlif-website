@@ -34,31 +34,31 @@ export default async function StjornPage() {
   return (
     <SamtokinLayout title="Stjórn">
       <div>
-        <p className="text-gray-600 leading-relaxed mb-8">
+        <p className="text-ink/80 leading-relaxed mb-8">
           Aðal- og varastjórnarmenn eru valdir á aðalfundi samtakanna.
         </p>
 
-        <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>
+        <h2 className="font-serif text-xl font-semibold mb-4 text-moss-deep">
           Aðalstjórn
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
           {board.map((m: { name: string; role?: string; location?: string }) => (
-            <div key={m.name} className="p-4 rounded-lg border border-gray-100 bg-gray-50">
-              <p className="font-semibold text-gray-800">{m.name}</p>
-              {m.role && <p className="text-sm text-teal">{m.role}</p>}
-              {m.location && <p className="text-sm text-gray-400">{m.location}</p>}
+            <div key={m.name} className="p-4 rounded-lg border border-stone/15 bg-sand/50">
+              <p className="font-semibold text-ink">{m.name}</p>
+              {m.role && <p className="text-sm text-amber">{m.role}</p>}
+              {m.location && <p className="text-sm text-stone">{m.location}</p>}
             </div>
           ))}
         </div>
 
-        <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>
+        <h2 className="font-serif text-xl font-semibold mb-4 text-moss-deep">
           Varastjórn
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {alternates.map((m: { name: string; location?: string }) => (
-            <div key={m.name} className="p-4 rounded-lg border border-gray-100 bg-gray-50">
-              <p className="font-semibold text-gray-800">{m.name}</p>
-              {m.location && <p className="text-sm text-gray-400">{m.location}</p>}
+            <div key={m.name} className="p-4 rounded-lg border border-stone/15 bg-sand/50">
+              <p className="font-semibold text-ink">{m.name}</p>
+              {m.location && <p className="text-sm text-stone">{m.location}</p>}
             </div>
           ))}
         </div>

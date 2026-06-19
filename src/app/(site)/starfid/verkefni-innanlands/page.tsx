@@ -32,7 +32,7 @@ export default async function Page() {
       {page?.body ? (
         <PortableTextRenderer value={page.body} />
       ) : (
-        <p className="text-gray-600 leading-relaxed">
+        <p className="text-ink/80 leading-relaxed">
           Landsbyggðin lifi hefur tekið þátt í ýmsum verkefnum innanlands.
         </p>
       )}

@@ -26,7 +26,7 @@ export default function NewsCard({ post, isNew = false }: NewsCardProps) {
   return (
     <Link
       href={`/frettir/${post.slug.current}`}
-      className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+      className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-stone/15 shadow-sm hover:shadow-md transition-shadow"
     >
       {post.mainImage?.asset && (
         <div className="relative h-48 w-full overflow-hidden">
@@ -37,17 +37,14 @@ export default function NewsCard({ post, isNew = false }: NewsCardProps) {
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
           {isNew && (
-            <span
-              className="absolute top-3 left-3 text-white text-xs font-semibold px-2 py-0.5 rounded-full"
-              style={{ backgroundColor: "var(--orange)" }}
-            >
+            <span className="absolute top-3 left-3 bg-amber text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">
               Nýtt
             </span>
           )}
         </div>
       )}
       {!post.mainImage?.asset && (
-        <div className="relative h-48 w-full overflow-hidden bg-gray-light flex items-center justify-center">
+        <div className="relative h-48 w-full overflow-hidden bg-sand flex items-center justify-center">
           <Image
             src="/logo.png"
             alt="Landsbyggðin lifi"
@@ -59,31 +56,20 @@ export default function NewsCard({ post, isNew = false }: NewsCardProps) {
       )}
       <div className="p-5 flex flex-col flex-1">
         <div className="flex items-center gap-2 mb-1">
-          {date && <p className="text-xs text-gray-400">{date}</p>}
+          {date && <p className="text-xs text-stone">{date}</p>}
           {isNew && !post.mainImage?.asset && (
-            <span
-              className="text-white text-xs font-semibold px-2 py-0.5 rounded-full"
-              style={{ backgroundColor: "var(--orange)" }}
-            >
+            <span className="bg-amber text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">
               Nýtt
             </span>
           )}
         </div>
-        <h3
-          className="font-semibold text-lg leading-snug mb-2 group-hover:text-teal transition-colors"
-          style={{ color: "var(--navy)" }}
-        >
+        <h3 className="font-serif text-xl font-semibold leading-snug mb-2 text-moss-deep group-hover:text-amber transition-colors">
           {post.title}
         </h3>
         {post.excerpt && (
-          <p className="text-sm text-gray-600 line-clamp-3 flex-1">
-            {post.excerpt}
-          </p>
+          <p className="text-sm text-stone line-clamp-3 flex-1">{post.excerpt}</p>
         )}
-        <span
-          className="mt-4 text-sm font-medium inline-flex items-center gap-1"
-          style={{ color: "var(--teal)" }}
-        >
+        <span className="mt-4 text-sm font-semibold text-amber inline-flex items-center gap-1">
           Lesa meira →
         </span>
       </div>

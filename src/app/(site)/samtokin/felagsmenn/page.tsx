@@ -27,35 +27,28 @@ export default async function FelagsmennPage() {
   return (
     <SamtokinLayout title="Félagsmenn">
       <div>
-        <h2 className="text-xl font-bold mb-4" style={{ color: "var(--navy)" }}>
+        <h2 className="font-serif text-xl font-semibold mb-4 text-moss-deep">
           Framfarafélög og einstaklingar
         </h2>
         <ul className="space-y-3 mb-8">
           {orgs.map((org: string) => (
             <li key={org} className="flex items-center gap-3">
-              <span
-                className="w-2 h-2 rounded-full flex-shrink-0"
-                style={{ backgroundColor: "var(--teal)" }}
-              />
-              <span className="text-gray-700">{org}</span>
+              <span className="w-2 h-2 rounded-full flex-shrink-0 bg-amber" />
+              <span className="text-ink/80">{org}</span>
             </li>
           ))}
         </ul>
-        <p className="text-gray-600 leading-relaxed mb-8">
+        <p className="text-ink/80 leading-relaxed mb-8">
           Auk þess eru um tvö hundruð einstaklingsmeðlimir í samtökunum.
         </p>
-        <div
-          className="rounded-xl p-6 text-white text-center"
-          style={{ backgroundColor: "var(--teal)" }}
-        >
-          <h3 className="text-lg font-bold mb-2">Gerast meðlimur</h3>
-          <p className="text-orange-100 text-sm mb-4">
+        <div className="rounded-2xl p-6 bg-moss-deep text-white text-center">
+          <h3 className="font-serif text-lg font-semibold mb-2">Gerast meðlimur</h3>
+          <p className="text-white/75 text-sm mb-4">
             Viltu styðja uppbyggingu landsbyggðarinnar? Hafðu samband við okkur.
           </p>
           <Link
             href="/hafa-samband"
-            className="inline-block px-6 py-2 rounded-full bg-white font-semibold text-sm transition-opacity hover:opacity-90"
-            style={{ color: "var(--teal)" }}
+            className="inline-block px-6 py-2 rounded-full bg-amber text-white font-semibold text-sm hover:bg-amber-dark transition-colors"
           >
             Hafa samband
           </Link>

@@ -32,7 +32,7 @@ export default async function Page() {
       {page?.body ? (
         <PortableTextRenderer value={page.body} />
       ) : (
-        <p className="text-gray-600 leading-relaxed">
+        <p className="text-ink/80 leading-relaxed">
           Landsbyggðin lifi er virk þátttakandi í alþjóðlegu samstarfi um dreifbýlismál. Samtökin eiga aðild að nokkrum alþjóðlegum samtökum og verkefnum.
         </p>
       )}
