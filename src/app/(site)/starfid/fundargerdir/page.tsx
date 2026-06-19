@@ -5,7 +5,7 @@ import { pageByIdQuery, starfidPagesBySectionQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
-export const revalidate = 60;
+export const revalidate = 0;
 export const metadata: Metadata = { title: "Fundargerðir", description: "Fundargerðir stjórnarfunda og aðalfunda Landsbyggðar lifi." };
 
 type DynamicPage = { _id: string; title: string; navTitle?: string; slug: { current: string } };

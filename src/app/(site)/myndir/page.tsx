@@ -5,7 +5,7 @@ import { client } from "@/sanity/client";
 import { eventAlbumsQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Myndir",

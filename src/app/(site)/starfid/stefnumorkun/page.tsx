@@ -4,7 +4,7 @@ import { pageByIdQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
-export const revalidate = 60;
+export const revalidate = 0;
 export const metadata: Metadata = { title: "Stefnum\u00F6rkun", description: "Stefnum\u00F6rkun Landsbygg\u00F0ar lifi \u00ED m\u00E1lefnum dreifb\u00FDlis og landsbygg\u00F0ar." };
 
 export default async function Page() {

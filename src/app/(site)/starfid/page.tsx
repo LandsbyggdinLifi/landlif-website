@@ -4,7 +4,7 @@ import { client } from "@/sanity/client";
 import { starfidPagesBySectionQuery } from "@/sanity/queries";
 import StarfidLayout from "@/components/StarfidLayout";
 
-export const revalidate = 60;
+export const revalidate = 0;
 export const metadata: Metadata = { title: "Starfið", description: "Yfirlit yfir starfsemi Landsbyggðar lifi." };
 
 type DynamicPage = { _id: string; title: string; slug: { current: string } };

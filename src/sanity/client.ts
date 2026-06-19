@@ -5,5 +5,8 @@ export const client = createClient({
   projectId: projectId || "placeholder",
   dataset,
   apiVersion,
-  useCdn: process.env.NODE_ENV === "production",
+  // Pre-launch: read live from the API (not the edge CDN) so published
+  // changes show up immediately. Combined with `revalidate = 0` on pages,
+  // every request fetches fresh. Revisit (CDN + ISR/webhook) before launch.
+  useCdn: false,
 });

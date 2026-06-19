@@ -4,7 +4,7 @@ import { pageByIdQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
-export const revalidate = 60;
+export const revalidate = 0;
 export const metadata: Metadata = {
   title: "Byggðastefna",
   description: "Byggðastefna og áherslur Landsbyggðar lifi í þágu dreifbýlis á Íslandi.",

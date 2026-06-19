@@ -5,7 +5,7 @@ import { starfidPageBySlugQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 interface Props {
   params: Promise<{ slug: string }>;

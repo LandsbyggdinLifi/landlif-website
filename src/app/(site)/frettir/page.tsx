@@ -5,7 +5,7 @@ import { newsPostsPagedQuery, newsPostsCountQuery } from "@/sanity/queries";
 import NewsCard from "@/components/NewsCard";
 import { isRecent } from "@/lib/date";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 const PER_PAGE = 9;
 

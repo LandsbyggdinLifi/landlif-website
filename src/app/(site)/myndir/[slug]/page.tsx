@@ -7,7 +7,7 @@ import { eventAlbumBySlugQuery, eventAlbumsQuery } from "@/sanity/queries";
 import { urlFor, hotspotPosition } from "@/sanity/image";
 import PhotoLightbox from "@/components/PhotoLightbox";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 interface Props {
   params: Promise<{ slug: string }>;

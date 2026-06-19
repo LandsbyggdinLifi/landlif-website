@@ -6,7 +6,7 @@ import { urlFor, hotspotPosition } from "@/sanity/image";
 import NewsSection from "@/components/NewsSection";
 import PhotoStrip from "@/components/PhotoStrip";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 async function getData() {
   const [settings, latestNews] = await Promise.all([

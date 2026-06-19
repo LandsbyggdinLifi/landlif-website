@@ -3,7 +3,7 @@ import { client } from "@/sanity/client";
 import { samtokinSettingsQuery } from "@/sanity/queries";
 import SamtokinLayout from "@/components/SamtokinLayout";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Stjórn",

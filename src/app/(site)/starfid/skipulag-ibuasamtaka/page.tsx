@@ -4,7 +4,7 @@ import { pageByIdQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 
-export const revalidate = 60;
+export const revalidate = 0;
 export const metadata: Metadata = { title: "Skipulag \u00EDb\u00FAasamtaka", description: "Lei\u00F0beiningar og g\u00F6gn um skipulag \u00EDb\u00FAasamtaka \u00E1 landsbygg\u00F0inni." };
 
 export default async function Page() {

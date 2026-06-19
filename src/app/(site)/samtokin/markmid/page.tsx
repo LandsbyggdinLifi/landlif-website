@@ -4,7 +4,7 @@ import { pageByIdQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import SamtokinLayout from "@/components/SamtokinLayout";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Markmið",

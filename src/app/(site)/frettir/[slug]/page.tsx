@@ -7,7 +7,7 @@ import { newsPostBySlugQuery, newsPostsQuery } from "@/sanity/queries";
 import { urlFor, hotspotPosition } from "@/sanity/image";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 interface Props {
   params: Promise<{ slug: string }>;

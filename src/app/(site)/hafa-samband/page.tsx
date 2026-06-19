@@ -3,7 +3,7 @@ import { client } from "@/sanity/client";
 import { siteSettingsQuery } from "@/sanity/queries";
 import ContactForm from "@/components/ContactForm";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Hafa samband",
