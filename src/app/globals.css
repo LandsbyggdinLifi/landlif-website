@@ -1,30 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand palette. Note: --teal/--navy keep their historical names but now
-     hold the current brand values (orange + near-black). Accents/links use
-     --teal (orange); dark sections/headings use --navy (near-black). */
-  --teal: #e8520a; /* primary accent (orange) */
-  --teal-dark: #b8400a; /* hover/darker accent */
-  --navy: #1c1c1e; /* dark surfaces + headings (near-black) */
-  --gray-light: #f2f2f2;
-  --orange: #e8520a;
+  /* ── Nordic Nature palette ───────────────────────────────────────────
+     Rooted in the Icelandic landscape: moss greens, warm sand and stone,
+     a paper-white ground, and a single amber/rust accent. */
+  --paper: #f6f3ec; /* page ground (warm off-white) */
+  --ink: #20302a; /* primary text (dark green-charcoal) */
+  --moss: #355140; /* brand green — links, mid surfaces */
+  --moss-deep: #243a2e; /* darkest green — heroes, footer */
+  --sand: #e7dfd0; /* warm light panels */
+  --stone: #6b736b; /* muted / secondary text */
+  --amber: #bb5e2e; /* accent — buttons, highlights */
+  --amber-dark: #9c4d22; /* accent hover */
+
+  /* ── Legacy aliases ──────────────────────────────────────────────────
+     Older pages/components still reference --teal/--navy/--orange and the
+     Tailwind classes generated from them. Re-point those at the new
+     palette so un-migrated screens reskin automatically until rollout. */
+  --teal: var(--amber);
+  --teal-dark: var(--amber-dark);
+  --navy: var(--moss-deep);
+  --gray-light: var(--sand);
+  --orange: var(--amber);
 }
 
 @theme inline {
+  /* New semantic color utilities (text-moss, bg-sand, border-amber, …) */
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-moss: var(--moss);
+  --color-moss-deep: var(--moss-deep);
+  --color-sand: var(--sand);
+  --color-stone: var(--stone);
+  --color-amber: var(--amber);
+  --color-amber-dark: var(--amber-dark);
+
+  /* Legacy color utilities, retained for un-migrated components */
   --color-teal: var(--teal);
   --color-teal-dark: var(--teal-dark);
   --color-navy: var(--navy);
   --color-gray-light: var(--gray-light);
   --color-orange: var(--orange);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Typography: Inter for body/UI, Fraunces for display headings */
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
 }
 
 body {
-  font-family: "Lato", Arial, sans-serif;
-  color: #1a1a1a;
-  background: #ffffff;
+  font-family: var(--font-inter), system-ui, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
 }
 
 html {

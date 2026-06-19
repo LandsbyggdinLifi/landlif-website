@@ -50,7 +50,7 @@ function DropdownMenu({
     <div className="relative" ref={ref} id={id}>
       <button
         className={`flex items-center gap-1 text-sm font-medium transition-colors ${
-          active ? "text-teal" : "text-gray-600 hover:text-teal"
+          active ? "text-moss" : "text-ink/70 hover:text-moss"
         }`}
         onClick={() => setOpen(!open)}
         aria-expanded={open}
@@ -65,15 +65,15 @@ function DropdownMenu({
         </svg>
       </button>
       {open && (
-        <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50">
+        <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-lg border border-stone/15 py-1.5 z-50">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               className={`block px-4 py-2 text-sm transition-colors ${
                 pathname === l.href
-                  ? "text-teal font-semibold bg-gray-50"
-                  : "text-gray-700 hover:bg-gray-50 hover:text-teal"
+                  ? "text-moss font-semibold bg-sand/60"
+                  : "text-ink/75 hover:bg-sand/50 hover:text-moss"
               }`}
               onClick={() => setOpen(false)}
             >
@@ -104,7 +104,7 @@ function MobileAccordion({
     <div>
       <button
         className={`flex items-center justify-between w-full py-2 text-sm font-medium ${
-          active ? "text-teal" : "text-gray-700 hover:text-teal"
+          active ? "text-moss" : "text-ink/80 hover:text-moss"
         }`}
         onClick={() => setOpen(!open)}
       >
@@ -124,8 +124,8 @@ function MobileAccordion({
               href={l.href}
               className={`block py-2 text-sm ${
                 pathname === l.href
-                  ? "text-teal font-semibold"
-                  : "text-gray-600 hover:text-teal"
+                  ? "text-moss font-semibold"
+                  : "text-ink/65 hover:text-moss"
               }`}
               onClick={onClose}
             >
@@ -146,7 +146,7 @@ export default function Navbar() {
   const inStarfid = pathname.startsWith("/starfid");
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50 border-t-4 border-teal">
+    <header className="sticky top-0 z-50 border-t-[3px] border-amber border-b border-stone/10 bg-paper/85 backdrop-blur supports-[backdrop-filter]:bg-paper/70">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
@@ -165,7 +165,7 @@ export default function Navbar() {
             <Link
               href="/"
               className={`text-sm font-medium transition-colors ${
-                pathname === "/" ? "text-teal" : "text-gray-600 hover:text-teal"
+                pathname === "/" ? "text-moss" : "text-ink/70 hover:text-moss"
               }`}
             >
               Forsíða
@@ -173,7 +173,7 @@ export default function Navbar() {
             <Link
               href="/frettir"
               className={`text-sm font-medium transition-colors ${
-                pathname.startsWith("/frettir") ? "text-teal" : "text-gray-600 hover:text-teal"
+                pathname.startsWith("/frettir") ? "text-moss" : "text-ink/70 hover:text-moss"
               }`}
             >
               Fréttir
@@ -183,16 +183,14 @@ export default function Navbar() {
             <Link
               href="/myndir"
               className={`text-sm font-medium transition-colors ${
-                pathname.startsWith("/myndir") ? "text-teal" : "text-gray-600 hover:text-teal"
+                pathname.startsWith("/myndir") ? "text-moss" : "text-ink/70 hover:text-moss"
               }`}
             >
               Myndasöfn
             </Link>
             <Link
               href="/hafa-samband"
-              className={`text-sm font-medium transition-colors ${
-                pathname === "/hafa-samband" ? "text-teal" : "text-gray-600 hover:text-teal"
-              }`}
+              className="inline-block px-5 py-2 rounded-full text-sm font-semibold bg-amber text-white hover:bg-amber-dark transition-colors"
             >
               Hafa samband
             </Link>
@@ -200,7 +198,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded text-gray-600"
+            className="md:hidden p-2 rounded text-ink/70"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Opna valmynd"
             aria-expanded={menuOpen}
@@ -215,17 +213,17 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div id="mobile-menu" className="md:hidden border-t border-gray-100 bg-white px-4 py-3 space-y-1">
+        <div id="mobile-menu" className="md:hidden border-t border-stone/10 bg-paper px-4 py-3 space-y-1">
           <Link
             href="/"
-            className={`block py-2 text-sm font-medium ${pathname === "/" ? "text-teal" : "text-gray-700 hover:text-teal"}`}
+            className={`block py-2 text-sm font-medium ${pathname === "/" ? "text-moss" : "text-ink/80 hover:text-moss"}`}
             onClick={() => setMenuOpen(false)}
           >
             Forsíða
           </Link>
           <Link
             href="/frettir"
-            className={`block py-2 text-sm font-medium ${pathname.startsWith("/frettir") ? "text-teal" : "text-gray-700 hover:text-teal"}`}
+            className={`block py-2 text-sm font-medium ${pathname.startsWith("/frettir") ? "text-moss" : "text-ink/80 hover:text-moss"}`}
             onClick={() => setMenuOpen(false)}
           >
             Fréttir
@@ -234,14 +232,14 @@ export default function Navbar() {
           <MobileAccordion label="Starfið" links={starfidLinks} onClose={() => setMenuOpen(false)} active={inStarfid} />
           <Link
             href="/myndir"
-            className={`block py-2 text-sm font-medium ${pathname.startsWith("/myndir") ? "text-teal" : "text-gray-700 hover:text-teal"}`}
+            className={`block py-2 text-sm font-medium ${pathname.startsWith("/myndir") ? "text-moss" : "text-ink/80 hover:text-moss"}`}
             onClick={() => setMenuOpen(false)}
           >
             Myndasöfn
           </Link>
           <Link
             href="/hafa-samband"
-            className={`block py-2 text-sm font-medium ${pathname === "/hafa-samband" ? "text-teal" : "text-gray-700 hover:text-teal"}`}
+            className={`block py-2 text-sm font-medium ${pathname === "/hafa-samband" ? "text-moss" : "text-ink/80 hover:text-moss"}`}
             onClick={() => setMenuOpen(false)}
           >
             Hafa samband
