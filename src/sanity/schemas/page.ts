@@ -15,7 +15,11 @@ export const page = defineType({
       name: "slug",
       title: "Slóð",
       type: "slug",
+      description:
+        "Ekki breyta. Þetta er vefslóð síðunnar og læsist eftir að hún hefur verið búin til.",
       options: { source: "title", maxLength: 96 },
+      // Læsist um leið og slóð er til, en má búa til á nýrri síðu.
+      readOnly: ({ value }) => Boolean((value as { current?: string })?.current),
       validation: (Rule) =>
         Rule.custom((value, context) => {
           const doc = context.document as { section?: string };

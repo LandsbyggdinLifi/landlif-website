@@ -15,7 +15,11 @@ export const newsPost = defineType({
       name: "slug",
       title: "Slóð",
       type: "slug",
+      description:
+        "Ekki breyta. Þetta er vefslóð fréttarinnar og læsist eftir að hún hefur verið búin til.",
       options: { source: "title", maxLength: 96 },
+      // Læsist um leið og slóð er til, en má búa til á nýrri frétt.
+      readOnly: ({ value }) => Boolean((value as { current?: string })?.current),
       validation: (Rule) => Rule.required(),
     }),
     defineField({
