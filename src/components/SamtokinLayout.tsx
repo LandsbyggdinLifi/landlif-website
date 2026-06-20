@@ -19,6 +19,7 @@ export default function SamtokinLayout({ title, heroImage, children }: Props) {
               src={urlFor(heroImage).width(1600).height(520).url()}
               alt=""
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />

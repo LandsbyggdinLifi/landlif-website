@@ -6,6 +6,7 @@ import { client } from "@/sanity/client";
 import { newsPostBySlugQuery, newsPostsQuery } from "@/sanity/queries";
 import { urlFor, hotspotPosition } from "@/sanity/image";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
+import { formatDateIs } from "@/lib/date";
 
 export const revalidate = 0;
 
@@ -50,13 +51,7 @@ export default async function NewsPostPage({ params }: Props) {
 
   if (!post) notFound();
 
-  const date = post.publishedAt
-    ? new Date(post.publishedAt).toLocaleDateString("is-IS", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    : null;
+  const date = formatDateIs(post.publishedAt);
 
   return (
     <article>
@@ -67,6 +62,7 @@ export default async function NewsPostPage({ params }: Props) {
             src={urlFor(post.mainImage).width(1600).height(800).url()}
             alt={post.mainImage.alt || post.title}
             fill
+            sizes="100vw"
             className="object-cover"
             style={{ objectPosition: hotspotPosition(post.mainImage) }}
             priority

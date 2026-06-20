@@ -21,7 +21,7 @@ export default async function Page() {
           </p>
           <div className="mt-8 p-5 rounded-xl bg-sand/50 border border-stone/15">
             <p className="text-sm font-medium text-moss-deep mb-1">Skjal til niðurhals</p>
-            <p className="text-sm text-stone">Skipulagnig starfsemi íbúasamtaka 2017</p>
+            <p className="text-sm text-stone">Skipulagning starfsemi íbúasamtaka 2017</p>
           </div>
         </div>
       )}

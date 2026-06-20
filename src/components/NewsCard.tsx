@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/image";
+import { formatDateIs } from "@/lib/date";
 
 interface NewsCardProps {
   post: {
@@ -15,13 +16,7 @@ interface NewsCardProps {
 }
 
 export default function NewsCard({ post, isNew = false }: NewsCardProps) {
-  const date = post.publishedAt
-    ? new Date(post.publishedAt).toLocaleDateString("is-IS", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    : null;
+  const date = formatDateIs(post.publishedAt);
 
   return (
     <Link
@@ -34,6 +29,7 @@ export default function NewsCard({ post, isNew = false }: NewsCardProps) {
             src={urlFor(post.mainImage).width(600).height(400).url()}
             alt={post.mainImage.alt || post.title}
             fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
           {isNew && (

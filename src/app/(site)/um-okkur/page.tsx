@@ -27,6 +27,7 @@ export default async function AboutPage() {
               src={urlFor(page.heroImage).width(1600).height(600).url()}
               alt=""
               fill
+              sizes="100vw"
               className="object-cover"
               style={{ objectPosition: hotspotPosition(page.heroImage) }}
               priority
@@ -72,7 +73,7 @@ export default async function AboutPage() {
               <p className="text-ink/80 leading-relaxed mb-6">
                 Landlíf var stofnað af hópi einstaklinga sem þekktu til
                 þarfa landsbyggðarinnar og vildu stuðla að jákvæðri þróun í
-                dreifbýli. Frá upphafi hefur samtakin lagt áherslu á samvinnu
+                dreifbýli. Frá upphafi hafa samtökin lagt áherslu á samvinnu
                 og grasrótarþátttöku.
               </p>
               <h2 className="font-serif text-2xl font-semibold mt-10 mb-4 text-moss-deep">

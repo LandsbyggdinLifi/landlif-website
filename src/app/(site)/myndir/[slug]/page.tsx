@@ -6,6 +6,7 @@ import { client } from "@/sanity/client";
 import { eventAlbumBySlugQuery, eventAlbumsQuery } from "@/sanity/queries";
 import { urlFor, hotspotPosition } from "@/sanity/image";
 import PhotoLightbox from "@/components/PhotoLightbox";
+import { formatDateIs } from "@/lib/date";
 
 export const revalidate = 0;
 
@@ -54,13 +55,7 @@ export default async function AlbumPage({ params }: Props) {
 
   if (!album) notFound();
 
-  const formattedDate = album.date
-    ? new Date(album.date).toLocaleDateString("is-IS", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    : null;
+  const formattedDate = formatDateIs(album.date);
 
   return (
     <>
@@ -71,6 +66,7 @@ export default async function AlbumPage({ params }: Props) {
             src={urlFor(album.coverImage).width(1600).height(720).url()}
             alt={album.title}
             fill
+            sizes="100vw"
             className="object-cover"
             style={{ objectPosition: hotspotPosition(album.coverImage) }}
             priority

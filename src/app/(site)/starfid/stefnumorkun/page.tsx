@@ -20,7 +20,7 @@ export default async function Page() {
           <ol className="list-decimal list-inside space-y-3 text-ink/80 mb-8">
             <li>Vera tengiliður milli samtaka, einstaklinga og hópa með svipuð markmið</li>
             <li>Taka þátt í og afla þekkingar í gegnum alþjóðlegt samstarf við sambærileg samtök</li>
-            <li>Vinna að málefnum sem eru sameiginlegur hagsmunir íbúa dreifbýlis</li>
+            <li>Vinna að málefnum sem eru sameiginlegir hagsmunir íbúa dreifbýlis</li>
           </ol>
           <h2 className="font-serif text-xl font-semibold mb-4 text-moss-deep">Skjöl</h2>
           <ul className="space-y-2 text-ink/80">

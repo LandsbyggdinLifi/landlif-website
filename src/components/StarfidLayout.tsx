@@ -86,6 +86,7 @@ export default function StarfidLayout({ title, heroImage, subNavLinks, navLayout
               src={urlFor(heroImage).width(1600).height(520).url()}
               alt=""
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />

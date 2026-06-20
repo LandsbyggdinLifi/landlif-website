@@ -60,6 +60,7 @@ export default function PhotoStrip({ images }: { images: GalleryImage[] }) {
               src={urlFor(img).width(640).height(440).url()}
               alt={img.alt || img.caption || "Viðburðarmynd"}
               fill
+              sizes="320px"
               className="object-cover group-hover:scale-105 transition-transform duration-300"
             />
             {img.caption && (

@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 const fallbackOrgs = [
   "Framfarafélag Dalvíkurbyggðar",
-  "Framfarafélag Fljótdalshéraðs",
-  "Framfarafélagi Reisn",
+  "Framfarafélag Fljótsdalshéraðs",
+  "Framfarafélagið Reisn",
   "Framfarafélag Vestfjarða",
   "Framfarafélag Öxarfjarðar",
 ];

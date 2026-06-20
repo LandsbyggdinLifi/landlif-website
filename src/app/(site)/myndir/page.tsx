@@ -4,6 +4,7 @@ import Image from "next/image";
 import { client } from "@/sanity/client";
 import { eventAlbumsQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
+import { formatDateIs } from "@/lib/date";
 
 export const revalidate = 0;
 
@@ -44,13 +45,7 @@ export default async function GalleryPage() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {albums.map((album) => {
-                const formattedDate = album.date
-                  ? new Date(album.date).toLocaleDateString("is-IS", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })
-                  : null;
+                const formattedDate = formatDateIs(album.date);
 
                 return (
                   <Link
@@ -64,6 +59,7 @@ export default async function GalleryPage() {
                           src={urlFor(album.coverImage).width(600).height(400).url()}
                           alt={album.title}
                           fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (

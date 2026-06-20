@@ -25,7 +25,18 @@
       "PowerShell(Get-Process node -ErrorAction SilentlyContinue | Measure-Object -Property WorkingSet -Sum | Select-Object Count, @{N='TotalGB';E={[math]::Round\\($_.Sum/1GB,2\\)}})",
       "PowerShell($procs = Get-Process node -ErrorAction SilentlyContinue; Write-Host \"Count: $\\($procs.Count\\)\"; Write-Host \"Total WS GB: $\\([math]::Round\\(\\($procs | Measure-Object WorkingSet -Sum\\).Sum/1GB, 2\\)\\)\")",
       "PowerShell(Stop-Process -Name node -Force -ErrorAction SilentlyContinue)",
-      "Read(//c/Users/GG/.claude/**)"
+      "Read(//c/Users/GG/.claude/**)",
+      "PowerShell(npm run lint 2>&1)",
+      "PowerShell(npx tsc --noEmit 2>&1)",
+      "PowerShell(npm run build 2>&1)",
+      "Bash(node scripts/kill-stale-dev.mjs)",
+      "Bash(echo \"exit code: $?\")",
+      "PowerShell(npm audit 2>&1)",
+      "Bash(git checkout *)",
+      "Bash(git commit *)",
+      "Bash(git merge *)",
+      "Bash(gh issue *)",
+      "PowerShell(npm run dev)"
     ]
   }
 }
