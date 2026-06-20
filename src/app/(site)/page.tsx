@@ -43,16 +43,8 @@ export default async function HomePage() {
             priority
           />
         )}
-        {/* Organic gradient veil for legibility, anchored low */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(36,58,46,0.94) 0%, rgba(36,58,46,0.55) 55%, rgba(36,58,46,0.30) 100%)",
-          }}
-        />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 py-28">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl" style={{ textShadow: "0 1px 14px rgba(0,0,0,0.5)" }}>
             <span className="block w-12 h-px bg-amber mb-7" />
             <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.05] mb-6">
               {heroHeading}
