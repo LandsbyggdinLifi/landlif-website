@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { AutoSlugInput } from "../components/autoSlugInput";
 
 export const eventAlbum = defineType({
   name: "eventAlbum",
@@ -15,11 +16,9 @@ export const eventAlbum = defineType({
       name: "slug",
       title: "Slóð",
       type: "slug",
-      description:
-        "Ekki breyta. Þetta er vefslóð viðburðarins og læsist eftir að hún hefur verið búin til.",
+      description: "Vefslóð viðburðarins. Hún býr til sjálfkrafa út frá titlinum.",
       options: { source: "title" },
-      // Læsist um leið og slóð er til, en má búa til á nýjum viðburði.
-      readOnly: ({ value }) => Boolean((value as { current?: string })?.current),
+      components: { input: AutoSlugInput },
       validation: (Rule) => Rule.required(),
     }),
     defineField({

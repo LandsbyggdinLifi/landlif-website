@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { AutoSlugInput } from "../components/autoSlugInput";
 
 export const page = defineType({
   name: "page",
@@ -15,11 +16,9 @@ export const page = defineType({
       name: "slug",
       title: "Slóð",
       type: "slug",
-      description:
-        "Ekki breyta. Þetta er vefslóð síðunnar og læsist eftir að hún hefur verið búin til.",
+      description: "Vefslóð síðunnar. Hún býr til sjálfkrafa út frá titlinum.",
       options: { source: "title", maxLength: 96 },
-      // Læsist um leið og slóð er til, en má búa til á nýrri síðu.
-      readOnly: ({ value }) => Boolean((value as { current?: string })?.current),
+      components: { input: AutoSlugInput },
       validation: (Rule) =>
         Rule.custom((value, context) => {
           const doc = context.document as { section?: string };
