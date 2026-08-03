@@ -1,0 +1,60 @@
+version: 2
+
+updates:
+  # Application dependencies. Minor and patch bumps are batched into a few
+  # grouped PRs to keep the noise down; majors are deliberately left out of the
+  # groups so each one arrives as its own PR and gets reviewed on its merits.
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Atlantic/Reykjavik
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps(dev)"
+    groups:
+      # The Studio and its plugins. These ship in lockstep — @sanity/vision@6
+      # peers on sanity@^6, so a major that arrived as two separate PRs would
+      # fail to install either way round. No `update-types` filter here, so
+      # majors stay grouped and move together.
+      sanity:
+        patterns:
+          - "sanity"
+          - "next-sanity"
+          - "@sanity/*"
+          - "styled-components"
+      next:
+        patterns:
+          - "next"
+          - "eslint-config-next"
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+        update-types:
+          - minor
+          - patch
+      # Anything not caught above: tailwind, typescript, eslint, jsdom, the
+      # @vercel/* packages. A dependency lands in the first group it matches,
+      # so this stays last.
+      tooling:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+
+  # Keep the CI workflow's actions current (actions/checkout, setup-node).
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "ci"
+    groups:
+      actions:
+        patterns:
+          - "*"
