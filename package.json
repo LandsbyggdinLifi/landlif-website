@@ -10,7 +10,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@portabletext/react": "^6.0.3",
+    "@portabletext/react": "^7.0.1",
     "@sanity/block-tools": "^3.70.0",
     "@sanity/client": "^7.20.0",
     "@sanity/image-url": "^2.1.1",
