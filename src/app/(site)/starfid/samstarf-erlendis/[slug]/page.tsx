@@ -6,7 +6,7 @@ import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
 import { decodeSlug } from "@/lib/slug";
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 interface Props {
   params: Promise<{ slug: string }>;

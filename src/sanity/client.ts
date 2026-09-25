@@ -5,8 +5,9 @@ export const client = createClient({
   projectId: projectId || "placeholder",
   dataset,
   apiVersion,
-  // Pre-launch: read live from the API (not the edge CDN) so published
-  // changes show up immediately. Combined with `revalidate = 0` on pages,
-  // every request fetches fresh. Revisit (CDN + ISR/webhook) before launch.
+  // Read from the live API rather than Sanity's edge CDN: Next.js already
+  // caches pages (`revalidate` on each page), and the /api/revalidate webhook
+  // clears that cache on publish. Skipping the CDN means a revalidation never
+  // picks up a stale copy.
   useCdn: false,
 });

@@ -9,7 +9,7 @@ import PortableTextRenderer from "@/components/PortableTextRenderer";
 import { formatDateIs } from "@/lib/date";
 import { decodeSlug } from "@/lib/slug";
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 interface Props {
   params: Promise<{ slug: string }>;

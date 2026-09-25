@@ -40,6 +40,9 @@ const DYNAMIC_SECTIONS: { section: string; prefix: string }[] = [
   { section: "starfid", prefix: "/starfid" },
 ];
 
+// Regenerate hourly so newly published posts appear without a redeploy.
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [posts, albums, ...sectionResults] = await Promise.all([
     client.fetch(newsPostsQuery).catch(() => []),
