@@ -4,6 +4,7 @@ import { client } from "@/sanity/client";
 import { starfidPageBySlugQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
+import { decodeSlug } from "@/lib/slug";
 
 export const revalidate = 0;
 
@@ -12,7 +13,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const slug = decodeSlug((await params).slug);
   const page = await client
     .fetch(starfidPageBySlugQuery, { section: "starfid", slug })
     .catch(() => null);
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
-  const { slug } = await params;
+  const slug = decodeSlug((await params).slug);
   const page = await client
     .fetch(starfidPageBySlugQuery, { section: "starfid", slug })
     .catch(() => null);

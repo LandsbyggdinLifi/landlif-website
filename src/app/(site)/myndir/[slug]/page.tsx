@@ -7,6 +7,7 @@ import { eventAlbumBySlugQuery, eventAlbumsQuery } from "@/sanity/queries";
 import { urlFor, hotspotPosition } from "@/sanity/image";
 import PhotoLightbox from "@/components/PhotoLightbox";
 import { formatDateIs } from "@/lib/date";
+import { decodeSlug } from "@/lib/slug";
 
 export const revalidate = 0;
 
@@ -22,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const slug = decodeSlug((await params).slug);
   const album = await client
     .fetch(eventAlbumBySlugQuery, { slug })
     .catch(() => null);
@@ -48,7 +49,7 @@ type Photo = {
 };
 
 export default async function AlbumPage({ params }: Props) {
-  const { slug } = await params;
+  const slug = decodeSlug((await params).slug);
   const album = await client
     .fetch(eventAlbumBySlugQuery, { slug })
     .catch(() => null);

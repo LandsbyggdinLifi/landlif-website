@@ -4,6 +4,7 @@ import { client } from "@/sanity/client";
 import { starfidPageBySlugQuery, starfidPagesBySectionQuery } from "@/sanity/queries";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import StarfidLayout from "@/components/StarfidLayout";
+import { decodeSlug } from "@/lib/slug";
 
 export const revalidate = 0;
 
@@ -14,7 +15,7 @@ interface Props {
 type SiblingPage = { _id: string; title: string; navTitle?: string; slug: { current: string } };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const slug = decodeSlug((await params).slug);
   const page = await client
     .fetch(starfidPageBySlugQuery, { section: "samstarf-erlendis", slug })
     .catch(() => null);
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
-  const { slug } = await params;
+  const slug = decodeSlug((await params).slug);
   const [page, siblings] = await Promise.all([
     client.fetch(starfidPageBySlugQuery, { section: "samstarf-erlendis", slug }).catch(() => null),
     client.fetch(starfidPagesBySectionQuery, { section: "samstarf-erlendis" }).catch(() => []),

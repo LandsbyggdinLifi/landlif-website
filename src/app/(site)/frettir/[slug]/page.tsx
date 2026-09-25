@@ -7,6 +7,7 @@ import { newsPostBySlugQuery, newsPostsQuery } from "@/sanity/queries";
 import { urlFor, hotspotPosition } from "@/sanity/image";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import { formatDateIs } from "@/lib/date";
+import { decodeSlug } from "@/lib/slug";
 
 export const revalidate = 0;
 
@@ -22,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const slug = decodeSlug((await params).slug);
   const post = await client
     .fetch(newsPostBySlugQuery, { slug })
     .catch(() => null);
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function NewsPostPage({ params }: Props) {
-  const { slug } = await params;
+  const slug = decodeSlug((await params).slug);
   const post = await client
     .fetch(newsPostBySlugQuery, { slug })
     .catch(() => null);

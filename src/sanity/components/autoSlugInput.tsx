@@ -11,15 +11,21 @@ import { apiVersion } from "../env";
 
 type SlugValue = { _type?: string; current?: string };
 
-// Mirrors Sanity's default slugify (lowercase, whitespace → dashes, truncate)
-// so auto-generated slugs match any created earlier via the "Generate" button.
+const ICELANDIC_CHARS: Record<string, string> = { ð: "d", þ: "th", æ: "ae", ö: "o" };
+
+// URL-safe ASCII slug, matching the style of the posts migrated from WordPress
+// ("Aðlögun flóttamanna" → "adlogun-flottamanna"). Punctuation like "?" or ","
+// must never reach the slug: "?" starts a query string and breaks the link.
 function slugify(input: string, maxLength: number): string {
   return input
     .toLowerCase()
-    .trim()
-    .replace(/\s+/g, "-")
+    .replace(/[ðþæö]/g, (c) => ICELANDIC_CHARS[c])
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+/, "")
     .slice(0, maxLength)
-    .replace(/^-+|-+$/g, "");
+    .replace(/-+$/, "");
 }
 
 /**
